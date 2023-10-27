@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root{
+    --body-background-color: #1F8A70;
+    --header-background-color: #00425A;
+    --white-font-color: #ECECEC;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Outfit', sans-serif;
+    scroll-behavior: smooth;
+}
+
+body{
+    background-color: var(--body-background-color);
+}
+
+header{
+    background-color: var(--header-background-color);
+}
+
+.nav-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 70px;
+    color: var(--white-font-color);
+}
+
+.nav-container h1{
+    font-size: 48px;
+    font-weight: 800;
+}
+
+.contents-wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 445px;
+    height: 100%;
+}
+
+.contents-wrap a {
+    text-decoration: none;
+    color: var(--white-font-color);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.contents-wrap a:nth-child(1),
+.contents-wrap a:nth-child(2),
+.contents-wrap a:nth-child(4){
+    padding: 10px 0;
+    border-bottom: 3px solid transparent;
+}
+
+.contents-wrap a:nth-child(3){
+    padding: 10px 20px;
+    background-color: #FC7300;
+    border-radius: 50px;
+    transition: .5s ease-out;
+}
+
+.contents-wrap a:nth-child(4){
+    font-size: 25px;
+}
+
+.contents-wrap a:nth-child(1):hover,
+.contents-wrap a:nth-child(2):hover,
+.contents-wrap a:nth-child(4):hover{
+    border-bottom: var(--white-font-color) 3px solid;
+}
+
+.contents-wrap a:nth-child(3):hover{
+    color: #fff;
+    background-color: #7d3901;
+}
