@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
-    --body-background-color: #fdfbf2;
-    --header-background-color: #1c1c1c;
+    --body-background-color: #032a1d;
+    --header-background-color: #222831;
     --white-font-color: #fff;
     --orange-accent-color: #FC7300;
 }
@@ -22,7 +22,7 @@ body {
 .banner{
     width: 100%;
     height: 100vh;
-    background-image: url(../images/Nature-hands.jpg);
+    background-image: url(../images/Banner-Photo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -89,11 +89,11 @@ body {
 
 .companies-title-container{
     margin: 50px 0;
-    color: #1c1c1c;
+    color: var(--white-font-color);
 }
 
 .companies-title-container h2{
-    font-size: 70px;
+    font-size: 30px;
     font-weight: 800;
 }
 
