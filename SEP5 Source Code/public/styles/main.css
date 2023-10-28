@@ -1,8 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 :root {
-    --body-background-color: #1F8A70;
-    --header-background-color: #00425A;
+    --body-background-color: #fdfbf2;
+    --header-background-color: #1c1c1c;
     --white-font-color: #fff;
     --orange-accent-color: #FC7300;
 }
@@ -79,12 +79,36 @@ body {
 
 /* Companies Section */
 
+.companies{
+    margin: 70px 0;
+}
+
+.companies-container{
+    padding: 0 30px;
+}
+
+.companies-title-container{
+    margin: 50px 0;
+    color: #1c1c1c;
+}
+
+.companies-title-container h2{
+    font-size: 70px;
+    font-weight: 800;
+}
+
+.companies-title-container p{
+    font-size: 29px;
+    font-weight: 300;
+}
+
 .companies-card-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 27px;
-    width: 74%;
+    width: 100%;
     height: 100vh;
+    justify-items: center;
 }
 
 .companies-card {
@@ -93,10 +117,10 @@ body {
     border-radius: 10px;
     box-shadow: 2px 2px 13px rgba(0, 0, 0, 0.03);
     position: relative;
-    width: 408px;
+    width: 97%;
     height: 537px;
+    transition: .5s;
 }
-
 
 .text-overlay {
     position: absolute;
@@ -110,21 +134,34 @@ body {
     flex-direction: column;
     background-color: #222831b3;
     display: none;
-}
-
-.text-overlay {
     color: #fff;
 }
 
-.text-overlay h1 {
-    font-size: 2.2rem;
+.text-overlay .image{
+    width: 55%;
+}
+
+.text-overlay .image img{
+    width: 100%;
+}
+
+.text-overlay .text{
+    width: 100%;
+    text-align: center;
+    position: relative;
+    top: 20%;
+    transform: translateY(50%);
+    text-align: center;
+}
+
+.text-overlay .text h3 {
     margin: 0px;
     padding: 0px;
     letter-spacing: 2px;
     text-align: center;
 }
 
-.text-overlay p {
+.text-overlay .text p {
     font-size: 1.2rem;
     margin: 0 15%;
     text-align: center;
@@ -132,6 +169,11 @@ body {
 
 .companies-card:hover .text-overlay {
     display: flex;
+}
+
+.companies-card:hover .text-overlay .text{
+    position: relative;
+    bottom: 0;
 }
 
 .companies-card img {
