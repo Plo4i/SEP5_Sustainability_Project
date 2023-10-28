@@ -23,7 +23,6 @@ header{
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--header-background-color);
 }
 
 .logo a{
@@ -37,11 +36,13 @@ header{
     justify-content: space-between;
     padding: 22px 70px;
     color: var(--white-font-color);
+    background-color: transparent;
+    transition: 0.5s;
 }
 
 .nav-container h1{
-    font-size: 48px;
-    font-weight: 800;
+    font-size: 65px;
+    font-weight: 900;
 }
 
 .contents-wrap{
@@ -86,4 +87,9 @@ header{
 
 .contents-wrap a:nth-child(3):hover{
     background-color: #a04800;
+}
+
+.sticky{
+    padding: 6px 70px;
+    background-color: var(--header-background-color);
 }
