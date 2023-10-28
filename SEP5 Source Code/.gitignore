@@ -1,0 +1,9 @@
+# Ignore build artifacts
+build/
+dist/
+
+# Ignore configuration files
+config.json
+
+# Ignore zone identifiers
+**/*Zone.Identifier
