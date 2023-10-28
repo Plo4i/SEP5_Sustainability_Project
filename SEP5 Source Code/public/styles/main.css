@@ -1,5 +1,7 @@
+/* Import Google Fonts for 'Lexend' and 'Outfit' */
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+/* Define CSS variables (custom properties) for colors */
 :root {
     --body-background-color: #032a1d;
     --header-background-color: #222831;
@@ -7,6 +9,7 @@
     --orange-accent-color: #FC7300;
 }
 
+/* Reset default margin, padding, font, and scroll behavior */
 * {
     margin: 0;
     padding: 0;
@@ -14,26 +17,32 @@
     scroll-behavior: smooth;
 }
 
+/* Styling for the entire body */
 body {
     background-color: var(--body-background-color);
     height: 250vh;
+    /* This sets the height of the body */
 }
 
-.banner{
+/* Styling for the banner section */
+.banner {
     width: 100%;
     height: 100vh;
+    /* 100% of the viewport height */
     background-image: url(../images/Banner-Photo.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-.banner-container{
+/* Styling for the container within the banner section */
+.banner-container {
     height: 100%;
     width: 100%;
     background-color: #1f8a6f2a;
 }
 
-.banner .content{
+/* Styling for the content within the banner */
+.banner .content {
     color: var(--white-font-color);
     display: flex;
     align-items: flex-start;
@@ -43,19 +52,20 @@ body {
     padding: 0 100px;
 }
 
-.banner .content p{
+.banner .content p {
     margin: 5px 0;
     font-size: 46px;
     font-weight: 800;
 }
 
-.banner-button{
+/* Styling for the banner button */
+.banner-button {
     width: 235px;
     height: 55px;
     margin: 10px 0;
 }
 
-.banner-button .button{
+.banner-button .button {
     font-size: 23px;
     text-decoration: none;
     color: var(--white-font-color);
@@ -66,7 +76,6 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 30px;
-
     background: linear-gradient(to right, var(--orange-accent-color) 50%, transparent 50%);
     background-size: 200% 100%;
     background-position: right bottom;
@@ -77,40 +86,43 @@ body {
     background-position: left bottom;
 }
 
-/* Companies Section */
-
-.companies{
+/* Styling for the 'Companies' section */
+.companies {
     margin: 70px 0;
 }
 
-.companies-container{
+.companies-container {
     padding: 0 30px;
 }
 
-.companies-title-container{
+/* Styling for the title within the 'Companies' section */
+.companies-title-container {
     margin: 50px 0;
     color: var(--white-font-color);
 }
 
-.companies-title-container h2{
+.companies-title-container h2 {
     font-size: 30px;
     font-weight: 800;
 }
 
-.companies-title-container p{
+.companies-title-container p {
     font-size: 29px;
     font-weight: 300;
 }
 
+/* Styling for the container of company cards */
 .companies-card-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 27px;
     width: 100%;
     height: 100vh;
+    /* 100% of the viewport height */
     justify-items: center;
 }
 
+/* Styling for individual company cards */
 .companies-card {
     background-color: #1f1f1f;
     overflow: hidden;
@@ -122,6 +134,7 @@ body {
     transition: .5s;
 }
 
+/* Styling for the text overlay within company cards */
 .text-overlay {
     position: absolute;
     left: 0;
@@ -137,15 +150,15 @@ body {
     color: #fff;
 }
 
-.text-overlay .image{
+.text-overlay .image {
     width: 55%;
 }
 
-.text-overlay .image img{
+.text-overlay .image img {
     width: 100%;
 }
 
-.text-overlay .text{
+.text-overlay .text {
     width: 100%;
     text-align: center;
     position: relative;
@@ -167,15 +180,17 @@ body {
     text-align: center;
 }
 
+/* Hover effect to display text overlay on company cards */
 .companies-card:hover .text-overlay {
     display: flex;
 }
 
-.companies-card:hover .text-overlay .text{
+.companies-card:hover .text-overlay .text {
     position: relative;
     bottom: 0;
 }
 
+/* Styling for images within company cards */
 .companies-card img {
     width: 100%;
     height: 100%;
