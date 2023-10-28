@@ -16,7 +16,7 @@
 
 body {
     background-color: var(--body-background-color);
-    height: 150vh;
+    height: 250vh;
 }
 
 .banner{
@@ -77,3 +77,65 @@ body {
     background-position: left bottom;
 }
 
+/* Companies Section */
+
+.companies-card-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 27px;
+    width: 74%;
+    height: 100vh;
+}
+
+.companies-card {
+    background-color: #1f1f1f;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 2px 2px 13px rgba(0, 0, 0, 0.03);
+    position: relative;
+    width: 408px;
+    height: 537px;
+}
+
+
+.text-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #222831b3;
+    display: none;
+}
+
+.text-overlay {
+    color: #fff;
+}
+
+.text-overlay h1 {
+    font-size: 2.2rem;
+    margin: 0px;
+    padding: 0px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.text-overlay p {
+    font-size: 1.2rem;
+    margin: 0 15%;
+    text-align: center;
+}
+
+.companies-card:hover .text-overlay {
+    display: flex;
+}
+
+.companies-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
