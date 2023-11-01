@@ -35,6 +35,8 @@
                     <!-- Navigation links -->
                     <a href="#companies">Companies</a>
                     <a href="#">Sign Up</a>
+                    <a href="#" id="login-link">Log In</a>
+
                     <a href="#">For Paid Customers</a>
                     <a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
                 </div>
@@ -143,6 +145,27 @@
             </div>
         </div>
     </section>
+
+
+
+<!--  
+Sigurd Modal Experiment
+-->
+<div id="login-modal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Login</h2>
+      <form id="login-form" method="POST" action="/login">
+        <!-- Login form fields -->
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit">Log In</button>
+      </form>
+    </div>
+  </div>
+
+
+
 </body>
 
 </html>

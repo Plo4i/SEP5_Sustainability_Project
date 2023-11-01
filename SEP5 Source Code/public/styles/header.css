@@ -82,7 +82,7 @@ header {
 }
 
 /* Styling for the 3rd navigation link */
-.contents-wrap a:nth-child(3) {
+.contents-wrap a:nth-child(4) {
     padding: 10px 20px;
     background-color: #FC7300;
     border-radius: 50px;

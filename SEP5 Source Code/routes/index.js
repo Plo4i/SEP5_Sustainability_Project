@@ -14,12 +14,12 @@ const router = express.Router();
 router.get('/', (req,res) => {
     const options = path.join(__dirname, '../views/pages')
 
-
+    
     res.sendFile(options+'/index.html',(error) => {
-        //console.log("")
-        //console.log("error finding file" + error);
+        
     })
-
+ 
+    
 })
 
 export default router;
