@@ -42,7 +42,9 @@ router.post("/login", (req, res) => {
 
     req.session.isLoggedIn = true;
     res.cookie('isLoggedIn', 'true', {httpOnly:false});
-    res.sendFile(options + "/index.html");
+   // res.sendFile(options + "/index.html");
+   res.render(options+'/index.ejs');
+
     /*
     res.cookie('isLoggedIn', 'true', {httpOnly:false});
  */
