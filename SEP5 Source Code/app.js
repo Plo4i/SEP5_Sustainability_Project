@@ -9,6 +9,10 @@ import session from "express-session";
 // Import routes
 import indexRouter from "./routes/index.js";
 import loginRouter from "./routes/loginRouter.js";
+//import test from "./routes/test.js";
+
+// app.js
+import test from './routes/test.js';
 
 //import usersRouter from './routes/users.js';
 
@@ -34,8 +38,9 @@ app.use(
 
 // Define routes
 app.use("/", indexRouter);
-app.use("/login", indexRouter);
-app.use("/logout", indexRouter);
+app.use("/", loginRouter);
+app.use("/", test);
+
 
 
 //app.use('/login', loginRouter);
