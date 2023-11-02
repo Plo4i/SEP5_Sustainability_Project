@@ -41,3 +41,22 @@ var isLoggedInCookie = cookiesArray.find(cookie => cookie.startsWith('isLoggedIn
 var isLoggedIn = isLoggedInCookie.split('=')[1];
 
 console.log("Is logged In: "+isLoggedIn);
+
+
+window.onload = function() {
+
+
+    // Add the common links
+
+    if (isLoggedIn === 'true') {
+        var contentsWrap = document.querySelector('.contents-wrap');
+        contentsWrap.innerHTML = ''; // Clear the existing links
+        contentsWrap.innerHTML += '<a href="#companies">Companies</a>';
+
+        // Add the links for logged in users
+        contentsWrap.innerHTML += '<a href="#">For Paid Customers</a>';
+        contentsWrap.innerHTML += '<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>';
+    } else {
+       
+    }
+}
