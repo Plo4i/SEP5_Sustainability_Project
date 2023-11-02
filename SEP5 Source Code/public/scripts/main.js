@@ -32,3 +32,12 @@ loginLink.addEventListener('click', showModal);
 //close button within modal to hide modal
 closeButton.addEventListener('click', hideModal);
 
+
+
+//handle isLoggedInCookie
+var allCookies = document.cookie; //cookes are stored in one long string. they are key value pairs seperated by '='. paris sepereated by ';'
+var cookiesArray = allCookies.split('; ');
+var isLoggedInCookie = cookiesArray.find(cookie => cookie.startsWith('isLoggedIn='));
+var isLoggedIn = isLoggedInCookie.split('=')[1];
+
+console.log("Is logged In: "+isLoggedIn);
