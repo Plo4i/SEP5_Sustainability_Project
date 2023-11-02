@@ -9,6 +9,8 @@ const __dirname = dirname(__filename);
 
 
 const router = express.Router();
+const options = path.join(__dirname, '../views/pages')
+
 
 
 router.get('/', (req,res) => {
@@ -18,10 +20,40 @@ router.get('/', (req,res) => {
             res.status(500).send('Server error');
         }
         else {
-            const options = path.join(__dirname, '../views/pages')
+            req.session.isLoggedIn = false;
+            res.cookie('isLoggedIn', 'false', {httpOnly:false});
             res.render(options+'/index.ejs', { companies: result.rows});
         }
     });
 })
+router.post("/login", (req, res) => {
+    //handle loggin in - auth thorugh DB
+    /*
+    psuedo:
+    username and password: req.body.username, req.body.password
+    test through DB in external file
+
+    IF authenticated in DB the run
+    req.session.isLoggedIn = true;
+
+    In other parts of code req.session.isLoggedIn can now be used in -
+      IF statements to see if user is logged in
+    */
+
+    req.session.isLoggedIn = true;
+    res.cookie('isLoggedIn', 'true', {httpOnly:false});
+    res.sendFile(options + "/index.html");
+    /*
+    res.cookie('isLoggedIn', 'true', {httpOnly:false});
+ */
+
+  });
+  
+  router.post("/logout", (req, res) => {
+    // Handle logout logic here
+  });
+
+
+
 
 export default router;
