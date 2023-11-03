@@ -1,4 +1,4 @@
-import { response } from "express";
+//import { response } from "express";
 
 // Add a scroll event listener to the window
 window.addEventListener("scroll", function () {
@@ -42,6 +42,7 @@ var isLoggedIn = isLoggedInCookie.split("=")[1];
 console.log("Is logged In: " + isLoggedIn);
 
 window.onload = function () {
+
   if (isLoggedIn === "true") {
     var contentsWrap = document.querySelector(".contents-wrap");
     contentsWrap.innerHTML = ""; // Clear the existing links
