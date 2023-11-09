@@ -25,22 +25,36 @@ router.post("/login", (req, res) => {
     */
 
   //Storing username and password send by POST in the body
-  let userName = req.body["username"];
+  let username = req.body["username"];
   let password = req.body["password"];
+  console.log("U: " + username + ", P: " + password);
 
-  console.log("U: " + userName + ", P: " + password);
+  const checkCredentialQuery =
+    "SELECT * FROM users WHERE username = '" +
+    username +
+    "'" +
+    "AND password = '" +
+    password +
+    "'";
 
-  //Setting logged in cookie and session to true
-  req.session.isLoggedIn = true;
-  res.cookie("isLoggedIn", "true", { httpOnly: false });
-  //Setting current user cookie to username
-  res.cookie("currentUser", userName, { httpOnly: false });
-  res.render(options + "/index.ejs");
+  pool.query(checkCredentialQuery, (err,result) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).send("Server error logging in - Go back");
+    } else if(result.rows.length === 0) {
+      return res.status(400).send("Wrong username or password");
+    } else if (result.rows.length > 0) {
+      //Setting logged in cookie and session to true
+      res.cookie("isLoggedIn", "true", { httpOnly: false });
+      //Setting current user cookie to username
+      res.cookie("currentUser", username, { httpOnly: false });
+      res.status(200).render(options + "/index.ejs");
+    }
+  })
+
 });
 
 router.post("/logout", (req, res) => {
-
-
   req.session.isLoggedIn = false;
   res.cookie("isLoggedIn", "false", { httpOnly: false });
   res.cookie("currentUser", false, { httpOnly: false });

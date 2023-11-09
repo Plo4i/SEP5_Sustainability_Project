@@ -1,4 +1,3 @@
-//import { response } from "express";
 
 // Add a scroll event listener to the window
 window.addEventListener("scroll", function () {
@@ -13,23 +12,82 @@ window.addEventListener("scroll", function () {
 
 //Getting login link in header
 const loginLink = document.getElementById("login-link");
-//getting modal in body of HTML
-const modal = document.getElementById("login-modal");
+//getting loginmodal in body of HTML
+const loginModal = document.getElementById("login-modal");
 //getting close button within modal
-const closeButton = modal.querySelector(".close");
+const loginModelCloseButton = loginModal.querySelector(".close");
 
-//show the modal
-function showModal() {
-  modal.style.display = "block";
+//getting register link in header
+const registerLink = document.getElementById("register-link");
+//getting registermodal in body of HTML
+const registerModel = document.getElementById("register-modal");
+//getting close button within modal
+const registerModelCloseButton = registerModel.querySelector(".close");
+
+
+const loginForm = document.getElementById('login-form');
+const registerForm = document.getElementById('register-form');
+
+//login button in header event listener to show modal
+loginLink.addEventListener("click", function () {
+  showModal("login");
+});
+//close button within modal to hide modal
+loginModelCloseButton.addEventListener("click", function () {
+  hideModal("login");
+});
+
+registerLink.addEventListener("click", function () {
+  showModal("register");
+});
+//close button within modal to hide modal
+registerModelCloseButton.addEventListener("click", function () {
+  hideModal("register");
+});
+
+
+loginForm.addEventListener('submit', function(e) {
+  e.preventDefault(); // blocks the POST request from the HTML and handles it here. this way we can also handle the response here..
+
+  let username = document.getElementById('username');
+  let password = document.getElementById('password');
+
+  console.log(username + password);
+
+  fetch('/login', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username: username,
+      password: password,
+    }),
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch((error) => {
+    console.error('Error:', error);
+  });
+})
+
+
+
+function showModal(caller) {
+  if (caller == "login") {
+    loginModal.style.display = "block";
+  } else if (caller == "register") {
+    registerModel.style.display = "block";
+  }
 }
 //hide the modal
-function hideModal() {
-  modal.style.display = "none";
+function hideModal(caller) {
+  if (caller == "login") {
+    loginModal.style.display = "none";
+  } else if (caller == "register") {
+    registerModel.style.display = "none";
+  }
 }
-//login button in header evenlistener to show modal
-loginLink.addEventListener("click", showModal);
-//close button within modal to hide modal
-closeButton.addEventListener("click", hideModal);
 
 //handle isLoggedInCookie
 var allCookies = document.cookie; //cookes are stored in one long string. they are key value pairs seperated by '='. paris sepereated by ';'
@@ -42,7 +100,6 @@ var isLoggedIn = isLoggedInCookie.split("=")[1];
 console.log("Is logged In: " + isLoggedIn);
 
 window.onload = function () {
-
   if (isLoggedIn === "true") {
     var contentsWrap = document.querySelector(".contents-wrap");
     contentsWrap.innerHTML = ""; // Clear the existing links
@@ -53,32 +110,32 @@ window.onload = function () {
     contentsWrap.innerHTML +=
       '<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>';
   } else {
+    //does nothing. Renders the HTML
   }
 };
 
-
-
 // Functionality to click on a card and be routed to the corresponding company page IF logged in
 
-var companyCards = document.getElementsByClassName('companies-card');
-for (let i = 0; i < companyCards.length; i++){
-    companyCards[i].addEventListener('click', (event) => {
-        let clickedCompany = event.currentTarget.querySelector('h3').textContent;
+var companyCards = document.getElementsByClassName("companies-card");
+for (let i = 0; i < companyCards.length; i++) {
+  companyCards[i].addEventListener("click", (event) => {
+    let clickedCompany = event.currentTarget.querySelector("h3").textContent;
 
-        if(isLoggedIn){
-            fetch('/company', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    },
-                body: JSON.stringify({clickedName: clickedCompany})
-            })
-            .then (response => response.json())
-            .then(data => console.log(data))
-            .catch(error => console.log("Something went wrong: " + error))
-        }
+    if (isLoggedIn) {
+      fetch("/company", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ clickedName: clickedCompany }),
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log("Something went wrong: " + error));
+    }
 
-        alert(clickedCompany);
-    })
+    alert(clickedCompany);
+  });
 }
+
 
