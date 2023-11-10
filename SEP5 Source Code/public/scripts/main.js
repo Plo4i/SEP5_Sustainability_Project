@@ -139,7 +139,8 @@ for (let i = 0; i < companyCards.length; i++) {
   companyCards[i].addEventListener("click", (event) => {
     let clickedCompany = event.currentTarget.querySelector("h3").textContent;
 
-    if (isLoggedIn) {
+      
+    
       fetch("/company", {
         method: "GET",
         headers: {
@@ -150,7 +151,6 @@ for (let i = 0; i < companyCards.length; i++) {
         .then((response) => response.json())
         .then((data) => console.log(data))
         .catch((error) => console.log("Something went wrong: " + error));
-    }
 
     alert(clickedCompany);
   });
