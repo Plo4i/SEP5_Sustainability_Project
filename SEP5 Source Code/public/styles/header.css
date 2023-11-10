@@ -4,8 +4,10 @@
 /* Define CSS variables (custom properties) for colors */
 :root {
     --body-background-color: #1F8A70;
-    --header-background-color: #00425A;
+    --header-background-color: #222831;
     --white-font-color: #fff;
+    --orange-button-color: #FC7300;
+    --dark-orange-hover-color: #a04800;
 }
 
 /* Reset default margin, padding, font, and scroll behavior */
@@ -38,6 +40,7 @@ header {
     text-decoration: none;
 }
 
+
 /* Styling for the navigation container */
 .nav-container {
     padding: 22px 40px;
@@ -49,7 +52,7 @@ header {
 .nav-container .nav-links {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between;    
 }
 
 .nav-container .nav-links.nav-links-searchbar-off{
@@ -112,7 +115,7 @@ header {
 /* Styling for the 3rd navigation link */
 .contents-wrap a:nth-child(4) {
     padding: 10px 20px;
-    background-color: #FC7300;
+    background-color: var(--orange-button-color);
     border-radius: 50px;
     transition: .5s ease-out;
 }
@@ -131,7 +134,7 @@ header {
 
 /* Hover effect for the 3rd navigation link */
 .contents-wrap a:nth-child(4):hover {
-    background-color: #a04800;
+    background-color: var(--dark-orange-hover-color);
 }
 
 /* Styling when the header is in 'sticky' state */
@@ -143,38 +146,63 @@ header {
 /* Styling of the searchbar */
 
 #search-bar {
+    display: none;
     position: absolute;
     top: 0;
     right: 0;
     background-color: var(--header-background-color);
-    padding: 20px 0;
+    padding: 32px 0;
     border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     width: 100%;
 }
 
+#search-bar .search-bar-container{
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#search-bar .search-bar-container .search-input-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 3px
+}
+
 #search-input {
-    width: 200px;
+    width: 50%;
     padding: 10px;
     border: none;
-    border-radius: 5px;
+    color: var(--white-font-color);
+    border-bottom: var(--white-font-color) 3px solid;
+    background-color: transparent;
+    outline: none;
+    font-size: 23px;
+    transition: .5s ease;
+}
+
+#search-input:focus{
+    border-bottom: var(--orange-button-color) 3px solid;
 }
 
 #search-btn {
     padding: 10px;
     border: none;
-    background-color: #4CAF50;
+    background-color: transparent;
     color: white;
-    border-radius: 5px;
     cursor: pointer;
+    font-size: 25px;
+    transition: .5s ease-out;
 }
 
 #close-btn {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background-color: transparent;
-    border: none;
-    font-size: 20px;
+    font-size: 44px;
     cursor: pointer;
+    transition: .5s ease;
+}
+
+#search-btn:hover,
+#close-btn:hover{
+    color: var(--orange-button-color);
 }
