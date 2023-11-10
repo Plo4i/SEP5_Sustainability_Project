@@ -8,6 +8,22 @@ window.addEventListener("scroll", function () {
   header.classList.toggle("sticky-navbar", window.scrollY > 0);
 });
 
+// Serchbar functionality - event listener
+// Open searchbar
+document.querySelector('.fa-search').addEventListener('click', function () {
+  var navLinks = document.getElementById('nav-links');
+  navLinks.classList.remove("nav-links-searchbar-off");
+  navLinks.classList.add("nav-links-searchbar-on");
+  document.getElementById('search-bar').style.display = 'block';
+});
+
+document.getElementById('close-btn').addEventListener('click', function () {
+  var navLinks = document.getElementById('nav-links');
+  navLinks.classList.remove("nav-links-searchbar-on");
+  navLinks.classList.add("nav-links-searchbar-off");
+  document.getElementById('search-bar').style.display = 'none';
+});
+
 //Log in modal
 
 //Getting login link in header

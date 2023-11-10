@@ -40,14 +40,28 @@ header {
 
 /* Styling for the navigation container */
 .nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding: 22px 40px;
     color: var(--white-font-color);
     background-color: transparent;
     transition: 0.5s;
 }
+
+.nav-container .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-container .nav-links.nav-links-searchbar-off{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-container .nav-links.nav-links-searchbar-on {
+    display: none;
+}
+
 
 /* Styling for the navigation title */
 .nav-container h1 {
@@ -82,8 +96,17 @@ header {
     transition: .5s ease-out;
 }
 
-.contents-wrap a:nth-child(5){
+/* Nav-bar search icon */
+.contents-wrap .search-icon {
+    padding: 10px 0;
+    cursor: pointer;
     font-size: 27px;
+    border-bottom: transparent 3px solid;
+    transition: .5s ease-out;
+}
+
+.contents-wrap .search-icon:hover {
+    border-bottom: var(--white-font-color) 3px solid;
 }
 
 /* Styling for the 3rd navigation link */
@@ -115,4 +138,43 @@ header {
 .sticky-navbar {
     padding: 6px 40px;
     background-color: var(--header-background-color);
+}
+
+/* Styling of the searchbar */
+
+#search-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--header-background-color);
+    padding: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+#search-input {
+    width: 200px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#search-btn {
+    padding: 10px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
 }
