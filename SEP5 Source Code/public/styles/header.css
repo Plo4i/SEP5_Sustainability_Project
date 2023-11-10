@@ -43,7 +43,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 22px 70px;
+    padding: 22px 40px;
     color: var(--white-font-color);
     background-color: transparent;
     transition: 0.5s;
@@ -60,7 +60,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 445px;
+    width: 602px;
     height: 100%;
 }
 
@@ -75,10 +75,15 @@ header {
 /* Styling for specific navigation links (1st, 2nd, and 4th) */
 .contents-wrap a:nth-child(1),
 .contents-wrap a:nth-child(2),
+.contents-wrap a:nth-child(3),
 .contents-wrap a:nth-child(4) {
     padding: 10px 0;
     border-bottom: 3px solid transparent;
     transition: .5s ease-out;
+}
+
+.contents-wrap a:nth-child(5){
+    font-size: 27px;
 }
 
 /* Styling for the 3rd navigation link */
@@ -97,17 +102,17 @@ header {
 /* Hover effect for specific navigation links (1st, 2nd, and 4th) */
 .contents-wrap a:nth-child(1):hover,
 .contents-wrap a:nth-child(2):hover,
-.contents-wrap a:nth-child(4):hover {
+.contents-wrap a:nth-child(3):hover {
     border-bottom: var(--white-font-color) 3px solid;
 }
 
 /* Hover effect for the 3rd navigation link */
-.contents-wrap a:nth-child(3):hover {
+.contents-wrap a:nth-child(4):hover {
     background-color: #a04800;
 }
 
 /* Styling when the header is in 'sticky' state */
-.sticky {
-    padding: 6px 70px;
+.sticky-navbar {
+    padding: 6px 40px;
     background-color: var(--header-background-color);
 }

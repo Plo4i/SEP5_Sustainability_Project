@@ -5,7 +5,7 @@ window.addEventListener("scroll", function () {
   const header = document.querySelector(".nav-container");
 
   // Toggle the 'sticky' class on the 'header' element based on the scroll position
-  header.classList.toggle("sticky", window.scrollY > 0);
+  header.classList.toggle("sticky-navbar", window.scrollY > 0);
 });
 
 //Log in modal
