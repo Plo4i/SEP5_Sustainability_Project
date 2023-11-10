@@ -27,7 +27,7 @@ router.post("/login", (req, res) => {
   //Storing username and password send by POST in the body
   let username = req.body["username"];
   let password = req.body["password"];
-  console.log("U: " + username + ", P: " + password);
+  //console.log("U: " + username + ", P: " + password);
 
   const checkCredentialQuery =
     "SELECT * FROM users WHERE username = '" +

@@ -117,6 +117,8 @@ window.onload = function () {
 // Functionality to click on a card and be routed to the corresponding company page IF logged in
 
 var companyCards = document.getElementsByClassName("companies-card");
+
+
 for (let i = 0; i < companyCards.length; i++) {
   companyCards[i].addEventListener("click", (event) => {
     let clickedCompany = event.currentTarget.querySelector("h3").textContent;
@@ -137,5 +139,3 @@ for (let i = 0; i < companyCards.length; i++) {
     alert(clickedCompany);
   });
 }
-
-
