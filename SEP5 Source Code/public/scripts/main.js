@@ -44,6 +44,7 @@ const registerModelCloseButton = registerModel.querySelector(".close");
 const loginForm = document.getElementById('login-form');
 const registerForm = document.getElementById('register-form');
 
+
 //login button in header event listener to show modal
 loginLink.addEventListener("click", function () {
   showModal("login");
@@ -65,11 +66,13 @@ registerModelCloseButton.addEventListener("click", function () {
 loginForm.addEventListener('submit', function(e) {
   e.preventDefault(); // blocks the POST request from the HTML and handles it here. this way we can also handle the response here..
 
-  let username = document.getElementById('username');
-  let password = document.getElementById('password');
+  let username = document.querySelector('input[name="username"]').value;
+  let password = document.querySelector('input[name="password"]').value;
+  
 
   console.log(username + password);
 
+  
   fetch('/login', {
     method: 'POST',
     headers: {
@@ -84,7 +87,7 @@ loginForm.addEventListener('submit', function(e) {
   .then(data => console.log(data))
   .catch((error) => {
     console.error('Error:', error);
-  });
+  });  
 })
 
 
@@ -116,6 +119,8 @@ var isLoggedIn = isLoggedInCookie.split("=")[1];
 console.log("Is logged In: " + isLoggedIn);
 
 window.onload = function () {
+
+
   if (isLoggedIn === "true") {
     var contentsWrap = document.querySelector(".contents-wrap");
     contentsWrap.innerHTML = ""; // Clear the existing links
@@ -137,21 +142,17 @@ var companyCards = document.getElementsByClassName("companies-card");
 
 for (let i = 0; i < companyCards.length; i++) {
   companyCards[i].addEventListener("click", (event) => {
+    
+    event.preventDefault(); // Prevent the default behavior of the click event
+
     let clickedCompany = event.currentTarget.querySelector("h3").textContent;
 
-      
-    
-      fetch("/company", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ clickedName: clickedCompany }),
-      })
-        .then((response) => response.json())
-        .then((data) => console.log(data))
-        .catch((error) => console.log("Something went wrong: " + error));
-
-    alert(clickedCompany);
+    fetch('/company')
+    .then(response => response.json()) // parse the response as JSON
+    .then(data => console.log(data)) // log the company data
+    .catch((error) => {
+      console.error('Error:', error);
+    });
   });
 }
+

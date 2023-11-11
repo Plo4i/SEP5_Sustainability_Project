@@ -11,18 +11,15 @@ const router = express.Router();
 const options = path.join(__dirname, "../views/pages");
 
 router.get("/company", (req, res) => {
-  let companyName = req.body["clickedName"];
-  console.log("You have access to the company");
+  let company = {
+    name: "Phind",
+    location: "San Francisco",
+    industry: "Technology",
+    employees: 100,
+  };
 
-  res.send(companyName);
-
-// Use company name to access the corresponding page to be rendered! 
-// We could make it so that the index page MAIN section is hidden and then
-// just send "INCLUDE" a generic company component with an object created from the DV
-//That way when creating companies we will always just send the data along
-//
-
-
+  console.log("Sending company data:", company); // log the data before sending it
+  res.status(200).json(company);
 });
 
 export default router;

@@ -10,7 +10,6 @@ import session from "express-session";
 import indexRouter from "./routes/index.js";
 import loginRouter from "./routes/loginRouter.js";
 import registerRouter from "./routes/registerRouter.js";
-
 import companyRouter from "./routes/companyRouter.js"
 
 // can be deleted in final.....
@@ -42,7 +41,6 @@ app.use(
 app.use("/", indexRouter);
 app.use("/", loginRouter);
 app.use("/", registerRouter);
-
 app.use("/", test);
 app.use('/',companyRouter);
 
