@@ -39,10 +39,10 @@ app.use(
 
 // Define routes
 app.use("/", indexRouter);
-app.use("/", loginRouter);
-app.use("/", registerRouter);
+app.use("/login", loginRouter);
+app.use("/register", registerRouter);
 app.use("/", test);
-app.use('/',companyRouter);
+app.use('/company',companyRouter);
 
 
 
