@@ -1,4 +1,3 @@
-
 // Add a scroll event listener to the window
 window.addEventListener("scroll", function () {
   // Select the element with the class 'nav-container' and store it in the 'header' variable
