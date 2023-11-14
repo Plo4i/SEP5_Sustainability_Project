@@ -9,18 +9,18 @@ window.addEventListener("scroll", function () {
 
 // Serchbar functionality - event listener
 // Open searchbar
-document.querySelector('.fa-search').addEventListener('click', function () {
-  var navLinks = document.getElementById('nav-links');
+document.querySelector(".fa-search").addEventListener("click", function () {
+  var navLinks = document.getElementById("nav-links");
   navLinks.classList.remove("nav-links-searchbar-off");
   navLinks.classList.add("nav-links-searchbar-on");
-  document.getElementById('search-bar').style.display = 'block';
+  document.getElementById("search-bar").style.display = "block";
 });
 
-document.getElementById('close-btn').addEventListener('click', function () {
-  var navLinks = document.getElementById('nav-links');
+document.getElementById("close-btn").addEventListener("click", function () {
+  var navLinks = document.getElementById("nav-links");
   navLinks.classList.remove("nav-links-searchbar-on");
   navLinks.classList.add("nav-links-searchbar-off");
-  document.getElementById('search-bar').style.display = 'none';
+  document.getElementById("search-bar").style.display = "none";
 });
 
 //Log in modal
@@ -39,57 +39,72 @@ const registerModel = document.getElementById("register-modal");
 //getting close button within modal
 const registerModelCloseButton = registerModel.querySelector(".close");
 
+const loginForm = document.getElementById("login-form");
+const registerForm = document.getElementById("register-form");
 
-const loginForm = document.getElementById('login-form');
-const registerForm = document.getElementById('register-form');
+function activateHeaderLinks() {
+  const loginLink = document.getElementById("login-link");
+  loginLink.addEventListener("click", function () {
+    showModal("login");
+  });
+  const registerLink = document.getElementById("register-link");
+  registerLink.addEventListener("click", function () {
+    showModal("register");
+  });
+}
 
+function setEventListeners() {
+  //login button in header event listener to show modal
+  loginLink.addEventListener("click", function () {
+    showModal("login");
+  });
+  //close button within modal to hide modal
+  loginModelCloseButton.addEventListener("click", function () {
+    hideModal("login");
+  });
 
-//login button in header event listener to show modal
-loginLink.addEventListener("click", function () {
-  showModal("login");
-});
-//close button within modal to hide modal
-loginModelCloseButton.addEventListener("click", function () {
-  hideModal("login");
-});
+  registerLink.addEventListener("click", function () {
+    showModal("register");
+  });
+  //close button within modal to hide modal
+  registerModelCloseButton.addEventListener("click", function () {
+    hideModal("register");
+  });
 
-registerLink.addEventListener("click", function () {
-  showModal("register");
-});
-//close button within modal to hide modal
-registerModelCloseButton.addEventListener("click", function () {
-  hideModal("register");
-});
+  loginForm.addEventListener("submit", function (e) {
+    e.preventDefault(); // blocks the POST request from the HTML and handles it here. this way we can also handle the response here..
+    login();
+  });
+}
 
-
-loginForm.addEventListener('submit', function(e) {
-  e.preventDefault(); // blocks the POST request from the HTML and handles it here. this way we can also handle the response here..
-
+function login() {
   let username = document.querySelector('input[name="username"]').value;
   let password = document.querySelector('input[name="password"]').value;
-  
 
-  console.log(username + password);
+  console.log(username + ",  " + password);
 
-  
-  fetch('/login', {
-    method: 'POST',
+  fetch("/login", {
+    method: "POST",
     headers: {
-      'Content-Type': 'application/json',
+      "Content-Type": "application/json",
     },
     body: JSON.stringify({
       username: username,
       password: password,
     }),
   })
-  .then(response => response.json())
-  .then(data => console.log(data))
-  .catch((error) => {
-    console.error('Error:', error);
-  });  
-})
-
-
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.status === "success") {
+        updateHeader();
+      } else {
+        console.log(data);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
 
 function showModal(caller) {
   if (caller == "login") {
@@ -107,51 +122,77 @@ function hideModal(caller) {
   }
 }
 
-//handle isLoggedInCookie
-var allCookies = document.cookie; //cookes are stored in one long string. they are key value pairs seperated by '='. paris sepereated by ';'
-var cookiesArray = allCookies.split("; ");
-var isLoggedInCookie = cookiesArray.find((cookie) =>
-  cookie.startsWith("isLoggedIn=")
-);
-var isLoggedIn = isLoggedInCookie.split("=")[1];
-
-console.log("Is logged In: " + isLoggedIn);
-
 window.onload = function () {
+  setEventListeners();
+  updateHeader();
+};
 
-
+function updateHeader() {
+  //handle isLoggedInCookie
+  var allCookies = document.cookie; //cookies are stored in one long string. they are key value pairs seperated by '='. paris sepereated by ';'
+  var cookiesArray = allCookies.split("; ");
+  var isLoggedInCookie = cookiesArray.find((cookie) =>
+    cookie.startsWith("isLoggedIn=")
+  );
+  var isLoggedIn = isLoggedInCookie.split("=")[1];
+  console.log("Is logged In: " + isLoggedIn);
+  var contentsWrap = document.querySelector(".contents-wrap");
   if (isLoggedIn === "true") {
-    var contentsWrap = document.querySelector(".contents-wrap");
     contentsWrap.innerHTML = ""; // Clear the existing links
     contentsWrap.innerHTML += '<a href="#companies">Companies</a>';
-
-    // Add the links for logged in users
     contentsWrap.innerHTML += '<a href="#">For Paid Customers</a>';
+    contentsWrap.innerHTML += '<a href="#" id ="logoutBtn">Log Out</a>';
     contentsWrap.innerHTML +=
       '<a href="#"><i class="fa fa-search" aria-hidden="true"></i></a>';
-  } else {
-    //does nothing. Renders the HTML
+    var logoutBtn = document.getElementById("logoutBtn");
+    logoutBtn.addEventListener("click", function () {
+      logout();
+    });
+  } else if (isLoggedIn === "false") {
+    contentsWrap.innerHTML = ""; // Clear the existing links
+    contentsWrap.innerHTML += ' <a href="#companies">Companies</a>';
+    contentsWrap.innerHTML += '<a href="#" id="register-link">Sign Up</a>';
+    contentsWrap.innerHTML += '<a href="#" id="login-link">Log In</a>';
+    contentsWrap.innerHTML += '<a href="#">For Paid Customers</a>';
+    contentsWrap.innerHTML +=
+      '<div class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></a></div>';
+
+    activateHeaderLinks();
   }
-};
+}
+
+function logout() {
+  fetch("/logout", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data.status);
+      updateHeader();
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
 
 // Functionality to click on a card and be routed to the corresponding company page IF logged in
 
 var companyCards = document.getElementsByClassName("companies-card");
 
-
 for (let i = 0; i < companyCards.length; i++) {
   companyCards[i].addEventListener("click", (event) => {
-    
     event.preventDefault(); // Prevent the default behavior of the click event
 
     let clickedCompany = event.currentTarget.querySelector("h3").textContent;
 
-    fetch('/company')
-    .then(response => response.json()) // parse the response as JSON
-    .then(data => console.log(data)) // log the company data
-    .catch((error) => {
-      console.error('Error:', error);
-    });
+    fetch("/company")
+      .then((response) => response.json()) // parse the response as JSON
+      .then((data) => console.log(data)) // log the company data
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   });
 }
-
