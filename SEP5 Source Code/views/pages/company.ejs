@@ -1,4 +1,5 @@
 <%-include('../partials/header') -%>
+<%-include('../partials/banner') -%>
 
 <!-- Banner section -->
 <section class="banner" id="banner">
@@ -10,9 +11,9 @@
 
 
 
-        <h1 id="companyName"></h1>
-        <p>Location: <span id="companyLocation"></span></p>
-        <p>Industry: <span id="companyIndustry"></span></p>
+        <h1>Name: <%= details[0].name %></h1>
+        <img height="200px" src="<%= details[0].image_url %>"/>
+        <p>Industry: <span id="companyIndustry"><%= details[0].industry %></span></p>
         <p>Number of employees: <span id="companyEmployees"></span></p>
         
 
@@ -20,10 +21,4 @@
 
   </section>
 
-<!-- Modal for log in and register -->
-
-<%-include('../partials/login')-%>
-<%-include('../partials/register')-%>
-
 <%-include('../partials/footer')-%>
-<script defer src="/scripts/main.js"></script>
