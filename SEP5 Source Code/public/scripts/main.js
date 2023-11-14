@@ -42,6 +42,9 @@ const registerModelCloseButton = registerModel.querySelector(".close");
 const loginForm = document.getElementById("login-form");
 const registerForm = document.getElementById("register-form");
 
+const companyCards = document.getElementsByClassName("companies-card");
+
+
 function activateHeaderLinks() {
   const loginLink = document.getElementById("login-link");
   loginLink.addEventListener("click", function () {
@@ -180,13 +183,14 @@ function logout() {
 
 // Functionality to click on a card and be routed to the corresponding company page IF logged in
 
-var companyCards = document.getElementsByClassName("companies-card");
-
 for (let i = 0; i < companyCards.length; i++) {
+  console.log(companyCards[i])
   companyCards[i].addEventListener("click", (event) => {
     event.preventDefault(); // Prevent the default behavior of the click event
 
     let clickedCompany = event.currentTarget.querySelector("h3").textContent;
+    console.log(clickedCompany)
+
 
     fetch("/company")
       .then((response) => response.json()) // parse the response as JSON
