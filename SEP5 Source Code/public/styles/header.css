@@ -4,7 +4,7 @@
 /* Define CSS variables (custom properties) for colors */
 :root {
     --body-background-color: #1F8A70;
-    --header-background-color: #222831;
+    --header-background-color: #121519;
     --white-font-color: #fff;
     --orange-button-color: #FC7300;
     --dark-orange-hover-color: #a04800;
@@ -140,7 +140,7 @@ header {
 /* Styling when the header is in 'sticky' state */
 .sticky-navbar {
     padding: 6px 40px;
-    background-color: var(--header-background-color);
+    background-color: #121519;
 }
 
 /* Styling of the searchbar */
