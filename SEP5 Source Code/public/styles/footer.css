@@ -1,0 +1,82 @@
+/* FOOTER */
+
+footer {
+    background: #121519;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 50px 0 50px;
+}
+
+.column {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.wrap {
+    text-align: left;
+    color: #DCD7C9;
+}
+
+.wrap h1 {
+    font-family: 'Montserrat';
+    font-weight: 900;
+    margin-bottom: 15px;
+    font-size: 25px;
+}
+
+.wrap a {
+    transition: 0.3s ease-out;
+    width: fit-content;
+}
+
+.wrap a:hover {
+    color: #F2A365;
+}
+
+.column a {
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: #DCD7C9;
+}
+
+.cv-download-button-container {
+    width: 220px;
+}
+
+.about-me-icons {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.about-me-icons i {
+    color: #DCD7C9;
+    font-size: 30px;
+    margin: 10px 0;
+    transition: .3s ease-out;
+}
+
+.about-me-icons i:hover {
+    color: #F2A365;
+}
+
+.media-wrap {
+    margin-top: 40px;
+}
+
+.copyright-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0 20px 20px 20px;
+    color: #DCD7C9;
+}
+
+
+/* Styling for  */
