@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 /* FOOTER */
 
 footer {
@@ -22,7 +24,7 @@ footer {
 }
 
 .wrap h1 {
-    font-family: 'Montserrat';
+    font-family: 'Lexend';
     font-weight: 900;
     margin-bottom: 15px;
     font-size: 25px;
@@ -34,7 +36,7 @@ footer {
 }
 
 .wrap a:hover {
-    color: #F2A365;
+    color: var(--orange-button-color);
 }
 
 .column a {
@@ -62,11 +64,7 @@ footer {
 }
 
 .about-me-icons i:hover {
-    color: #F2A365;
-}
-
-.media-wrap {
-    margin-top: 40px;
+    color: var(--orange-button-color);
 }
 
 .copyright-text {
@@ -79,4 +77,4 @@ footer {
 }
 
 
-/* Styling for  */
+/* Styling for 1280px screen */
