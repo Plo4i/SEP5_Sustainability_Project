@@ -153,6 +153,31 @@ div.vertical-line {
   font-weight: 900;
 }
 
+.long-text {
+  display: none;
+}
+
+.read-less{
+  display: none;
+  background-color: #3F9E37;
+}
+
+.read-more {
+  background-color: transparent;
+  border: none;
+  color: #000;
+  padding: 10px 0;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.read-more:hover{
+  text-decoration: underline;
+}
+
 .user-image img{
   width: 100%;
 }
@@ -176,6 +201,12 @@ div.vertical-line {
 
 .user-name h3{
   font-weight: 400;
+}
+
+.comment-rating-date-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 
