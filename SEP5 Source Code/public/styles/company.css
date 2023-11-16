@@ -44,9 +44,17 @@
     color: #4a4a4a;
 }
 
-.logo-name-rating-container + div {
-  border-left: 1px solid #000;
+div.vertical-line {
+  width: 1px;
+  /* Line width */
+  background-color: black;
+  /* Line color */
   height: 100%;
+  /* Override in-line if you want specific height. */
+  float: left;
+  /* Causes the line to float to left of content. 
+        You can instead use position:absolute or display:inline-block
+        if this fits better with your design */
 }
 
 .company-information-heading-container .description-container{
@@ -100,7 +108,16 @@
     margin-bottom: 20px;
     border-radius: 10px;
     border: 1px solid #b2b2b2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
+}
+
+.company-information-content .sidebar-rating-comments .sidebar-rating h3{
+  padding: 20px 0 0;
+  font-size: 23px;
+  font-weight: 800;
 }
 
 .company-information-content .sidebar-rating-comments .sidebar-comments{

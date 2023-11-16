@@ -24,7 +24,7 @@
   -ms-transition: all 0.3s linear;
   -o-transition: all 0.3s linear;
   transition: all 0.3s linear;
-  border-bottom: 1.26em solid #D3D3D3;
+  border-bottom: 1.26em solid #4d4d4d;
   border-left: 1.8em solid transparent;
   border-right: 1.8em solid transparent;
   display: inline-block;
@@ -54,7 +54,7 @@
   -moz-transform: rotate(-35deg);
   -ms-transform: rotate(-35deg);
   -webkit-transform: rotate(-35deg);
-  border-bottom: 1.44em solid #D3D3D3;
+  border-bottom: 1.44em solid #4d4d4d;
   border-left: 0.54em solid transparent;
   border-right: 0.54em solid transparent;
   left: -1.17em;
@@ -65,7 +65,7 @@
   -moz-transform: rotate(-70deg);
   -ms-transform: rotate(-70deg);
   -webkit-transform: rotate(-70deg);
-  border-bottom: 1.26em solid #D3D3D3;
+  border-bottom: 1.26em solid #4d4d4d;
   border-left: 1.8em solid transparent;
   border-right: 1.8em solid transparent;
   left: -1.89em;
