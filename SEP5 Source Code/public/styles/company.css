@@ -5,6 +5,8 @@
 .company-information-heading{
     width: 100%;
     margin-bottom: 50px;
+    border-bottom: 1px solid #b2b2b2;
+    /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
 }
 
 .company-information-heading-container {
@@ -42,6 +44,11 @@
     color: #4a4a4a;
 }
 
+.logo-name-rating-container + div {
+  border-left: 1px solid #000;
+  height: 100%;
+}
+
 .company-information-heading-container .description-container{
     width: 54%;
 }
@@ -65,6 +72,22 @@
 .company-information-content .esg-certificate-container{
     background-color: #DCD7C9;
     width: 748px;
+    border-radius: 10px;
+    border: 1px solid #b2b2b2;
+    /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
+}
+
+.company-information-content .esg-certificate-container .esg-certificate-wrap{
+  padding: 30px;
+}
+
+.company-information-content .esg-certificate-container .esg-certificate img{
+  width: 100%;
+}
+
+.company-information-content .esg-certificate-container .esg-certificate  {
+  width: 100%;
+  margin-bottom: 20px;
 }
 
 .company-information-content .sidebar-rating-comments{
@@ -73,17 +96,23 @@
 
 .company-information-content .sidebar-rating-comments .sidebar-rating{
     width: 100%;
-    background-color: #fff;
+    background-color: #DCD7C9;
     margin-bottom: 20px;
+    border-radius: 10px;
+    border: 1px solid #b2b2b2;
+    /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
 }
 
 .company-information-content .sidebar-rating-comments .sidebar-comments{
     width: 100%;
-    background-color: #DCD7C9;
 }
 
 .comment {
   padding: 18px;
+  background-color: #DCD7C9;
+  border-radius: 10px;
+  border: 1px solid #b2b2b2;
+  /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
 }
 
 .user-information-wrap{
@@ -98,9 +127,13 @@
   padding: 10px 0;
 }
 
+.comment-heading{
+  margin-bottom: 15px;
+}
+
 .comment-heading h3{
   font-size: 22px;
-  font-weight: 400;
+  font-weight: 900;
 }
 
 .user-image img{

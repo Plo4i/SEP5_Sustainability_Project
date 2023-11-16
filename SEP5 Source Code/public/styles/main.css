@@ -3,7 +3,7 @@
 
 /* Define CSS variables (custom properties) for colors */
 :root {
-    --body-background-color: #032a1d;
+    --body-background-color: #fff;
     --header-background-color: #222831;
     --white-font-color: #fff;
     --orange-accent-color: #FC7300;
