@@ -1,36 +1,35 @@
-    <!-- Header section of the webpage -->
-    <header>
-        <div class="nav-container">
-            <div id="nav-links" class="nav-links">
-                <div class="logo-container logo">
-                    <!-- Logo and link to the homepage -->
-                    <a href="/">
-                        <h1>EcoEval</h1>
-                    </a>
-                </div>
-                <div class="contents-container">
-                        <div class="contents-wrap">
-                            <!-- Navigation links -->
-                            <a href="#companies">Companies</a>
-                            <%- locals.user ? '<a href="/user"> <img width="25px" src="' + user.image_url + '"/>' + user.username + '</a><div class="search-icon"><a href="/"><i class="fa fa-search" aria-hidden="true"></i></a></div>'  :
-                                '<a href="/register" id="register-link">Sign Up</a>' +
-                                '<a href="/login" id="login-link">Log In</a>' +
-                                '<a href="#">For Paid Customers</a>' +
-                                '<div class="search-icon"><a href="/"><i class="fa fa-search" aria-hidden="true"></i></a></div>'
-                            %>
-                        </div>
-                </div>
+<header>
+    <div class="nav-container">
+        <div id="nav-links" class="nav-links">
+            <div class="logo-container logo">
+                <!-- Logo and link to the homepage -->
+                <a href="#banner">
+                    <h1>EcoEval</h1>
+                </a>
             </div>
-            <div id="search-bar">
-                <div class="search-bar-container">
-                    <div class="search-input-container">
-                        <button id="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
-                        <input type="text" id="search-input" placeholder="Search...">
+            <div class="contents-container">
+                    <div class="contents-wrap">
+                        <!-- Navigation links -->
+                        <a href="#companies">Companies</a>
+                        <a href="#" id="register-link">Sign Up</a>
+                        <a href="#" id="login-link">Log In</a>
+                        <a href="#">For Paid Customers</a>
+                        <div class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></div>
                     </div>
-                    <div class="close-searchbar">
-                        <span id="close-btn">&times;</span>
-                    </div>
+            </div>
+        </div>
+        <div id="search-bar">
+            <div class="search-bar-container">
+                <div class="search-input-container">
+                    <button id="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <input type="text" id="search-input" placeholder="Search...">
+                </div>
+                <div class="close-searchbar">
+                    <span id="close-btn">&times;</span>
                 </div>
             </div>
         </div>
-    </header>
+    </div>
+</header>
+<!-- Link to the main JavaScript file for the page -->
+<script defer src="/scripts/main.js"></script>
