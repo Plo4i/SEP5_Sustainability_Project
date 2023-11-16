@@ -25,6 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 15px;
 }
 
 .logo-name-rating-container .logo img{
@@ -33,6 +34,7 @@
 
 .logo-name-rating-container .logo{
     width: 193px;
+    border-radius: 10px;
 }
 
 .logo-name-rating-container .name-rating-container .company-name h2{
@@ -105,7 +107,6 @@ div.vertical-line {
 .company-information-content .sidebar-rating-comments .sidebar-rating{
     width: 100%;
     background-color: #DCD7C9;
-    margin-bottom: 20px;
     border-radius: 10px;
     border: 1px solid #a0a0a0;
     display: flex;
@@ -118,6 +119,12 @@ div.vertical-line {
   padding: 20px 0 0;
   font-size: 23px;
   font-weight: 800;
+}
+
+.company-information-content .sidebar-rating-comments .comments-title h2{
+  font-size: 34px;
+  font-weight: 800;
+  margin: 20px 0;
 }
 
 .company-information-content .sidebar-rating-comments .sidebar-comments{
@@ -137,11 +144,12 @@ div.vertical-line {
   align-items: center;
   gap: 10px;
   padding: 10px 0;
-  border-bottom: 1px solid #4a4a4a;
 }
 
 .company-information-content .sidebar-rating-comments .sidebar-comments .comment-content-wrap{
   padding: 10px 0;
+  border-top: 1px solid #4a4a4a;
+  border-bottom: 1px solid #4a4a4a;
 }
 
 .company-information-content .sidebar-rating-comments .sidebar-comments .comment-heading{
@@ -153,29 +161,68 @@ div.vertical-line {
   font-weight: 900;
 }
 
-.long-text {
+.company-information-content .comment-content-wrap .comment-text .long-text {
   display: none;
 }
 
-.read-less{
-  display: none;
-  background-color: #3F9E37;
-}
-
-.read-more {
+.company-information-content .comment .read-less{
   background-color: transparent;
   border: none;
   color: #000;
-  padding: 10px 0;
+  display: flex;
+  align-items: center;
   text-align: center;
-  text-decoration: none;
+  text-decoration: underline;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
 }
 
-.read-more:hover{
+.company-information-content .comment .read-more {
+  background-color: transparent;
+  border: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+  text-align: center;
   text-decoration: underline;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.company-information-content .comment .arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left:5px;
+}
+
+.company-information-content .comment .up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.company-information-content .comment .down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.company-information-content .comment .read-more:hover{
+  color: #FC7300;
+}
+
+.company-information-content .comment .read-more:hover .arrow{
+  border-color: #FC7300;
+}
+
+.company-information-content .comment .read-less:hover {
+  color: #FC7300;
+}
+
+.company-information-content .comment .read-less:hover .arrow {
+  border-color: #FC7300;
 }
 
 .user-image img{
@@ -186,8 +233,8 @@ div.vertical-line {
   border: 1px solid #4a4a4a;
   background-color: #fff;
   border-radius: 100px;
-  width: 40px;
-  height: 40px;
+  width: 45px;
+  height: 45px;
 }
 
 .user-name a {
