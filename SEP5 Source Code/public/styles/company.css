@@ -56,17 +56,13 @@
     color: #4a4a4a;
 }
 
+
+/* Vertical Separating Line in the company heading */
 div.vertical-line {
   width: 1px;
-  /* Line width */
   background-color: black;
-  /* Line color */
   height: 100%;
-  /* Override in-line if you want specific height. */
   float: left;
-  /* Causes the line to float to left of content. 
-        You can instead use position:absolute or display:inline-block
-        if this fits better with your design */
 }
 
 .company-information-heading-container .description-container{
@@ -97,6 +93,8 @@ div.vertical-line {
     /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
 }
 
+
+/* ESG Container Certificate Styling */
 .company-information-content .esg-certificate-container .esg-certificate-wrap{
   padding: 30px;
 }
@@ -109,6 +107,8 @@ div.vertical-line {
   width: 100%;
   margin-bottom: 20px;
 }
+
+/* Styling of the button/link in the bottom of the ESG certificate container */
 
 .company-information-content .esg-certificate-container .more-about-esg-certificate{
   display: flex;
@@ -136,6 +136,8 @@ div.vertical-line {
   transition: transform 0.5s;
 }
 
+/* Styling of the sidebar */
+
 .company-information-content .sidebar-rating-comments{
     width: 337px;
 }
@@ -156,6 +158,8 @@ div.vertical-line {
   font-size: 23px;
   font-weight: 800;
 }
+
+/* Styling of the comments section in the sidebar */
 
 .company-information-content .sidebar-rating-comments .comments-title h2{
   font-size: 34px;
@@ -196,6 +200,8 @@ div.vertical-line {
   font-size: 22px;
   font-weight: 900;
 }
+
+/* Styling of the read more / read less buttons in the comment */
 
 .company-information-content .comment-content-wrap .comment-text .long-text {
   display: none;
@@ -253,11 +259,13 @@ div.vertical-line {
   border-color: #FC7300;
 }
 
-.user-image img{
+/* Styling of the user info in the comment */
+
+.sidebar-comments .user-information-wrap .user-image img{
   width: 100%;
 }
 
-.user-image {
+.sidebar-comments .user-information-wrap .user-image {
   border: 1px solid #4a4a4a;
   background-color: #fff;
   border-radius: 100px;
@@ -265,16 +273,16 @@ div.vertical-line {
   height: 45px;
 }
 
-.user-name a {
+.sidebar-comments .user-information-wrap .user-name a {
   text-decoration: none;
   color: #000;
 }
 
-.user-name a:hover {
+.sidebar-comments .user-information-wrap .user-name a:hover {
   text-decoration: underline;
 }
 
-.user-name h3{
+.sidebar-comments .user-information-wrap .user-name h3{
   font-weight: 400;
 }
 
