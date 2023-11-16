@@ -1,1 +1,24 @@
-Hello
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta information for character set and viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title of the webpage displayed in the browser tab -->
+    <title><%= locals.title ? title : 'EcoEval' %></title>
+</head>
+<body>
+
+   <h1> Hello <%= user.username %> </h1>
+   <img src="<%= user.image_url %>" alt="User Photo" title="User Photo"/>
+
+   <form id="userForm" action="/default">
+    <button onClick="logout()"> Logout</button>
+    <button onClick="home()"> Home</button>
+   </form>
+
+   <script src="scripts/userScript.js"></script>
+
+<%-include('../partials/footer') -%>

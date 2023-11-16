@@ -11,7 +11,7 @@
 <body>
     
     <%-include('../partials/header') -%>
-
+    <%-include('../partials/banner') -%>
     <!-- Banner section -->
     <section class="banner" id="banner">
         <div class="banner-container">
@@ -39,121 +39,22 @@
             <div class="companies-card-container">
                 <!-- Individual company cards with images and links -->
 
-                <!-- Auto generated cards from the db-->
-                <div id="cards"></div>
+                <form id='company-form' action="#" method="POST">
+                    <div>
+                        <% companies.forEach(function(company) { %>
 
-                <!-- Company Card 1: Shell -->
-                <div class="companies-card">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <div class="text-overlay">
-                            <div class="image">
-                                <!-- Company logo and name -->
-                                <img src="/images/Shell-Logo.png" alt="">
-                            </div>
-                            <div class="text">
-                                <h3>Shell Denmark</h3>
-                                <p>See More ></p>
-                            </div>
-                        </div>
-                        <!-- Company image and link -->
-                        <img src="/images/Shell-Card-Image.jpg" alt="">
-                    </a>
-                </div>
+                            <button class="company-button" value='<%= company.cvr %>'><%= company.name %></button>
 
-                <!-- Company Card 2: Amazon -->
-                <div class="companies-card">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <div class="text-overlay">
-                            <div class="image">
-                                <!-- Company logo and name -->
-                                <img src="/images/Amazon-Logo.png" alt="">
-                            </div>
-                            <div class="text">
-                                <h3>Amazon</h3>
-                                <p>See More ></p>
-                            </div>
-                        </div>
-                        <!-- Company image and link -->
-                        <img src="/images/Amazon-Card-Image.jpg" alt="">
-                    </a>
-                </div>
-
-                <!-- Company Card 3: Tesla -->
-                <div class="companies-card">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <div class="text-overlay">
-                            <div class="image">
-                                <!-- Company logo and name -->
-                                <img src="/images/Tesla_logo.png" alt="">
-                            </div>
-                            <div class="text">
-                                <h3>Tesla</h3>
-                                <p>See More ></p>
-                            </div>
-                        </div>
-                        <!-- Company image and link -->
-                        <img src="/images/Tesla-Card-Image.jpg" alt="">
-                    </a>
-                </div>
-
-                <!-- Company Card 4: Lenovo -->
-                <div class="companies-card">
-                    <a href="#" target="_blank" rel="noopener noreferrer">
-                        <div class="text-overlay">
-                            <div class="image">
-                                <!-- Company logo and name -->
-                                <img src="/images/Lenovo_Logo.png" alt="">
-                            </div>
-                            <div class="text">
-                                <h3>Lenovo</h3>
-                                <p>See More ></p>
-                            </div>
-                        </div>
-                        <!-- Company image and link -->
-                        <img src="/images/Lenovo-Card-Image.jpg" alt="">
-                    </a>
-                </div>
+                        <% }); %>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
 
-    <!--  Modal for log in and register -->
-
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2>Login</h2>
-          <form id="login-form">
-            <!-- Login form fields -->
-            <input type="text" name="username" placeholder="Username">
-            <input type="password" name="password" placeholder="Password">
-            <button type="submit" id="loginBtn">Log In </button>
-          </form>
-        </div>
-      </div>
-
-      
-      <div id="register-modal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Register</h2>
-            <form id="register-form" method="POST" action="/register">
-                <!-- Registration form fields -->
-                <input type="text" name="username" placeholder="Username" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <input type="email" name="email" placeholder="Email" required>
-    
-                <button type="submit">Register</button>
-            </form>
-        </div>
-    
-    </div>
-    
-
     <!-- jquery code to handle company card click -->
-   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script defer src="/scripts/main.js"></script>
-    <script defer src="/scripts/indexScript.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="scripts/indexScript.js"></script>
 
     <%-include('../partials/footer')-%>
 </body>

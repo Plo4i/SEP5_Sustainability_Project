@@ -1,60 +1,37 @@
 import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
 import pool from "../config/db.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
 const router = express.Router();
-const options = path.join(__dirname, "../views/pages");
 
-router.post("/login", (req, res) => {
+router.get("/", (req, res) => {
+  res.render('partials/login', {title: 'Login'});
+});
 
+router.post("/", async (req, res) => {
+  const {username, password} = req.body;
 
-  console.log("Log in route accessed succefully")
+   try {
+    // Query the database for user credentials
+    const result = await pool.query('SELECT * FROM users WHERE username = $1 AND password = $2', [username, password]);
 
-  //Storing username and password send by POST in the body
-  let username = req.body["username"];
-  let password = req.body["password"];
-  //console.log("U: " + username + ", P: " + password);
+    if (result.rows.length > 0) {
 
-  const checkCredentialQuery =
-    "SELECT * FROM users WHERE username = '" +
-    username +
-    "'" +
-    "AND password = '" +
-    password +
-    "'";
+      // Set user information in the session
+      req.session.user = result.rows[0];
 
-  pool.query(checkCredentialQuery, (err,result) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).json({ message: "Server error logging in - Go back" });
-    } else if(result.rows.length === 0) {
-      return res.status(400).json({ message: "Wrong username or password" });
-    } else if (result.rows.length > 0) {
       //Setting logged in cookie and session to true
       res.cookie("isLoggedIn", "true", { httpOnly: false });
       //Setting current user cookie to username
       res.cookie("currentUser", username, { httpOnly: false });
-      //res.status(200).render(options + "/index.ejs");
-      res.status(200).json({ status: 'success' });
 
+      res.status(200).redirect("/");
+    } else {
+      return res.status(400).send("Wrong username or password");
     }
-  })
-
-});
-
-router.post("/logout", (req, res) => {
-  console.log("Log out route accessed succefully")
-
-  req.session.isLoggedIn = false;
-  res.cookie("isLoggedIn", "false", { httpOnly: false });
-  res.cookie("currentUser", false, { httpOnly: false });
-
-  res.status(200).json({ status: 'success - you are logged out' });
+  } catch (error) {
+    console.error('Error querying database:', error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 export default router;
