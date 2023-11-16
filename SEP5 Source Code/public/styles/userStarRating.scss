@@ -1,18 +1,20 @@
-/* Color */
-:root {
-    --black: #000000;
-    --white: #ffffff;
-    --lightgray: #D3D3D3;
-    --red: #FF5254;
-    --orange: #FF6C35;
-    --yellow: #FF9900;
-    --green: #3F9E37;
-    --dark-green: #14892c;
-}
+//color
+$black: #000000;
+$white: #ffffff;
+$lightgray: #D3D3D3;
+$red: #FF5254;
+$orange: #FF6C35;
+$yellow: #FF9900;
+$green: #3F9E37;
+$dark-green: #14892c;
 
-/* Mixin */
+//mixin 
 @mixin transition($transition-property, $transition-time, $method) {
-    transition: #{$transition-property} #{$transition-time} #{$method};
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
 }
 
 @mixin transform($transforms) {
@@ -22,11 +24,11 @@
     -webkit-transform: $transforms;
 }
 
-/* Mixin Star Shape */
-@mixin star-shape($width: 1em, $background-color: transparent, $z-index: 0) {
+//mixin star shape
+@mixin star-shape($width: $width, $background-color: transparent, $z-index: 0) {
     @include transform(rotate(35deg));
-    @include transition(all, 0.3s, linear);
-    border-bottom: $width * 0.7 solid $background-color;
+    @include transition(all, .3s, linear);
+    border-bottom: $width * .7 solid $background-color;
     border-left: $width solid transparent;
     border-right: $width solid transparent;
     display: inline-block;
@@ -35,11 +37,11 @@
     margin-top: $width / 2;
     position: relative;
     width: 0;
-    margin-right: 0.4em;
+    margin-right: .4em;
 
     &:before,
     &:after {
-        @include transition(all, 0.3s, linear);
+        @include transition(all, .3s, linear);
         content: '';
         display: block;
         height: 0;
@@ -49,31 +51,31 @@
     }
 
     &:before {
-        @include transform(rotate(-70deg));
-        border-bottom: $width * 0.7 solid $background-color;
-        border-left: $width solid transparent;
-        border-right: $width solid transparent;
-        left: -$width * 0.05;
-        top: -$width * 0.65;
+        @include transform(rotate(-35deg));
+        border-bottom: $width * .8 solid $background-color;
+        border-left: $width * .3 solid transparent;
+        border-right: $width * .3 solid transparent;
+        left: -$width * .65;
+        top: -$width * .45;
     }
 
     &:after {
-        @include transform(rotate(-35deg));
-        border-bottom: $width * 0.7 solid $background-color;
+        @include transform(rotate(-70deg));
+        border-bottom: $width * .7 solid $background-color;
         border-left: $width solid transparent;
         border-right: $width solid transparent;
-        left: -$width * 0.95;
-        top: -$width * 0.45;
+        left: -$width * 1.05;
+        top: $width * .03;
     }
 }
 
-/* Star Rating */
 .star-rating {
     text-align: center;
 }
 
 .rating {
     display: inline-block;
+    position: relative;
 
     input[type="radio"] {
         position: absolute;
@@ -84,27 +86,29 @@
     }
 }
 
-/* Star Shape */
+// star shape
 .star {
-    @include star-shape(1.8em, var(--lightgray));
+    @include star-shape(1.8em, $lightgray);
     float: right;
 }
 
-/* With Different Color */
-:root {
-    --colors: var(--dark-green), var(--green), var(--yellow), var(--orange), var(--red);
-}
+//with different color
+$colors: $dark-green,
+    $green,
+    $yellow,
+    $orange,
+    $red;
 
-@for $i from 1 through 5 {
+@for $i from length($colors) through 1 {
     .star-#{$i} {
 
         &.active,
         &.active~.star {
-            border-bottom-color: nth(var(--colors), $i);
+            border-bottom-color: nth($colors, $i);
 
             &:before,
             &:after {
-                border-bottom-color: nth(var(--colors), $i);
+                border-bottom-color: nth($colors, $i);
             }
         }
     }
@@ -114,22 +118,22 @@
 
         &:hover,
         &:hover~.star {
-            border-bottom-color: nth(var(--colors), $i);
+            border-bottom-color: nth($colors, $i);
 
             &:before,
             &:after {
-                border-bottom-color: nth(var(--colors), $i);
+                border-bottom-color: nth($colors, $i);
             }
         }
     }
 
     .rating:not(:hover) {
         .radio-#{$i}:checked~.star {
-            border-bottom-color: nth(var(--colors), $i);
+            border-bottom-color: nth($colors, $i);
 
             &:before,
             &:after {
-                border-bottom-color: nth(var(--colors), $i);
+                border-bottom-color: nth($colors, $i);
             }
         }
     }

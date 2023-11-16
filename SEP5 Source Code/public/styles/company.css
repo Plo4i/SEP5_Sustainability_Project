@@ -73,7 +73,7 @@
 
 .company-information-content .sidebar-rating-comments .sidebar-rating{
     width: 100%;
-    background-color: #DCD7C9;
+    background-color: #fff;
     margin-bottom: 20px;
 }
 
@@ -82,5 +82,49 @@
     background-color: #DCD7C9;
 }
 
+.comment {
+  padding: 18px;
+}
+
+.user-information-wrap{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #4a4a4a;
+}
+
+.comment-content-wrap{
+  padding: 10px 0;
+}
+
+.comment-heading h3{
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.user-image img{
+  width: 100%;
+}
+
+.user-image {
+  border: 1px solid #4a4a4a;
+  border-radius: 100px;
+  width: 40px;
+  height: 40px;
+}
+
+.user-name h3{
+  font-weight: 400;
+}
+
+
+
 /* Styling of the stars where the user will be able to give his/her rating */
+
+.star-rating{
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
 
