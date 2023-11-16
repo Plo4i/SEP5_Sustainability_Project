@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Meta information for character set and viewport -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Title of the webpage displayed in the browser tab -->
-    <title><%= locals.title ? title : 'EcoEval' %></title>
-</head>
-<body>
+<%-include('../partials/head') -%>
+<%-include('../partials/header') -%>
 
    <h1> Hello <%= user.username %> </h1>
    <img src="<%= user.image_url %>" alt="User Photo" title="User Photo"/>
@@ -22,3 +12,7 @@
    <script src="scripts/userScript.js"></script>
 
 <%-include('../partials/footer') -%>
+
+<script src="scripts/userScript.js"></script>
+</body>
+</html>

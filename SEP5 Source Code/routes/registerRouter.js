@@ -35,7 +35,7 @@ const currentSeconds = currentDate.getSeconds().toString().padStart(2, '0');
 const currentDateFormated = `${currentYear}-${currentMonth}-${currentDay} ${currentHours}:${currentMinutes}:${currentSeconds}`;
 
 router.get('/', (req,res) => {
-    res.render('partials/register', {title: 'Register'})
+    res.render('pages/register', {title: 'Register'})
 });
 
 

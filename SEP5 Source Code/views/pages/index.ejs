@@ -1,17 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/styles/main.css">
-    <link rel="icon" type="image/png" href="/images/EcoEval-Icon.png">
-    <title>EcoEval</title>
-</head>
-    
-<body>
-    
+    <%-include('../partials/head') -%>
     <%-include('../partials/header') -%>
-    <%-include('../partials/banner') -%>
     <!-- Banner section -->
     <section class="banner" id="banner">
         <div class="banner-container">
@@ -52,9 +40,8 @@
         </div>
     </section>
 
-    <!-- jquery code to handle company card click -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="scripts/indexScript.js"></script>
-
     <%-include('../partials/footer')-%>
+
+    <script src="scripts/indexScript.js"></script>
 </body>
+</html>

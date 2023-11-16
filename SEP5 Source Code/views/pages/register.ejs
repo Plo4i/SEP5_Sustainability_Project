@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Meta information for character set and viewport -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Title of the webpage displayed in the browser tab -->
-    <title><%= locals.title ? title : 'EcoEval' %></title>
-</head>
-<body>
+<%-include('../partials/head') -%>
+<%-include('../partials/header') -%>
 
 
         <a href="/">&times;</a>
@@ -41,4 +31,8 @@
             <button type="submit">Register</button>
         </form>
 
+        <%-include('../partials/footer') -%>
 
+        <script src="scripts/registerScript.js"></script>
+    </body>
+    </html>

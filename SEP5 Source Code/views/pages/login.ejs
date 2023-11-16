@@ -1,0 +1,18 @@
+<%-include('../partials/head') -%>
+<%-include('../partials/header') -%>
+
+    <a href="/">&times;</a>
+    <h2>Login</h2>
+    <form id="login-form" method="POST" action="/login">
+      <!-- Login form fields -->
+      <input type="text" name="username" placeholder="Username">
+      <input type="password" name="password" placeholder="Password">
+      <button type="submit">Log In </button>
+    </form>
+
+
+<%-include('../partials/footer') -%>
+
+<script src="scripts/loginScript.js"></script>
+</body>
+</html>

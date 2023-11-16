@@ -4,7 +4,7 @@ import pool from "../config/db.js";
 const router = express.Router();
 
 router.get("/", (req, res) => {
-  res.render('partials/login', {title: 'Login'});
+  res.render('pages/login', {title: 'Login'});
 });
 
 router.post("/", async (req, res) => {

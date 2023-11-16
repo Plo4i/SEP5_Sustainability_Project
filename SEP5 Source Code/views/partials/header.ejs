@@ -1,21 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <!-- Meta information for character set and viewport -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Link to external FontAwesome icon library for icons -->
-    <script src="https://kit.fontawesome.com/4adf7cb2f7.js" crossorigin="anonymous"></script>
-
-    <!-- Link to external stylesheets for header and main content -->
-    <link rel="stylesheet" href="/styles/header.css">
-    <link rel="stylesheet" href="/styles/main.css">
-
-    <!-- Title of the webpage displayed in the browser tab -->
-    <title><%= locals.title ? title : 'EcoEval' %></title>
-</head>
-<body>
-
-    
+<header>
+    <div class="nav-container">
+        <div id="nav-links" class="nav-links">
+            <div class="logo-container logo">
+                <!-- Logo and link to the homepage -->
+                <a href="/">
+                    <h1>EcoEval</h1>
+                </a>
+            </div>
+            <div class="contents-container">
+                    <div class="contents-wrap">
+                        <a href="#companies">Companies</a>
+                        <%- locals.user ? '<a href="/user"> <img width="25px" src="' + user.image_url + '"/>' + user.username + '</a><div class="search-icon"><a href="/"><i class="fa fa-search" aria-hidden="true"></i></a></div>'  :
+                            '<a href="/register" id="register-link">Sign Up</a>' +
+                            '<a href="/login" id="login-link">Log In</a>' +
+                            '<a href="#">For Paid Customers</a>' +
+                            '<div class="search-icon"><a href="/"><i class="fa fa-search" aria-hidden="true"></i></a></div>'
+                        %>
+                    </div>
+            </div>
+        </div>
+        <div id="search-bar">
+            <div class="search-bar-container">
+                <div class="search-input-container">
+                    <button id="search-btn"><i class="fa fa-search" aria-hidden="true"></i></button>
+                    <input type="text" id="search-input" placeholder="Search...">
+                </div>
+                <div class="close-searchbar">
+                    <span id="close-btn">&times;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
