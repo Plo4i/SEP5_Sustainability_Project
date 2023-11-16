@@ -20,7 +20,7 @@ footer {
 
 .wrap {
     text-align: left;
-    color: #DCD7C9;
+    color: var(--white-font-color);
 }
 
 .wrap h1 {
@@ -43,7 +43,7 @@ footer {
     display: block;
     margin-bottom: 10px;
     text-decoration: none;
-    color: #DCD7C9;
+    color: var(--white-font-color);
 }
 
 .cv-download-button-container {
@@ -57,7 +57,7 @@ footer {
 }
 
 .about-me-icons i {
-    color: #DCD7C9;
+    color: var(--white-font-color);
     font-size: 30px;
     margin: 10px 0;
     transition: .3s ease-out;

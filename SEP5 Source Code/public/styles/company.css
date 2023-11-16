@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* This is the heading part of the company information page */
+
+.company-information-heading{
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.company-information-heading-container {
+    width: 100%;
+    background-color: #DCD7C9;
+}
+
+.company-information{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 150px 100px 50px;
+}
+
+.logo-name-rating-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-name-rating-container .logo img{
+    width: 100%;
+}
+
+.logo-name-rating-container .logo{
+    width: 193px;
+}
+
+.logo-name-rating-container .name-rating-container .company-name h2{
+    font-size: 48px;
+}
+
+.logo-name-rating-container .name-rating-container .rating p{
+    font-size: 20px;
+    color: #4a4a4a;
+}
+
+.company-information-heading-container .description-container{
+    width: 54%;
+}
+
+.company-information-heading-container .description-container h3{
+    font-size: 28px;
+}
+
+/* This is the actual information part of the company information page */
+
+.company-information-content{
+    padding: 0 200px;
+    margin-bottom: 50px;
+}
+
+.company-information-content-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.company-information-content .esg-certificate-container{
+    background-color: #DCD7C9;
+    width: 748px;
+}
+
+.company-information-content .sidebar-rating-comments{
+    width: 337px;
+}
+
+.company-information-content .sidebar-rating-comments .sidebar-rating{
+    width: 100%;
+    background-color: #DCD7C9;
+    margin-bottom: 20px;
+}
+
+.company-information-content .sidebar-rating-comments .sidebar-comments{
+    width: 100%;
+    background-color: #DCD7C9;
+}
+
+/* Styling of the stars where the user will be able to give his/her rating */
+

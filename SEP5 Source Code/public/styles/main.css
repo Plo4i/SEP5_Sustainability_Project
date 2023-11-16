@@ -20,7 +20,6 @@
 /* Styling for the entire body */
 body {
     background-color: var(--body-background-color);
-    height: 250vh;
     /* This sets the height of the body */
 }
 

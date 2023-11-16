@@ -11,7 +11,7 @@ router.get('/', (req,res) => {
       if (error) {
         throw error;
       }
-  res.render( 'pages/company', {details: results.rows, title: 'EcoEval - ' + results.rows[0].name});
+    res.render( 'pages/company', {details: results.rows, title: 'EcoEval - ' + results.rows[0].name});
   });
 });
 

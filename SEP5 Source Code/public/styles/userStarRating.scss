@@ -1,0 +1,136 @@
+/* Color */
+:root {
+    --black: #000000;
+    --white: #ffffff;
+    --lightgray: #D3D3D3;
+    --red: #FF5254;
+    --orange: #FF6C35;
+    --yellow: #FF9900;
+    --green: #3F9E37;
+    --dark-green: #14892c;
+}
+
+/* Mixin */
+@mixin transition($transition-property, $transition-time, $method) {
+    transition: #{$transition-property} #{$transition-time} #{$method};
+}
+
+@mixin transform($transforms) {
+    transform: $transforms;
+    -moz-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+}
+
+/* Mixin Star Shape */
+@mixin star-shape($width: 1em, $background-color: transparent, $z-index: 0) {
+    @include transform(rotate(35deg));
+    @include transition(all, 0.3s, linear);
+    border-bottom: $width * 0.7 solid $background-color;
+    border-left: $width solid transparent;
+    border-right: $width solid transparent;
+    display: inline-block;
+    height: 0;
+    margin-bottom: $width / 2;
+    margin-top: $width / 2;
+    position: relative;
+    width: 0;
+    margin-right: 0.4em;
+
+    &:before,
+    &:after {
+        @include transition(all, 0.3s, linear);
+        content: '';
+        display: block;
+        height: 0;
+        position: absolute;
+        width: 0;
+        z-index: $z-index - 1;
+    }
+
+    &:before {
+        @include transform(rotate(-70deg));
+        border-bottom: $width * 0.7 solid $background-color;
+        border-left: $width solid transparent;
+        border-right: $width solid transparent;
+        left: -$width * 0.05;
+        top: -$width * 0.65;
+    }
+
+    &:after {
+        @include transform(rotate(-35deg));
+        border-bottom: $width * 0.7 solid $background-color;
+        border-left: $width solid transparent;
+        border-right: $width solid transparent;
+        left: -$width * 0.95;
+        top: -$width * 0.45;
+    }
+}
+
+/* Star Rating */
+.star-rating {
+    text-align: center;
+}
+
+.rating {
+    display: inline-block;
+
+    input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        height: 1px;
+        width: 1px;
+        bottom: 0;
+    }
+}
+
+/* Star Shape */
+.star {
+    @include star-shape(1.8em, var(--lightgray));
+    float: right;
+}
+
+/* With Different Color */
+:root {
+    --colors: var(--dark-green), var(--green), var(--yellow), var(--orange), var(--red);
+}
+
+@for $i from 1 through 5 {
+    .star-#{$i} {
+
+        &.active,
+        &.active~.star {
+            border-bottom-color: nth(var(--colors), $i);
+
+            &:before,
+            &:after {
+                border-bottom-color: nth(var(--colors), $i);
+            }
+        }
+    }
+
+    input[type="radio"]+.star-#{$i} {
+        cursor: pointer;
+
+        &:hover,
+        &:hover~.star {
+            border-bottom-color: nth(var(--colors), $i);
+
+            &:before,
+            &:after {
+                border-bottom-color: nth(var(--colors), $i);
+            }
+        }
+    }
+
+    .rating:not(:hover) {
+        .radio-#{$i}:checked~.star {
+            border-bottom-color: nth(var(--colors), $i);
+
+            &:before,
+            &:after {
+                border-bottom-color: nth(var(--colors), $i);
+            }
+        }
+    }
+}
