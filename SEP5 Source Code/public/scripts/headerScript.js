@@ -9,7 +9,7 @@ window.addEventListener("scroll", function () {
 
 // Serchbar functionality - event listener
 // Open searchbar
-document.getElementsByClassName("search-icon").addEventListener("click", function () {
+document.querySelector(".fa-search").addEventListener("click", function () {
     var navLinks = document.getElementById("nav-links");
     navLinks.classList.remove("nav-links-searchbar-off");
     navLinks.classList.add("nav-links-searchbar-on");

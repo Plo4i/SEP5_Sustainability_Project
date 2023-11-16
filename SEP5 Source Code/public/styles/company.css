@@ -282,6 +282,31 @@ div.vertical-line {
 }
 
 .rated1{
-  
   color: #3F9E37;
+}
+
+@media screen and (max-width: 1280px){
+  .company-information{
+    padding: 169px 40px 50px;
+  }
+
+  .company-information-heading-container .description-container {
+    width: 48%;
+  }
+
+  .logo-name-rating-container .logo {
+    width: 168px;
+  }
+
+  .logo-name-rating-container .name-rating-container .company-name h2 {
+    font-size: 42px;
+  }
+
+  .company-information-content {
+    padding: 0 105px;
+  }
+
+  .company-information-content .esg-certificate-container {
+    width: 668px;
+  }
 }
