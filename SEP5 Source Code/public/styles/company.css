@@ -1,5 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+/* Make an arrow for styling */
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left:5px;
+}
+
 /* This is the heading part of the company information page */
 
 .company-information-heading{
@@ -100,6 +110,32 @@ div.vertical-line {
   margin-bottom: 20px;
 }
 
+.company-information-content .esg-certificate-container .more-about-esg-certificate{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 10px;
+}
+
+.company-information-content .esg-certificate-container .more-about-esg-certificate a {
+  color: #000;
+}
+
+.company-information-content .esg-certificate-container .more-about-esg-certificate .right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.company-information-content .esg-certificate-container .more-about-esg-certificate a:hover {
+  color: #FC7300;
+}
+
+.company-information-content .esg-certificate-container .more-about-esg-certificate a:hover .right {
+  border-color: #FC7300;
+  transform: translateX(10px) rotate(-45deg);
+  -webkit-transform: translateX(10px) rotate(-45deg);
+  transition: transform 0.5s;
+}
+
 .company-information-content .sidebar-rating-comments{
     width: 337px;
 }
@@ -189,14 +225,6 @@ div.vertical-line {
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
-}
-
-.company-information-content .comment .arrow {
-  border: solid black;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-  margin-left:5px;
 }
 
 .company-information-content .comment .up {
