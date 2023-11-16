@@ -97,7 +97,7 @@ body {
 /* Styling for the title within the 'Companies' section */
 .companies-title-container {
     margin: 50px 0;
-    color: var(--white-font-color);
+    color: #222831;
 }
 
 .companies-title-container h2 {

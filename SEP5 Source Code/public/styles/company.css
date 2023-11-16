@@ -5,7 +5,7 @@
 .company-information-heading{
     width: 100%;
     margin-bottom: 50px;
-    border-bottom: 1px solid #b2b2b2;
+    border-bottom: 1px solid #a0a0a0;
     /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
 }
 
@@ -18,7 +18,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 150px 100px 50px;
+    padding: 169px 100px 50px;
 }
 
 .logo-name-rating-container{
@@ -81,7 +81,7 @@ div.vertical-line {
     background-color: #DCD7C9;
     width: 748px;
     border-radius: 10px;
-    border: 1px solid #b2b2b2;
+    border: 1px solid #a0a0a0;
     /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
 }
 
@@ -107,7 +107,7 @@ div.vertical-line {
     background-color: #DCD7C9;
     margin-bottom: 20px;
     border-radius: 10px;
-    border: 1px solid #b2b2b2;
+    border: 1px solid #a0a0a0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -124,15 +124,15 @@ div.vertical-line {
     width: 100%;
 }
 
-.comment {
+.company-information-content .sidebar-rating-comments .sidebar-comments .comment {
   padding: 18px;
   background-color: #DCD7C9;
   border-radius: 10px;
-  border: 1px solid #b2b2b2;
+  border: 1px solid #a0a0a0;
   /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
 }
 
-.user-information-wrap{
+.company-information-content .sidebar-rating-comments .sidebar-comments .user-information-wrap{
   display: flex;
   align-items: center;
   gap: 10px;
@@ -140,15 +140,15 @@ div.vertical-line {
   border-bottom: 1px solid #4a4a4a;
 }
 
-.comment-content-wrap{
+.company-information-content .sidebar-rating-comments .sidebar-comments .comment-content-wrap{
   padding: 10px 0;
 }
 
-.comment-heading{
+.company-information-content .sidebar-rating-comments .sidebar-comments .comment-heading{
   margin-bottom: 15px;
 }
 
-.comment-heading h3{
+.company-information-content .sidebar-rating-comments .sidebar-comments .comment-heading h3{
   font-size: 22px;
   font-weight: 900;
 }
@@ -159,9 +159,19 @@ div.vertical-line {
 
 .user-image {
   border: 1px solid #4a4a4a;
+  background-color: #fff;
   border-radius: 100px;
   width: 40px;
   height: 40px;
+}
+
+.user-name a {
+  text-decoration: none;
+  color: #000;
+}
+
+.user-name a:hover {
+  text-decoration: underline;
 }
 
 .user-name h3{
@@ -178,3 +188,22 @@ div.vertical-line {
   padding: 20px 0;
 }
 
+/* example rating stars - !!!to be deleted!!! */
+
+.iconify{
+  font-size: 28px;
+  color: #4a4a4a;
+}
+
+.rated{
+  color: #FF6C35;
+}
+
+.rating .iconify{
+  font-size: 35px;
+}
+
+.rated1{
+  
+  color: #3F9E37;
+}
