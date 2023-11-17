@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 110vh;
+    height: 127vh;
     width: 100%;
 }
 
@@ -16,7 +16,7 @@
     background-color: #121519;
     color: var(--white-font-color);
     width: 425px;
-    height: 517px;
+    height: 570px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -31,9 +31,15 @@
     height: 70%;
 }
 
-.register-form h4{
+.register-form .subscription-wrap h4{
     text-align: center;
     font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.register-form-wrap .subscription-wrap{
+    display: flex;
+    flex-direction: column;
 }
 
 /* Styling of heading for register in form */
@@ -102,6 +108,7 @@
     border: 1px solid transparent;
     font-size: 23px;
     cursor: pointer;
+    transition: .5s ease;
 }
 
 #register-button:hover {
@@ -140,6 +147,6 @@
 
 @media screen and (max-width: 1280px){
     .register-form-container {
-        height: 145vh;
+        height: 155vh;
     }
 }
