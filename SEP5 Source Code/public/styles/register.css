@@ -7,7 +7,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 110vh;
     width: 100%;
 }
 
@@ -16,7 +16,7 @@
     background-color: #121519;
     color: var(--white-font-color);
     width: 425px;
-    height: 410px;
+    height: 517px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 50%;
+    height: 70%;
 }
 
 /* Styling of heading for register in form */
@@ -55,7 +55,7 @@
 
 #username-input:focus,
 #password-input:focus,
-#email-input {
+#email-input:focus {
     border-bottom: var(--orange-button-color) 3px solid;
 }
 
@@ -84,23 +84,23 @@
     font-size: 18px;
 }
 
-.register-form-wrap .has-no-account {
+.register-form-wrap .has-account {
     display: flex;
     justify-content: space-between;
     padding-top: 12px;
     border-top: 1px solid;
 }
 
-.register-form-wrap .has-no-account p,
-.register-form-wrap .has-no-account a {
+.register-form-wrap .has-account p,
+.register-form-wrap .has-account a {
     font-size: 18px;
 }
 
-.register-form-wrap .has-no-account a {
+.register-form-wrap .has-account a {
     color: #3876BF;
 }
 
 .register-form-wrap .forgot-password a:hover,
-.register-form-wrap .has-no-account a:hover {
+.register-form-wrap .has-account a:hover {
     text-decoration: none;
 }
