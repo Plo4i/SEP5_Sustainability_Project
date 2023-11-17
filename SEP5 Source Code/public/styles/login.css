@@ -41,8 +41,25 @@
 
 /* styling the inputs */
 
-#username-input,
+.password-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--white-font-color) 3px solid;
+    transition: .5s ease;
+}
+
 #password-input {
+    padding: 10px;
+    border: none;
+    color: var(--white-font-color);
+    background-color: transparent;
+    outline: none;
+    font-size: 23px;
+    transition: .5s ease;
+}
+
+#username-input {
     padding: 10px;
     border: none;
     color: var(--white-font-color);
@@ -53,8 +70,7 @@
     transition: .5s ease;
 }
 
-#username-input:focus,
-#password-input:focus {
+#username-input:focus{
     border-bottom: var(--orange-button-color) 3px solid;
 }
 
@@ -102,4 +118,10 @@
 .login-form-wrap .forgot-password a:hover,
 .login-form-wrap .has-no-account a:hover {
     text-decoration: none;
+}
+
+@media screen and (max-width: 1280px) {
+    .login-form-container {
+        height: 126vh;
+    }
 }

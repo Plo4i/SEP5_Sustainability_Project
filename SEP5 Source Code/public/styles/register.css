@@ -40,8 +40,24 @@
 
 /* styling the inputs */
 
+.password-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--white-font-color) 3px solid;
+    transition: .5s ease;
+}
+
+#password-input{
+    padding: 10px;
+    border: none;
+    color: var(--white-font-color);
+    background-color: transparent;
+    outline: none;
+    font-size: 23px;
+}
+
 #username-input,
-#password-input,
 #email-input {
     padding: 10px;
     border: none;
@@ -54,7 +70,6 @@
 }
 
 #username-input:focus,
-#password-input:focus,
 #email-input:focus {
     border-bottom: var(--orange-button-color) 3px solid;
 }
@@ -68,7 +83,6 @@
     border: 1px solid transparent;
     font-size: 23px;
     cursor: pointer;
-    transition: .5s ease;
 }
 
 #register-button:hover {
@@ -103,4 +117,10 @@
 .register-form-wrap .forgot-password a:hover,
 .register-form-wrap .has-account a:hover {
     text-decoration: none;
+}
+
+@media screen and (max-width: 1280px){
+    .register-form-container {
+        height: 145vh;
+    }
 }

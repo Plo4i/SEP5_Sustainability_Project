@@ -51,10 +51,6 @@
   border-color: #FC7300;
   z-index: 1;
 }
-.subscription input:focus + label {
-  outline: dotted 1px #CCC;
-  outline-offset: 0.45rem;
-}
 @media (max-width: 800px) {
   .subscription input + label {
     padding: 0.75rem 0.25rem;

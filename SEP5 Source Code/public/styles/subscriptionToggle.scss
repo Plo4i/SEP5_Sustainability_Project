@@ -9,11 +9,6 @@ $activeShadow: 0 0 10px rgba($teal1, .5);
     left: -9999px;
 }
 
-@mixin focusOutline {
-    outline: dotted 1px #CCC;
-    outline-offset: .45rem;
-}
-
 @mixin breakpoint($point) {
     @if $point ==1100 {
         @media (max-width: 1100px) {
@@ -88,10 +83,6 @@ $activeShadow: 0 0 10px rgba($teal1, .5);
         box-shadow: $activeShadow;
         border-color: $teal2;
         z-index: 1;
-    }
-
-    input:focus+label {
-        @include focusOutline;
     }
 
     @include breakpoint(800) {

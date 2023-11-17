@@ -11,7 +11,13 @@
         <form id="login-form" class="login-form" method="POST" action="/login">
           <!-- Login form fields -->
           <input type="text" name="username" placeholder="Username" id="username-input">
-          <input type="password" name="password" placeholder="Password" id="password-input">
+          
+          <!-- Password -->
+          <div class="password-container">
+            <input type="password" name="password" placeholder="Password" id="password-input" required>
+            <span class="iconify" data-icon="mdi:eye"></span>
+          </div>
+
           <button type="submit" id="login-button">Log In</button>
         </form>
         <div class="forgot-password">
