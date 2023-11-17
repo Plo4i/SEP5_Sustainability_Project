@@ -1,15 +1,31 @@
 <%-include('../partials/head') -%>
 <%-include('../partials/header') -%>
 
-    <a href="/">&times;</a>
-    <h2>Login</h2>
-    <form id="login-form" method="POST" action="/login">
-      <!-- Login form fields -->
-      <input type="text" name="username" placeholder="Username">
-      <input type="password" name="password" placeholder="Password">
-      <button type="submit">Log In </button>
-    </form>
+<section class="login-section" id="login-section">
 
+  <div class="login-form-container">
+
+    <div class="login-form-wrap">
+      
+        <h2>Login</h2>
+        <form id="login-form" class="login-form" method="POST" action="/login">
+          <!-- Login form fields -->
+          <input type="text" name="username" placeholder="Username" id="username-input">
+          <input type="password" name="password" placeholder="Password" id="password-input">
+          <button type="submit" id="login-button">Log In</button>
+        </form>
+        <div class="has-no-account">
+        <p>You don't have an account?</p><a href="/">Sign Up Here</a>
+        </div>
+        <div>
+          <a href="#">Forgot Password</a>
+        </div>
+
+      </div>
+
+    </div>
+
+</section>
 
 <%-include('../partials/footer') -%>
 
