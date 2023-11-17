@@ -1,0 +1,106 @@
+/* General styling for the DIVs such as color, position, etc. */
+.register-section {
+    background-color: #222831;
+}
+
+.register-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.register-form-wrap {
+    padding: 20px;
+    background-color: #121519;
+    color: var(--white-font-color);
+    width: 425px;
+    height: 410px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50%;
+}
+
+/* Styling of heading for register in form */
+
+.register-form-wrap h2 {
+    text-align: center;
+    font-size: 40px;
+}
+
+/* styling the inputs */
+
+#username-input,
+#password-input,
+#email-input {
+    padding: 10px;
+    border: none;
+    color: var(--white-font-color);
+    border-bottom: var(--white-font-color) 3px solid;
+    background-color: transparent;
+    outline: none;
+    font-size: 23px;
+    transition: .5s ease;
+}
+
+#username-input:focus,
+#password-input:focus,
+#email-input {
+    border-bottom: var(--orange-button-color) 3px solid;
+}
+
+#register-button {
+    background-color: var(--orange-button-color);
+    color: var(--white-font-color);
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid transparent;
+    font-size: 23px;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+#register-button:hover {
+    background-color: var(--dark-orange-hover-color);
+}
+
+.register-form-wrap .forgot-password {
+    text-align: center;
+}
+
+.register-form-wrap .forgot-password a {
+    color: #3876BF;
+    font-size: 18px;
+}
+
+.register-form-wrap .has-no-account {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid;
+}
+
+.register-form-wrap .has-no-account p,
+.register-form-wrap .has-no-account a {
+    font-size: 18px;
+}
+
+.register-form-wrap .has-no-account a {
+    color: #3876BF;
+}
+
+.register-form-wrap .forgot-password a:hover,
+.register-form-wrap .has-no-account a:hover {
+    text-decoration: none;
+}

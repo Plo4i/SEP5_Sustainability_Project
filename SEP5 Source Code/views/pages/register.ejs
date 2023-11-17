@@ -1,38 +1,54 @@
 <%-include('../partials/head') -%>
 <%-include('../partials/header') -%>
 
+<section class="register-section" id="register-section">
 
-        <a href="/">&times;</a>
-        <h2>Register</h2>
-        <form id="register-form" method="POST" action="/register" enctype="multipart/form-data">
-            <!-- Registration form fields -->
-            <!-- Username -->
-            <input type="text" name="username" placeholder="Username" required>
+    <div class="register-form-container">
 
-            <!-- Password -->
-            <input type="password" name="password" placeholder="Password" required>
+        <div class="register-form-wrap">
 
-            <!-- Email -->
-            <input type="email" name="email" placeholder="Email" required>
+            <h2>Register</h2>
+            <form id="register-form" class="register-form" method="POST" action="/register" enctype="multipart/form-data">
+                <!-- Registration form fields -->
+                <!-- Username -->
+                <input type="text" name="username" placeholder="Username" id="username-input" required>
 
-            <!-- Subscription -->
-            <input type="radio" id='paid' value="Paid" name='subscription' required>
-            <label for="paid">Paid</label>
-            <input type="radio" id="unpaid" value="Unpaid" name='subscription' required>
-            <label for="unpaid">Unpaid</label>
-            <br/>
+                <!-- Password -->
+                <input type="password" name="password" placeholder="Password" id="password-input" required>
 
-            <!-- Pic upload -->
-            <label for="avatar">Choose a profile picture:</label>
-            <br/>
-            <input type="file" id="avatar" name="picture" accept="image/*" required/>
+                <!-- Email -->
+                <input type="email" name="email" placeholder="Email" id="email-input" required>
 
-            <!-- Submit -->
-            <button type="submit">Register</button>
-        </form>
+                <!-- Subscription -->
+                <div class="subscription">
+                    <input type="radio" id='paid' value="Paid" name='subscription' required>
+                    <label for="paid">Paid</label>
+                    <input type="radio" id="unpaid" value="Unpaid" name='subscription' required>
+                    <label for="unpaid">Unpaid</label>
+                </div>
 
-        <%-include('../partials/footer') -%>
+                <!-- Pic upload -->
+                <!-- <label for="avatar">Choose a profile picture:</label>
+                <br/>
+                <input type="file" id="avatar" name="picture" accept="image/*" required/> -->
 
-        <script src="scripts/registerScript.js"></script>
-    </body>
-    </html>
+                <!-- Submit -->
+                <button type="submit" id="register-button">Register</button>
+            </form>
+
+            <div class="has-no-account">
+                <p>You don't have an account?</p>
+                <a href="/register">Sign Up Here</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <%-include('../partials/footer') -%>
+
+    <script src="scripts/registerScript.js"></script>
+</body>
+</html>
