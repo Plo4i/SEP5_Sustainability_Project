@@ -14,7 +14,7 @@
 }
 .subscription input + label {
   margin: 0;
-  width: 117px;
+  width: 130px;
   padding: 0.75rem 2rem;
   box-sizing: border-box;
   position: relative;
@@ -42,7 +42,7 @@
   border-left: none;
 }
 .subscription input:hover + label {
-  border-color: #213140;
+  box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, 0.45);
 }
 .subscription input:checked + label {
   background-color: #FC7300;

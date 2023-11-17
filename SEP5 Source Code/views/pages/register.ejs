@@ -16,17 +16,20 @@
                 <!-- Password -->
                 <div class="password-container">
                     <input type="password" name="password" placeholder="Password" id="password-input" required>
-                    <span class="iconify" data-icon="mdi:eye"></span>
+                    <button class="show-password-button" type="button" onclick="togglePasswordVisibility()">
+                        <span class="iconify" data-icon="mdi:eye" id="toggle-password"></span>
+                    </button>
                 </div>
                 <!-- Email -->
                 <input type="email" name="email" placeholder="Email" id="email-input" required>
 
                 <!-- Subscription -->
+                <h4>Choose a Subscription:</h4>
                 <div class="subscription">
                     <input type="radio" id='paid' value="Paid" name='subscription' required>
-                    <label for="paid">Paid</label>
+                    <label for="paid">Premium</label>
                     <input type="radio" id="unpaid" value="Unpaid" name='subscription' required>
-                    <label for="unpaid">Unpaid</label>
+                    <label for="unpaid">Free</label>
                 </div>
 
                 <!-- Pic upload -->

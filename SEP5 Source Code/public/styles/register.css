@@ -31,6 +31,11 @@
     height: 70%;
 }
 
+.register-form h4{
+    text-align: center;
+    font-size: 22px;
+}
+
 /* Styling of heading for register in form */
 
 .register-form-wrap h2 {
@@ -55,6 +60,20 @@
     background-color: transparent;
     outline: none;
     font-size: 23px;
+}
+
+.show-password-button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+
+.show-password-button:hover #toggle-password{
+    transition: .3s ease;
+    color: var(--white-font-color);
 }
 
 #username-input,

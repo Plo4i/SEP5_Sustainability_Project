@@ -39,7 +39,7 @@ $activeShadow: 0 0 10px rgba($teal1, .5);
 
     input+label {
         margin: 0;
-        width: 117px;
+        width: 130px;
         padding: .75rem 2rem;
         box-sizing: border-box;
         position: relative;
@@ -74,7 +74,8 @@ $activeShadow: 0 0 10px rgba($teal1, .5);
     }
 
     input:hover+label {
-        border-color: $darkNavy;
+        // border-color: $darkNavy;
+        box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, 0.45);
     }
 
     input:checked+label {
