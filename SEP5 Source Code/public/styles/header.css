@@ -77,7 +77,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 602px;
+    /* width: 602px; */
+    gap: 23px;
     height: 100%;
 }
 
