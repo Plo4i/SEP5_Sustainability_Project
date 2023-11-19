@@ -14,7 +14,7 @@ passwordInput.addEventListener('blur', function () {
 });
 
 // This function toggles the visibility of the password in both the register and login form
-function togglePasswordVisibility() {   
+function togglePasswordVisibility() {
 
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
