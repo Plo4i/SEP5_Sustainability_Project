@@ -1,7 +1,7 @@
 
 /* General styling for the DIVs such as color, position, etc. */
 .login-section{
-    background-color: #222831;
+    background-color: var(--blue-color);
 }
 
 .login-form-container{
@@ -14,7 +14,7 @@
 
 .login-form-wrap{
     padding: 20px;
-    background-color: #121519;
+    background-color: var(--teal-color);
     color: var(--white-font-color);
     width: 425px;
     height: 410px;
@@ -75,7 +75,7 @@
 }
 
 #login-button {
-    background-color: var(--orange-button-color);
+    background-color: var(--aquamarine-color);
     color: var(--white-font-color);
     font-weight: 700;
     padding: 10px 20px;
@@ -87,7 +87,7 @@
 }
 
 #login-button:hover {
-    background-color: var(--dark-orange-hover-color);
+    background-color: var(--dark-hover-color);
 }
 
 .login-form-wrap .forgot-password{
@@ -95,7 +95,7 @@
 }
 
 .login-form-wrap .forgot-password a{
-    color: #3876BF;
+    color: var(--white-font-color);
     font-size: 18px;
 }
 
@@ -112,7 +112,7 @@
 }
 
 .login-form-wrap .has-no-account a {
-    color: #3876BF;
+    color: var(--white-font-color);
 }
 
 .login-form-wrap .forgot-password a:hover,

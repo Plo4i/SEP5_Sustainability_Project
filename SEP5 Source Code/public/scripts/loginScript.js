@@ -9,7 +9,7 @@ document.title = 'Login';
 // This script is toggling the bottom border of the "password-container" div to become orange
 // when the user inputs a password in both the register and login form
 passwordInput.addEventListener('focus', function () {
-    passwordContainer.style.borderBottom = '3px solid var(--orange-button-color)';
+    passwordContainer.style.borderBottom = '3px solid var(--aquamarine-color)';
 });
 
 passwordInput.addEventListener('blur', function () {
