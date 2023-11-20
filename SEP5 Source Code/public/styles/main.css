@@ -19,7 +19,7 @@
 
 /* Styling for the entire body */
 body {
-    background-color: var(--body-background-color);
+    background-color: var(--blue-color);
     /* This sets the height of the body */
 }
 
@@ -37,7 +37,7 @@ body {
 .banner-container {
     height: 100%;
     width: 100%;
-    background-color: #1f8a6f2a;
+    background-color: #52ab9833;
 }
 
 /* Styling for the content within the banner */
@@ -75,7 +75,7 @@ body {
     align-items: center;
     justify-content: center;
     border-radius: 30px;
-    background: linear-gradient(to right, var(--orange-accent-color) 50%, transparent 50%);
+    background: linear-gradient(to right, var(--aquamarine-color) 50%, transparent 50%);
     background-size: 200% 100%;
     background-position: right bottom;
     transition: all .5s ease-out;

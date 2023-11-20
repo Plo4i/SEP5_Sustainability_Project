@@ -3,7 +3,7 @@
 /* FOOTER */
 
 footer {
-    background: #121519;
+    background: var(--black-color);
 }
 
 .footer-container {
