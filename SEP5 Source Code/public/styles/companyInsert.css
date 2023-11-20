@@ -1,0 +1,75 @@
+div.insert-company {
+    background-image: url('../images/insertCompany.jpg'); /* Light greenish background for the space around the form */
+    margin-top: -120px;
+    width: 100%;
+    padding-top: 230px;
+    background-size: cover;
+}
+
+/* Apply styles to the entire form with the class "add-company" */
+form.add-company {
+    background-color: #acc8dd; /* Light greenish background for the form */
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #7a96aa; /* Darker greenish border */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the heading */
+form.add-company h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #FFFFFF; /* White letters for contrast */
+}
+
+/* Style labels for input fields */
+form.add-company label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+/* Style input fields */
+form.add-company input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #7a96aa; /* Darker greenish border */
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style the submit button */
+form.add-company button {
+    background-color: #4CAF50; /* Greenish button color */
+    color: #FFFFFF; /* White letters for contrast */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Style the submit button on hover */
+form.add-company button:hover {
+    background-color: #45a049; /* Darker greenish button color on hover */
+}
+
+/* Style the textarea for the description */
+form.add-company textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    border: 1px solid #7a96aa; /* Darker greenish border */
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: vertical; /* Allow vertical resizing */
+}
+
+/* For Webkit browsers like Chrome and Safari */
+form.add-company input[type="number"]::-webkit-inner-spin-button,
+form.add-company input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

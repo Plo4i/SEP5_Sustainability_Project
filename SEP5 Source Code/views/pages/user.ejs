@@ -5,10 +5,11 @@
       <!--User data loaded inside. Check js file fo modifying.-->
    </div>
 
-   <form id="userForm" action="/default">
-    <button onClick="logout()"> Logout</button>
-    <button onClick="home()"> Home</button>
-   </form>
+<form id="userForm" action="/default">
+    <button onclick="pageChange('logout')">Logout</button>
+    <button onclick="pageChange('home')">Home</button>
+    <button onclick="pageChange('insertCompany')">Insert Company</button>
+</form>
 
 
 <%-include('../partials/footer') -%>

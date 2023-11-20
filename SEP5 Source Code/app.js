@@ -13,7 +13,7 @@ import loginRouter from "./routes/loginRouter.js";
 import userRouter from "./routes/userRouter.js";
 import registerRouter from "./routes/registerRouter.js";
 import companyRouter from "./routes/companyRouter.js";
-import uploadRouter from './routes/uploadRouter.js';
+import insertCompany from './routes/companyInsertRouter.js'
 
 
 // Create an instance of the Express application
@@ -48,7 +48,7 @@ app.use("/login", loginRouter);
 app.use("/register", registerRouter);
 app.use('/user', userRouter)
 app.use('/company',companyRouter);
-app.use('/upload', uploadRouter);
+app.use('/insertCompany', insertCompany);
 
 
 // Start the server and listen for incoming requests

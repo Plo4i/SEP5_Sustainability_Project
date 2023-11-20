@@ -1,41 +1,12 @@
 import express from "express";
-import path from "path";
 import pool from "../config/db.js";
-import multer from "multer";
+import upload from "../public/scripts/mutlerComponent.js";
+import currentDate from '../public/scripts/getTimeStamp.js';
 
 const router = express.Router();
 
-// Defining storage for Multer
-const storage = multer.diskStorage({
-  destination: 'public/images',
-  filename: (req, file, callback) => {
-    const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
-    const originalName = file.originalname.toLowerCase().replace(/\s/g, '-');
-    const fileExtension = path.extname(originalName);
-    const fileNameWithoutExtension = path.parse(originalName).name;
-    const finalFileName = fileNameWithoutExtension + '-' + uniqueSuffix + fileExtension;
-    callback(null, finalFileName);
-    callback(null, finalFileName);
-  }
-});
-
-const upload = multer({ storage: storage });
-
-const currentDate = new Date();
-
-// Get the current date and time components
-const currentYear = currentDate.getFullYear();
-const currentMonth = (currentDate.getMonth() + 1).toString().padStart(2, '0');
-const currentDay = currentDate.getDate().toString().padStart(2, '0');
-const currentHours = currentDate.getHours().toString().padStart(2, '0');
-const currentMinutes = currentDate.getMinutes().toString().padStart(2, '0');
-const currentSeconds = currentDate.getSeconds().toString().padStart(2, '0');
-
-// Format the date and time as a string (YYYY-MM-DD HH:mm:ss)
-const currentDateFormated = `${currentYear}-${currentMonth}-${currentDay} ${currentHours}:${currentMinutes}:${currentSeconds}`;
-
 router.get('/', (req,res) => {
-    res.render('pages/register', {title: 'Register'})
+    res.render('pages/register')
 });
 
 
@@ -51,7 +22,7 @@ router.post("/", upload.single('picture'), async (req, res) => {
   const { username, password, email, subscription } = req.body;
 
   // Preparing user information
-  const userInfo = [filePath, username, password, email, subscription, currentDateFormated];
+  const userInfo = [filePath, username, password, email, subscription, currentDate];
 
   // Setting queries
   const checkUsernameQuery = "SELECT * FROM users WHERE username = $1";
@@ -68,7 +39,7 @@ router.post("/", upload.single('picture'), async (req, res) => {
       ", S: " +
       subscription +
       ", R: " +
-      currentDateFormated
+      currentDate
   );
 
   pool.query(checkUsernameQuery, [username], (err, result) => {

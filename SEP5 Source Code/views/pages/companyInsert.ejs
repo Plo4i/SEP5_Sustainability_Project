@@ -1,0 +1,33 @@
+<%- include('../partials/head') -%>
+<%- include('../partials/header') -%>
+<div class="insert-company">
+    <form id="companyForm" class="add-company" enctype="multipart/form-data">
+        <h1>Company Insert Page</h1>
+
+        <label for="name">Company Name</label>
+        <input type="text" id="name" name="name" placeholder="Enter company name" required/>
+
+        <label for="logo">Company Logo</label>
+        <input type="file" id="logo" name="logo" accept="image/*" required/>
+
+        <label for="cvr">Company CVR</label>
+        <input type="number" id="cvr" name="cvr" placeholder="Enter company CVR" required min="10000000" max="99999999"/>
+
+        <label for="email">Company Email</label>
+        <input type="email" id="email" name="email" placeholder="Enter company email" required/>
+
+        <label for="website">Company Website</label>
+        <input type="text" id="website" name="website" placeholder="Enter company website" required/>
+
+        <label for="industry">Company Industry</label>
+        <input type="text" id="industry" name="industry" placeholder="Enter company industry" required/>
+
+        <label for="description">Company Description</label>
+        <textarea id="description" name="description" placeholder="Enter company description" rows="4" required></textarea>
+
+        <button type="submit" id="add-company">Insert</button>
+    </form>
+</div>
+
+<script defer src="scripts/companyInsertScript.js"></script>
+<%- include('../partials/footer') -%>

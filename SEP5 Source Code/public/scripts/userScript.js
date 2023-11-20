@@ -20,15 +20,19 @@ fetch('/user/data')
         console.error('Error:', error);
     });
 
+const form = document.getElementById('userForm');
 
-function logout() {
-    var form = document.getElementById('userForm');
-    form.action = 'user/logout';
+function pageChange(value) {
+    if(value === 'home') {
+        form.action = '/';
+    }
+    else if(value === 'logout') {
+        form.action = '/user/logout';
+    }
+    else if(value === 'insertCompany') {
+        form.action = '/insertCompany';
+    }
+    
     form.submit(); // You can submit the form immediately or trigger submission later
 }
 
-function home() {
-    var form = document.getElementById('userForm');
-    form.action = '/';
-    form.submit(); // You can submit the form immediately or trigger submission later
-}

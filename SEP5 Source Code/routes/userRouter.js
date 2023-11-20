@@ -3,7 +3,13 @@ const router = express.Router();
 
 router.get('/', (req,res) => {
     const user = req.session.user;
-    res.render('pages/user', {user: user, title: "Profile"});
+    if (user != undefined)
+    {
+    res.render('pages/user');
+    }
+    else {
+      res.redirect('/')
+    }
 });
 
 router.get('/logout', (req, res) => {
