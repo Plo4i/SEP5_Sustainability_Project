@@ -22,7 +22,7 @@ try {
 
 // Listen for the SIGTERM signal (e.g., when the application is being stopped)
 process.on('SIGTERM', () => {
-  console.log('SIGTERM signal received. Closing the pool.');
+  console.log('SIGTERM signal received. Closing the pool. 1');
   pool.end().then(() => {
       console.log('Pool has been closed');
       process.exit(0);
@@ -31,7 +31,7 @@ process.on('SIGTERM', () => {
 
 // Listen for the SIGINT signal (e.g., when the application is being interrupted)
 process.on('SIGINT', () => {
-  console.log('SIGINT signal received. Closing the pool.');
+  console.log('SIGINT signal received. Closing the pool. 2');
   pool.end().then(() => {
       console.log('Pool has been closed');
       process.exit(0);
