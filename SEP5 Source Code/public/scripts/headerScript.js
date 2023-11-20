@@ -1,3 +1,39 @@
+// Function for setting header links
+function set_header_links(user) {
+
+    const headerBar = document.getElementById('headerLinks');
+    headerBar.innerHTML = '<a href="#companies">Companies</a>';
+
+    if(user != undefined) {
+        headerBar.innerHTML += `<a href="/user"> <img width="25px" src="${user.image_url}"/> ${user.username} </a>
+        <div class="search-icon"><a href="/">
+        <i class="fa fa-search" aria-hidden="true"></i></a></div>`;
+    }
+    else {
+        headerBar.innerHTML += 
+        `<a href="/register" id="register-link">Sign Up</a> 
+        <a href="/login" id="login-link">Log In</a>
+        <a href="#">For Paid Customers</a>
+        <div class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></div>`;
+    }
+};
+
+fetch('/user/data')  // Using fetch with http request to get session user
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok'); //Handling response if company not found
+        }
+        return response.json();
+    })
+    .then(data => {
+
+        set_header_links(data.user); //Injecting data
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
+
+
 // Add a scroll event listener to the window
 window.addEventListener("scroll", function () {
     // Select the element with the class 'nav-container' and store it in the 'header' variable

@@ -18,7 +18,6 @@ router.post("/", async (req, res) => {
 
       // Set user information in the session
       req.session.user = result.rows[0];
-
       //Setting logged in cookie and session to true
       res.cookie("isLoggedIn", "true", { httpOnly: false });
       //Setting current user cookie to username

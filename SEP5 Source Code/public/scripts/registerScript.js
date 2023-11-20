@@ -1,3 +1,5 @@
+document.title = 'Register';
+
 // Declare variables
 var passwordInput = document.getElementById('password-input');
 var passwordContainer = document.querySelector('.password-container');

@@ -28,13 +28,7 @@
                 <!-- Individual company cards with images and links -->
 
                 <form id='company-form' action="#" method="POST">
-                    <div>
-                        <% companies.forEach(function(company) { %>
-
-                            <button class="company-button" value='<%= company.cvr %>'><%= company.name %></button>
-
-                        <% }); %>
-                    </div>
+                    <!--Script adds the buttons--> 
                 </form>
             </div>
         </div>
@@ -42,6 +36,6 @@
 
     <%-include('../partials/footer')-%>
 
-    <script src="scripts/indexScript.js"></script>
+    <script defer src="scripts/indexScript.js"></script>
 </body>
 </html>

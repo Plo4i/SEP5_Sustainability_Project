@@ -3,6 +3,9 @@ var passwordInput = document.getElementById('password-input');
 var passwordContainer = document.querySelector('.password-container');
 var icon = document.getElementById('toggle-password');
 
+// Setting up the title
+document.title = 'Login';
+
 // This script is toggling the bottom border of the "password-container" div to become orange
 // when the user inputs a password in both the register and login form
 passwordInput.addEventListener('focus', function () {

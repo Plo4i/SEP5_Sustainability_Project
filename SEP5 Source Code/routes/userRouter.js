@@ -16,4 +16,9 @@ router.get('/logout', (req, res) => {
     });
   });
 
+router.get('/data', (req, res) => {
+  const user = req.session.user;
+  res.status(200).send({user});
+})
+
 export default router;

@@ -1,18 +1,18 @@
 <%-include('../partials/head') -%>
 <%-include('../partials/header') -%>
 
-   <h1> Hello <%= user.username %> </h1>
-   <img src="<%= user.image_url %>" alt="User Photo" title="User Photo"/>
+   <div  id="profile">
+      <!--User data loaded inside. Check js file fo modifying.-->
+   </div>
 
    <form id="userForm" action="/default">
     <button onClick="logout()"> Logout</button>
     <button onClick="home()"> Home</button>
    </form>
 
-   <script src="scripts/userScript.js"></script>
 
 <%-include('../partials/footer') -%>
 
-<script src="scripts/userScript.js"></script>
+<script defer src="scripts/userScript.js"></script>
 </body>
 </html>

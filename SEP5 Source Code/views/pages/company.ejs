@@ -1,6 +1,7 @@
 <%-include('../partials/head') -%>
 <%-include('../partials/header') -%>
 
+<script defer src="scripts/companyScript.js"></script>
 <!-- Companies section -->
 <section class="company-information-heading" id="company-information-heading">
 
@@ -11,12 +12,12 @@
               <div class="logo-name-rating-container">
 
                 <div class="logo">
-                  <img src="images/Shell-Logo.png" alt="company logo">
+                  <img id='companyLogo' src='#' alt="company logo">
                 </div>
 
                 <div class="name-rating-container">
                   <div class="company-name">
-                    <h2>Shell Global</h2>
+                    <h2 id="companyName"></h2>
                   </div>
                   <div class="rating">
                     <p>Reviews: 231 • Score: 4.8/5</p>
@@ -35,7 +36,7 @@
               <div class="description-container">
 
                 <h3>Who are we</h3>
-                <p>
+                <p id="companyDescription">
                   Shell is an international energy company with expertise in the exploration, production, refining and marketing of oil
                   and natural gas, and the manufacturing and marketing of chemicals.
                   <br>
@@ -111,7 +112,7 @@
             </div>
             
             <div class="user-name">
-              <a href="/company"><h3>Tesla</h3></a>
+              <a href="#"><h3>Tesla</h3></a>
             </div>
 
           </div>
@@ -163,6 +164,6 @@
 
 <%-include('../partials/footer')-%>
 
-<script src="scripts/companyScript.js"></script>
+
 </body>
 </html>

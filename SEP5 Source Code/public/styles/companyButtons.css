@@ -1,0 +1,45 @@
+#company-form {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.company-button {
+    display: flex;
+    width: 200px;
+    height: 75px;
+    border-radius: 10px;
+    align-items: center;
+    background-color: #1E6821; /* Background color */
+    color: #ffffff; /* Text color */
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Transition effect */
+    margin-bottom: 10px; /* Add space below each button */
+    margin-right: 10px; /* Add space to the right of each button */
+  }
+  
+  .company-button:hover {
+    background-color: #349E3D; /* Slightly different color on hover */
+  }
+  
+  .logo-container {
+    width: 40px; /* Width of the logo container */
+    margin-right: 10px;
+    border-radius: 10px;
+  }
+  
+  .logo-container img {
+    width: 100%; /* Logo fills its container */
+    height: auto; /* Maintain the aspect ratio */
+  }
+  
+  .company-info {
+    flex-grow: 1; /* Allow the company info to grow and take available space */
+  }
+  
+  .company-name {
+    font-size: 18px;
+    font-weight: bold; 
+  }
+  

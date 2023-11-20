@@ -8,14 +8,8 @@
                 </a>
             </div>
             <div class="contents-container">
-                    <div class="contents-wrap">
-                        <a href="#companies">Companies</a>
-                        <%- locals.user ? '<a href="/user"> <img width="25px" src="' + user.image_url + '"/>' + user.username + '</a><div class="search-icon"><a href="/"><i class="fa fa-search" aria-hidden="true"></i></a></div>'  :
-                            '<a href="/register" id="register-link">Sign Up</a>' +
-                            '<a href="/login" id="login-link">Log In</a>' +
-                            '<a href="#">For Paid Customers</a>' +
-                            '<div class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></div>'
-                        %>
+                    <div class="contents-wrap" id="headerLinks">
+                        
                     </div>
             </div>
         </div>
