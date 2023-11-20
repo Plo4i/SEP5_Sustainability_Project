@@ -1,6 +1,6 @@
 /* General styling for the DIVs such as color, position, etc. */
 .register-section {
-    background-color: #222831;
+    background-color: var(--blue-color);
 }
 
 .register-form-container {
@@ -13,7 +13,7 @@
 
 .register-form-wrap {
     padding: 20px;
-    background-color: #121519;
+    background-color: var(--teal-color);
     color: var(--white-font-color);
     width: 425px;
     height: 570px;
@@ -77,9 +77,18 @@
     cursor: pointer;
 }
 
+#toggle-password{
+    font-size: 28px;
+    color: var(--grey-color);
+}
+
 .show-password-button:hover #toggle-password{
     transition: .3s ease;
-    color: var(--white-font-color);
+    color: var(--aquamarine-color);
+}
+
+input::placeholder{
+    color: var(--grey-color);
 }
 
 #username-input,
@@ -96,11 +105,11 @@
 
 #username-input:focus,
 #email-input:focus {
-    border-bottom: var(--orange-button-color) 3px solid;
+    border-bottom: var(--aquamarine-color) 3px solid;
 }
 
 #register-button {
-    background-color: var(--orange-button-color);
+    background-color: var(--aquamarine-color);
     color: var(--white-font-color);
     font-weight: 700;
     padding: 10px 20px;
@@ -112,16 +121,7 @@
 }
 
 #register-button:hover {
-    background-color: var(--dark-orange-hover-color);
-}
-
-.register-form-wrap .forgot-password {
-    text-align: center;
-}
-
-.register-form-wrap .forgot-password a {
-    color: #3876BF;
-    font-size: 18px;
+    background-color: var(--dark-hover-color);
 }
 
 .register-form-wrap .has-account {
@@ -137,7 +137,7 @@
 }
 
 .register-form-wrap .has-account a {
-    color: #3876BF;
+    color: var(--white-font-color);
 }
 
 .register-form-wrap .forgot-password a:hover,

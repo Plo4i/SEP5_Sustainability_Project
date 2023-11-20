@@ -305,7 +305,7 @@ div.vertical-line {
 
 /* example rating stars - !!!to be deleted!!! */
 
-.iconify{
+.star-rating .iconify{
   font-size: 28px;
   color: #4a4a4a;
 }

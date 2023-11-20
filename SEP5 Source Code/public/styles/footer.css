@@ -3,7 +3,8 @@
 /* FOOTER */
 
 footer {
-    background: var(--black-color);
+    background: var(--teal-color);
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
 }
 
 .footer-container {
@@ -36,7 +37,7 @@ footer {
 }
 
 .wrap a:hover {
-    color: var(--orange-button-color);
+    color: var(--aquamarine-color);
 }
 
 .column a {
@@ -73,7 +74,7 @@ footer {
     align-items: center;
     margin: 0;
     padding: 0 20px 20px 20px;
-    color: #DCD7C9;
+    color: var(--white-font-color);
 }
 
 

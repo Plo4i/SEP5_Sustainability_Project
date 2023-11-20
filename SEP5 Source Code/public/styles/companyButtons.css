@@ -9,7 +9,7 @@
     height: 75px;
     border-radius: 10px;
     align-items: center;
-    background-color: #1E6821; /* Background color */
+    background-color: var(--aquamarine-color); /* Background color */
     color: #ffffff; /* Text color */
     border: none;
     padding: 10px;
@@ -20,7 +20,7 @@
   }
   
   .company-button:hover {
-    background-color: #349E3D; /* Slightly different color on hover */
+    background-color: var(--dark-hover-color); /* Slightly different color on hover */
   }
   
   .logo-container {
