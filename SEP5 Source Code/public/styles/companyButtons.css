@@ -17,6 +17,7 @@
     transition: background-color 0.3s ease; /* Transition effect */
     margin-bottom: 10px; /* Add space below each button */
     margin-right: 10px; /* Add space to the right of each button */
+    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.5);
   }
   
   .company-button:hover {
