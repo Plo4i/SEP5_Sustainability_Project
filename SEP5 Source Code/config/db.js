@@ -16,7 +16,8 @@ try {
     client.query('SET search_path TO ecoeval;');
 });
   console.log('Successfully connected to the database');
-} catch (err) {
+} 
+catch (err) {
   console.error('Failed to connect to the database', err);
 }
 

@@ -1,0 +1,152 @@
+/* General styling for the DIVs such as color, position, etc. */
+.register-section {
+    background-color: #222831;
+}
+
+.register-form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 127vh;
+    width: 100%;
+}
+
+.register-form-wrap {
+    padding: 20px;
+    background-color: #121519;
+    color: var(--white-font-color);
+    width: 425px;
+    height: 570px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70%;
+}
+
+.register-form .subscription-wrap h4{
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 5px;
+}
+
+.register-form-wrap .subscription-wrap{
+    display: flex;
+    flex-direction: column;
+}
+
+/* Styling of heading for register in form */
+
+.register-form-wrap h2 {
+    text-align: center;
+    font-size: 40px;
+}
+
+/* styling the inputs */
+
+.password-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--white-font-color) 3px solid;
+    transition: .5s ease;
+}
+
+#password-input{
+    padding: 10px;
+    border: none;
+    color: var(--white-font-color);
+    background-color: transparent;
+    outline: none;
+    font-size: 23px;
+}
+
+.show-password-button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    width: fit-content;
+    height: fit-content;
+    cursor: pointer;
+}
+
+.show-password-button:hover #toggle-password{
+    transition: .3s ease;
+    color: var(--white-font-color);
+}
+
+#username-input,
+#email-input {
+    padding: 10px;
+    border: none;
+    color: var(--white-font-color);
+    border-bottom: var(--white-font-color) 3px solid;
+    background-color: transparent;
+    outline: none;
+    font-size: 23px;
+    transition: .5s ease;
+}
+
+#username-input:focus,
+#email-input:focus {
+    border-bottom: var(--orange-button-color) 3px solid;
+}
+
+#register-button {
+    background-color: var(--orange-button-color);
+    color: var(--white-font-color);
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid transparent;
+    font-size: 23px;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+#register-button:hover {
+    background-color: var(--dark-orange-hover-color);
+}
+
+.register-form-wrap .forgot-password {
+    text-align: center;
+}
+
+.register-form-wrap .forgot-password a {
+    color: #3876BF;
+    font-size: 18px;
+}
+
+.register-form-wrap .has-account {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid;
+}
+
+.register-form-wrap .has-account p,
+.register-form-wrap .has-account a {
+    font-size: 18px;
+}
+
+.register-form-wrap .has-account a {
+    color: #3876BF;
+}
+
+.register-form-wrap .forgot-password a:hover,
+.register-form-wrap .has-account a:hover {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1280px){
+    .register-form-container {
+        height: 155vh;
+    }
+}

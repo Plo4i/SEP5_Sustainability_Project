@@ -1,0 +1,61 @@
+<%-include('../partials/head') -%>
+<%-include('../partials/header') -%>
+
+<section class="register-section" id="register-section">
+
+    <div class="register-form-container">
+
+        <div class="register-form-wrap">
+
+            <h2>Sign Up to EcoEval</h2>
+            <form id="register-form" class="register-form" method="POST" action="/register" enctype="multipart/form-data">
+                <!-- Registration form fields -->
+                <!-- Username -->
+                <input type="text" name="username" placeholder="Username" id="username-input" required>
+
+                <!-- Password -->
+                <div class="password-container">
+                    <input type="password" name="password" placeholder="Password" id="password-input" required>
+                    <button class="show-password-button" type="button" onclick="togglePasswordVisibility()">
+                        <span class="iconify" data-icon="mdi:eye" id="toggle-password"></span>
+                    </button>
+                </div>
+                <!-- Email -->
+                <input type="email" name="email" placeholder="Email" id="email-input" required>
+
+                <!-- Subscription -->
+                <div class="subscription-wrap">
+                    <h4>Choose a Subscription:</h4>
+                    <div class="subscription">
+                        <input type="radio" id='paid' value="Paid" name='subscription' required>
+                        <label for="paid">Premium</label>
+                        <input type="radio" id="unpaid" value="Unpaid" name='subscription' required>
+                        <label for="unpaid">Free</label>
+                    </div>
+                </div>
+
+                <!-- Pic upload -->
+                <!-- <label for="avatar">Choose a profile picture:</label>
+                <br/>
+                <input type="file" id="avatar" name="picture" accept="image/*" required/> -->
+
+                <!-- Submit -->
+                <button type="submit" id="register-button">Register</button>
+            </form>
+
+            <div class="has-account">
+                <p>Already have an account?</p>
+                <a href="/login">Log In Here</a>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+    <%-include('../partials/footer') -%>
+
+    <script src="scripts/registerScript.js"></script>
+</body>
+</html>

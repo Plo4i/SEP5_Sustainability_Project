@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+/* Make an arrow for styling */
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-left:5px;
+}
+
+/* This is the heading part of the company information page */
+
+.company-information-heading{
+    width: 100%;
+    margin-bottom: 50px;
+    border-bottom: 1px solid #a0a0a0;
+    /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
+}
+
+.company-information-heading-container {
+    width: 100%;
+    background-color: #DCD7C9;
+}
+
+.company-information{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 169px 100px 50px;
+}
+
+.logo-name-rating-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.logo-name-rating-container .logo img{
+    width: 100%;
+}
+
+.logo-name-rating-container .logo{
+    width: 193px;
+    border-radius: 10px;
+}
+
+.logo-name-rating-container .name-rating-container .company-name h2{
+    font-size: 48px;
+}
+
+.logo-name-rating-container .name-rating-container .rating p{
+    font-size: 20px;
+    color: #4a4a4a;
+}
+
+
+/* Vertical Separating Line in the company heading */
+div.vertical-line {
+  width: 1px;
+  background-color: black;
+  height: 100%;
+  float: left;
+}
+
+.company-information-heading-container .description-container{
+    width: 54%;
+}
+
+.company-information-heading-container .description-container h3{
+    font-size: 28px;
+}
+
+/* This is the actual information part of the company information page */
+
+.company-information-content{
+    padding: 0 200px;
+    margin-bottom: 50px;
+}
+
+.company-information-content-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.company-information-content .esg-certificate-container{
+    background-color: #DCD7C9;
+    width: 748px;
+    border-radius: 10px;
+    border: 1px solid #a0a0a0;
+    height: fit-content;
+    /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
+}
+
+
+/* ESG Container Certificate Styling */
+.company-information-content .esg-certificate-container .esg-certificate-wrap{
+  padding: 30px;
+}
+
+.company-information-content .esg-certificate-container .esg-certificate img{
+  width: 100%;
+}
+
+.company-information-content .esg-certificate-container .esg-certificate  {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Styling of the button/link in the bottom of the ESG certificate container */
+
+.company-information-content .esg-certificate-container .more-about-esg-certificate{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-top: 10px;
+}
+
+.company-information-content .esg-certificate-container .more-about-esg-certificate a {
+  color: #000;
+}
+
+.company-information-content .esg-certificate-container .more-about-esg-certificate .right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.company-information-content .esg-certificate-container .more-about-esg-certificate a:hover {
+  color: #FC7300;
+}
+
+.company-information-content .esg-certificate-container .more-about-esg-certificate a:hover .right {
+  border-color: #FC7300;
+  transform: translateX(10px) rotate(-45deg);
+  -webkit-transform: translateX(10px) rotate(-45deg);
+  transition: transform 0.5s;
+}
+
+/* Styling of the sidebar */
+
+.company-information-content .sidebar-rating-comments{
+    width: 337px;
+}
+
+.company-information-content .sidebar-rating-comments .sidebar-rating{
+    width: 100%;
+    background-color: #DCD7C9;
+    border-radius: 10px;
+    border: 1px solid #a0a0a0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
+}
+
+.company-information-content .sidebar-rating-comments .sidebar-rating h3{
+  padding: 20px 0 0;
+  font-size: 23px;
+  font-weight: 800;
+}
+
+/* Styling of the comments section in the sidebar */
+
+.company-information-content .sidebar-rating-comments .comments-title h2{
+  font-size: 34px;
+  font-weight: 800;
+  margin: 20px 0;
+}
+
+.company-information-content .sidebar-rating-comments .sidebar-comments{
+    width: 100%;
+}
+
+.company-information-content .sidebar-rating-comments .sidebar-comments .comment {
+  padding: 18px;
+  background-color: #DCD7C9;
+  border-radius: 10px;
+  border: 1px solid #a0a0a0;
+  /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
+}
+
+.company-information-content .sidebar-rating-comments .sidebar-comments .user-information-wrap{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+}
+
+.company-information-content .sidebar-rating-comments .sidebar-comments .comment-content-wrap{
+  padding: 10px 0;
+  border-top: 1px solid #4a4a4a;
+  border-bottom: 1px solid #4a4a4a;
+}
+
+.company-information-content .sidebar-rating-comments .sidebar-comments .comment-heading{
+  margin-bottom: 15px;
+}
+
+.company-information-content .sidebar-rating-comments .sidebar-comments .comment-heading h3{
+  font-size: 22px;
+  font-weight: 900;
+}
+
+/* Styling of the read more / read less buttons in the comment */
+
+.company-information-content .comment-content-wrap .comment-text .long-text {
+  display: none;
+}
+
+.company-information-content .comment .read-less{
+  background-color: transparent;
+  border: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.company-information-content .comment .read-more {
+  background-color: transparent;
+  border: none;
+  color: #000;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  text-decoration: underline;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.company-information-content .comment .up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.company-information-content .comment .down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.company-information-content .comment .read-more:hover{
+  color: #FC7300;
+}
+
+.company-information-content .comment .read-more:hover .arrow{
+  border-color: #FC7300;
+}
+
+.company-information-content .comment .read-less:hover {
+  color: #FC7300;
+}
+
+.company-information-content .comment .read-less:hover .arrow {
+  border-color: #FC7300;
+}
+
+/* Styling of the user info in the comment */
+
+.sidebar-comments .user-information-wrap .user-image img{
+  width: 100%;
+}
+
+.sidebar-comments .user-information-wrap .user-image {
+  border: 1px solid #4a4a4a;
+  background-color: #fff;
+  border-radius: 100px;
+  width: 45px;
+  height: 45px;
+}
+
+.sidebar-comments .user-information-wrap .user-name a {
+  text-decoration: none;
+  color: #000;
+}
+
+.sidebar-comments .user-information-wrap .user-name a:hover {
+  text-decoration: underline;
+}
+
+.sidebar-comments .user-information-wrap .user-name h3{
+  font-weight: 400;
+}
+
+.comment-rating-date-wrap{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+
+/* Styling of the stars where the user will be able to give his/her rating */
+
+.star-rating{
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+/* example rating stars - !!!to be deleted!!! */
+
+.iconify{
+  font-size: 28px;
+  color: #4a4a4a;
+}
+
+.rated{
+  color: #FF6C35;
+}
+
+.rating .iconify{
+  font-size: 35px;
+}
+
+.rated1{
+  color: #3F9E37;
+}
+
+@media screen and (max-width: 1280px){
+  .company-information{
+    padding: 169px 40px 50px;
+  }
+
+  .company-information-heading-container .description-container {
+    width: 48%;
+  }
+
+  .logo-name-rating-container .logo {
+    width: 168px;
+  }
+
+  .logo-name-rating-container .name-rating-container .company-name h2 {
+    font-size: 42px;
+  }
+
+  .company-information-content {
+    padding: 0 105px;
+  }
+
+  .company-information-content .esg-certificate-container {
+    width: 668px;
+  }
+}

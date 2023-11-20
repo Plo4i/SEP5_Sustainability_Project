@@ -1,1 +1,18 @@
-Hello
+<%-include('../partials/head') -%>
+<%-include('../partials/header') -%>
+
+   <h1> Hello <%= user.username %> </h1>
+   <img src="<%= user.image_url %>" alt="User Photo" title="User Photo"/>
+
+   <form id="userForm" action="/default">
+    <button onClick="logout()"> Logout</button>
+    <button onClick="home()"> Home</button>
+   </form>
+
+   <script src="scripts/userScript.js"></script>
+
+<%-include('../partials/footer') -%>
+
+<script src="scripts/userScript.js"></script>
+</body>
+</html>

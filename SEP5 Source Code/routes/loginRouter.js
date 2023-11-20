@@ -1,65 +1,37 @@
 import express from "express";
-import path from "path";
-import { fileURLToPath } from "url";
-import { dirname } from "path";
 import pool from "../config/db.js";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
 const router = express.Router();
-const options = path.join(__dirname, "../views/pages");
 
-router.post("/login", (req, res) => {
-  //handle loggin in - auth thorugh DB
-  /*
-    psuedo:
-    username and password: req.body.username, req.body.password
-    test through DB in external file
+router.get("/", (req, res) => {
+  res.render('pages/login', {title: 'Login'});
+});
 
-    IF authenticated in DB the run
-    req.session.isLoggedIn = true;
+router.post("/", async (req, res) => {
+  const {username, password} = req.body;
 
-    In other parts of code req.session.isLoggedIn can now be used in -
-      IF statements to see if user is logged in
-    */
+   try {
+    // Query the database for user credentials
+    const result = await pool.query('SELECT * FROM users WHERE username = $1 AND password = $2', [username, password]);
 
-  //Storing username and password send by POST in the body
-  let username = req.body["username"];
-  let password = req.body["password"];
-  //console.log("U: " + username + ", P: " + password);
+    if (result.rows.length > 0) {
 
-  const checkCredentialQuery =
-    "SELECT * FROM users WHERE username = '" +
-    username +
-    "'" +
-    "AND password = '" +
-    password +
-    "'";
+      // Set user information in the session
+      req.session.user = result.rows[0];
 
-  pool.query(checkCredentialQuery, (err,result) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).send("Server error logging in - Go back");
-    } else if(result.rows.length === 0) {
-      return res.status(400).send("Wrong username or password");
-    } else if (result.rows.length > 0) {
       //Setting logged in cookie and session to true
       res.cookie("isLoggedIn", "true", { httpOnly: false });
       //Setting current user cookie to username
       res.cookie("currentUser", username, { httpOnly: false });
-      res.status(200).render(options + "/index.ejs");
+
+      res.status(200).redirect("/");
+    } else {
+      return res.status(400).send("Wrong username or password");
     }
-  })
-
-});
-
-router.post("/logout", (req, res) => {
-  req.session.isLoggedIn = false;
-  res.cookie("isLoggedIn", "false", { httpOnly: false });
-  res.cookie("currentUser", false, { httpOnly: false });
-
-  res.render(options + "/index.ejs");
+  } catch (error) {
+    console.error('Error querying database:', error);
+    res.status(500).send('Internal Server Error');
+  }
 });
 
 export default router;

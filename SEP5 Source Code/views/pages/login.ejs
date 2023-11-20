@@ -1,0 +1,43 @@
+<%-include('../partials/head') -%>
+<%-include('../partials/header') -%>
+
+<section class="login-section" id="login-section">
+
+  <div class="login-form-container">
+
+    <div class="login-form-wrap">
+      
+        <h2>Log In to EcoEval</h2>
+        <form id="login-form" class="login-form" method="POST" action="/login">
+          <!-- Login form fields -->
+          <input type="text" name="username" placeholder="Username" id="username-input">
+          
+          <!-- Password -->
+          <div class="password-container">
+            <input type="password" name="password" placeholder="Password" id="password-input" required>
+            <button class="show-password-button" type="button" onclick="togglePasswordVisibility()">
+              <span class="iconify" data-icon="mdi:eye" id="toggle-password"></span>
+            </button>
+          </div>
+
+          <button type="submit" id="login-button">Log In</button>
+        </form>
+        <div class="forgot-password">
+          <a href="#">Forgot Password</a>
+        </div>
+        <div class="has-no-account">
+          <p>You don't have an account?</p>
+          <a href="/register">Sign Up Here</a>
+        </div>
+
+      </div>
+
+    </div>
+
+</section>
+
+<%-include('../partials/footer') -%>
+
+<script src="scripts/loginScript.js"></script>
+</body>
+</html>

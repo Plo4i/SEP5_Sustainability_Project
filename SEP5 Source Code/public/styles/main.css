@@ -3,7 +3,7 @@
 
 /* Define CSS variables (custom properties) for colors */
 :root {
-    --body-background-color: #032a1d;
+    --body-background-color: #fff;
     --header-background-color: #222831;
     --white-font-color: #fff;
     --orange-accent-color: #FC7300;
@@ -20,7 +20,6 @@
 /* Styling for the entire body */
 body {
     background-color: var(--body-background-color);
-    height: 250vh;
     /* This sets the height of the body */
 }
 
@@ -98,7 +97,7 @@ body {
 /* Styling for the title within the 'Companies' section */
 .companies-title-container {
     margin: 50px 0;
-    color: var(--white-font-color);
+    color: #222831;
 }
 
 .companies-title-container h2 {
@@ -117,7 +116,6 @@ body {
     grid-template-columns: repeat(4, 1fr);
     gap: 27px;
     width: 100%;
-    height: 100vh;
     /* 100% of the viewport height */
     justify-items: center;
 }

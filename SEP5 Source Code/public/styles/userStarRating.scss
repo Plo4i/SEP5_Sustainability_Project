@@ -1,0 +1,140 @@
+//color
+$black: #000000;
+$white: #ffffff;
+$lightgray: #D3D3D3;
+$red: #FF5254;
+$orange: #FF6C35;
+$yellow: #FF9900;
+$green: #3F9E37;
+$dark-green: #14892c;
+
+//mixin 
+@mixin transition($transition-property, $transition-time, $method) {
+    -webkit-transition: $transition-property $transition-time $method;
+    -moz-transition: $transition-property $transition-time $method;
+    -ms-transition: $transition-property $transition-time $method;
+    -o-transition: $transition-property $transition-time $method;
+    transition: $transition-property $transition-time $method;
+}
+
+@mixin transform($transforms) {
+    transform: $transforms;
+    -moz-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+}
+
+//mixin star shape
+@mixin star-shape($width: $width, $background-color: transparent, $z-index: 0) {
+    @include transform(rotate(35deg));
+    @include transition(all, .3s, linear);
+    border-bottom: $width * .7 solid $background-color;
+    border-left: $width solid transparent;
+    border-right: $width solid transparent;
+    display: inline-block;
+    height: 0;
+    margin-bottom: $width / 2;
+    margin-top: $width / 2;
+    position: relative;
+    width: 0;
+    margin-right: .4em;
+
+    &:before,
+    &:after {
+        @include transition(all, .3s, linear);
+        content: '';
+        display: block;
+        height: 0;
+        position: absolute;
+        width: 0;
+        z-index: $z-index - 1;
+    }
+
+    &:before {
+        @include transform(rotate(-35deg));
+        border-bottom: $width * .8 solid $background-color;
+        border-left: $width * .3 solid transparent;
+        border-right: $width * .3 solid transparent;
+        left: -$width * .65;
+        top: -$width * .45;
+    }
+
+    &:after {
+        @include transform(rotate(-70deg));
+        border-bottom: $width * .7 solid $background-color;
+        border-left: $width solid transparent;
+        border-right: $width solid transparent;
+        left: -$width * 1.05;
+        top: $width * .03;
+    }
+}
+
+.star-rating {
+    text-align: center;
+}
+
+.rating {
+    display: inline-block;
+    position: relative;
+
+    input[type="radio"] {
+        position: absolute;
+        opacity: 0;
+        height: 1px;
+        width: 1px;
+        bottom: 0;
+    }
+}
+
+// star shape
+.star {
+    @include star-shape(1.8em, $lightgray);
+    float: right;
+}
+
+//with different color
+$colors: $dark-green,
+    $green,
+    $yellow,
+    $orange,
+    $red;
+
+@for $i from length($colors) through 1 {
+    .star-#{$i} {
+
+        &.active,
+        &.active~.star {
+            border-bottom-color: nth($colors, $i);
+
+            &:before,
+            &:after {
+                border-bottom-color: nth($colors, $i);
+            }
+        }
+    }
+
+    input[type="radio"]+.star-#{$i} {
+        cursor: pointer;
+
+        &:hover,
+        &:hover~.star {
+            border-bottom-color: nth($colors, $i);
+
+            &:before,
+            &:after {
+                border-bottom-color: nth($colors, $i);
+            }
+        }
+    }
+
+    .rating:not(:hover) {
+        .radio-#{$i}:checked~.star {
+            border-bottom-color: nth($colors, $i);
+
+            &:before,
+            &:after {
+                border-bottom-color: nth($colors, $i);
+            }
+        }
+    }
+}

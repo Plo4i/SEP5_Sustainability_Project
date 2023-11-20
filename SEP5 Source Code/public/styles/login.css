@@ -1,0 +1,127 @@
+
+/* General styling for the DIVs such as color, position, etc. */
+.login-section{
+    background-color: #222831;
+}
+
+.login-form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.login-form-wrap{
+    padding: 20px;
+    background-color: #121519;
+    color: var(--white-font-color);
+    width: 425px;
+    height: 410px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 50%;
+}
+
+/* Styling of heading for log in form */
+
+.login-form-wrap h2{
+    text-align: center;
+    font-size: 40px;
+}
+
+/* styling the inputs */
+
+.password-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: var(--white-font-color) 3px solid;
+    transition: .5s ease;
+}
+
+#password-input {
+    padding: 10px;
+    border: none;
+    color: var(--white-font-color);
+    background-color: transparent;
+    outline: none;
+    font-size: 23px;
+    transition: .5s ease;
+}
+
+#username-input {
+    padding: 10px;
+    border: none;
+    color: var(--white-font-color);
+    border-bottom: var(--white-font-color) 3px solid;
+    background-color: transparent;
+    outline: none;
+    font-size: 23px;
+    transition: .5s ease;
+}
+
+#username-input:focus{
+    border-bottom: var(--orange-button-color) 3px solid;
+}
+
+#login-button {
+    background-color: var(--orange-button-color);
+    color: var(--white-font-color);
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 50px;
+    border: 1px solid transparent;
+    font-size: 23px;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+#login-button:hover {
+    background-color: var(--dark-orange-hover-color);
+}
+
+.login-form-wrap .forgot-password{
+    text-align: center;
+}
+
+.login-form-wrap .forgot-password a{
+    color: #3876BF;
+    font-size: 18px;
+}
+
+.login-form-wrap .has-no-account{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid;
+}
+
+.login-form-wrap .has-no-account p,
+.login-form-wrap .has-no-account a{
+    font-size: 18px;
+}
+
+.login-form-wrap .has-no-account a {
+    color: #3876BF;
+}
+
+.login-form-wrap .forgot-password a:hover,
+.login-form-wrap .has-no-account a:hover {
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1280px) {
+    .login-form-container {
+        height: 126vh;
+    }
+}

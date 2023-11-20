@@ -27,7 +27,21 @@ router.get('/', (req,res) => {
     });
 })
 
-
-
+router.post('/', (req, res) => {
+    const companyName = req.body.companyName; // Get company NAME from request body
+  
+    pool.query('SELECT * FROM companies', (err,result) => {
+        let match = result.rows.some(row => row.name === companyName);
+        if (match) {
+            router.get('/company', result.rows.find(row => row.name === companyName))
+        }
+        else if (err){
+            console.error('Here ');
+            res.status(500).send('Server error');
+        }
+    }); 
+  
+    res.send(companyName);
+  });
 
 export default router;

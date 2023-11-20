@@ -4,8 +4,10 @@
 /* Define CSS variables (custom properties) for colors */
 :root {
     --body-background-color: #1F8A70;
-    --header-background-color: #00425A;
+    --header-background-color: #121519;
     --white-font-color: #fff;
+    --orange-button-color: #FC7300;
+    --dark-orange-hover-color: #a04800;
 }
 
 /* Reset default margin, padding, font, and scroll behavior */
@@ -38,16 +40,31 @@ header {
     text-decoration: none;
 }
 
+
 /* Styling for the navigation container */
 .nav-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     padding: 22px 40px;
     color: var(--white-font-color);
     background-color: transparent;
     transition: 0.5s;
 }
+
+.nav-container .nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;    
+}
+
+.nav-container .nav-links.nav-links-searchbar-off{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-container .nav-links.nav-links-searchbar-on {
+    display: none;
+}
+
 
 /* Styling for the navigation title */
 .nav-container h1 {
@@ -60,7 +77,8 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 602px;
+    /* width: 602px; */
+    gap: 23px;
     height: 100%;
 }
 
@@ -82,14 +100,26 @@ header {
     transition: .5s ease-out;
 }
 
-.contents-wrap a:nth-child(5){
-    font-size: 27px;
+/* Nav-bar search icon */
+.contents-wrap .search-icon i{
+    font-size: 28px;
+}
+
+.contents-wrap .search-icon {
+    padding: 10px 0;
+    cursor: pointer;
+    border-bottom: transparent 3px solid;
+    transition: .5s ease-out;
+}
+
+.contents-wrap .search-icon:hover {
+    border-bottom: var(--white-font-color) 3px solid;
 }
 
 /* Styling for the 3rd navigation link */
 .contents-wrap a:nth-child(4) {
     padding: 10px 20px;
-    background-color: #FC7300;
+    background-color: var(--orange-button-color);
     border-radius: 50px;
     transition: .5s ease-out;
 }
@@ -108,11 +138,74 @@ header {
 
 /* Hover effect for the 3rd navigation link */
 .contents-wrap a:nth-child(4):hover {
-    background-color: #a04800;
+    background-color: var(--dark-orange-hover-color);
 }
 
 /* Styling when the header is in 'sticky' state */
 .sticky-navbar {
     padding: 6px 40px;
-    background-color: var(--header-background-color);
+    background-color: #121519;
+}
+
+/* Styling of the searchbar */
+
+#search-bar {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #121519;
+    padding: 32px 0;
+    width: 100%;
+}
+
+#search-bar .search-bar-container{
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#search-bar .search-bar-container .search-input-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 3px
+}
+
+#search-input {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    color: var(--white-font-color);
+    border-bottom: var(--white-font-color) 3px solid;
+    background-color: transparent;
+    outline: none;
+    font-size: 23px;
+    transition: .5s ease;
+}
+
+#search-input:focus{
+    border-bottom: var(--orange-button-color) 3px solid;
+}
+
+#search-btn {
+    padding: 10px;
+    border: none;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 25px;
+    transition: .5s ease-out;
+}
+
+#close-btn {
+    font-size: 44px;
+    cursor: pointer;
+    transition: .5s ease;
+}
+
+#search-btn:hover,
+#close-btn:hover{
+    color: var(--orange-button-color);
 }
