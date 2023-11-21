@@ -3,7 +3,7 @@
 /* FOOTER */
 
 footer {
-    background: var(--teal-color);
+    background: var(--black-color);
 }
 
 .footer-container {
@@ -36,7 +36,7 @@ footer {
 }
 
 .wrap a:hover {
-    color: var(--aquamarine-color);
+    color: var(--dark-orange-color);
 }
 
 .column a {
@@ -64,7 +64,7 @@ footer {
 }
 
 .about-me-icons i:hover {
-    color: var(--orange-button-color);
+    color: var(--dark-orange-color);
 }
 
 .copyright-text {

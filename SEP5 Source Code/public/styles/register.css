@@ -1,6 +1,6 @@
 /* General styling for the DIVs such as color, position, etc. */
 .register-section {
-    background-color: var(--blue-color);
+    background-color: var(--dark-gray-color);
 }
 
 .register-form-container {
@@ -13,7 +13,7 @@
 
 .register-form-wrap {
     padding: 20px;
-    background-color: var(--teal-color);
+    background-color: var(--black-color);
     color: var(--white-font-color);
     width: 425px;
     height: 570px;
@@ -79,16 +79,16 @@
 
 #toggle-password{
     font-size: 28px;
-    color: var(--grey-color);
+    color: var(--gray-color);
 }
 
 .show-password-button:hover #toggle-password{
     transition: .3s ease;
-    color: var(--aquamarine-color);
+    color: var(--white-font-color);
 }
 
 input::placeholder{
-    color: var(--grey-color);
+    color: var(--gray-color);
 }
 
 #username-input,
@@ -105,11 +105,11 @@ input::placeholder{
 
 #username-input:focus,
 #email-input:focus {
-    border-bottom: var(--aquamarine-color) 3px solid;
+    border-bottom: var(--dark-orange-color) 3px solid;
 }
 
 #register-button {
-    background-color: var(--aquamarine-color);
+    background-color: var(--dark-orange-color);
     color: var(--white-font-color);
     font-weight: 700;
     padding: 10px 20px;
@@ -121,7 +121,7 @@ input::placeholder{
 }
 
 #register-button:hover {
-    background-color: var(--dark-hover-color);
+    background-color: var(--orange-color);
 }
 
 .register-form-wrap .has-account {
@@ -137,7 +137,7 @@ input::placeholder{
 }
 
 .register-form-wrap .has-account a {
-    color: var(--white-font-color);
+    color: var(--blue-link-color);
 }
 
 .register-form-wrap .forgot-password a:hover,

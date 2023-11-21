@@ -45,10 +45,10 @@
   box-shadow: inset 0px 0px 10px 3px rgba(0, 0, 0, 0.45);
 }
 .subscription input:checked + label {
-  background-color: #52ab98;
+  background-color: #FC7300;
   color: #FFF;
-  box-shadow: 0 0 10px rgba(69, 134, 120, 0.5);
-  border-color: #52ab98;
+  box-shadow: 0 0 10px rgba(255, 154, 71, 0.5);
+  border-color: #FC7300;
   z-index: 1;
 }
 @media (max-width: 800px) {
