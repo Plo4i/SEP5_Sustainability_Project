@@ -1,14 +1,6 @@
 /* Import Google Fonts for 'Lexend' and 'Outfit' */
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-/* Define CSS variables (custom properties) for colors */
-:root {
-    --body-background-color: #fff;
-    --header-background-color: #222831;
-    --white-font-color: #fff;
-    --orange-accent-color: #FC7300;
-}
-
 /* Reset default margin, padding, font, and scroll behavior */
 * {
     margin: 0;

@@ -47,6 +47,10 @@
     border-radius: 10px;
 }
 
+.logo-name-rating-container .name-rating-container{
+  width: 300px;
+}
+
 .logo-name-rating-container .name-rating-container .company-name h2{
     font-size: 48px;
 }
