@@ -1,7 +1,59 @@
 <%-include('../partials/head') -%>
+
+<style>
+  /* styling for navbar itself */
+  .nav-container .search-icon i {
+    color: var(--black-color);
+  }
+
+  .nav-container .contents-wrap a {
+    color: var(--black-color);
+  }
+
+  .nav-container .logo a {
+    color: var(--black-color);
+  }
+
+  .nav-container .contents-wrap a:nth-child(1):hover,
+  .nav-container .contents-wrap a:nth-child(2):hover,
+  .nav-container .contents-wrap a:nth-child(3):hover {
+      border-bottom: var(--black-color) 3px solid;
+  }
+
+  .nav-container .contents-wrap .search-icon:hover {
+    border-bottom: var(--black-color) 3px solid;
+  }
+
+
+  /* styling for sticky navbar */
+  .sticky-navbar .search-icon i{
+    color: var(--white-font-color);
+  }
+
+  .sticky-navbar .contents-wrap a {
+    color: var(--white-font-color);
+  }
+
+  .sticky-navbar .logo a {
+    color: var(--white-font-color);
+  }
+
+  .sticky-navbar .contents-wrap a:nth-child(1):hover,
+  .sticky-navbar .contents-wrap a:nth-child(2):hover,
+  .sticky-navbar .contents-wrap a:nth-child(3):hover {
+      border-bottom: var(--white-font-color) 3px solid;
+  }
+
+  .sticky-navbar .contents-wrap .search-icon:hover {
+    border-bottom: var(--white-font-color) 3px solid;
+  }
+</style>
+
+<body style="background-color: var(--white-color);">
 <%-include('../partials/header') -%>
 
 <script defer src="scripts/companyScript.js"></script>
+
 <!-- Companies section -->
 <section class="company-information-heading" id="company-information-heading">
 
@@ -10,7 +62,7 @@
             <div class="company-information">
 
               <div class="logo-name-rating-container">
-
+                
                 <div class="logo">
                   <img id='companyLogo' src='#' alt="company logo">
                 </div>
@@ -99,7 +151,7 @@
       </div>
 
       <div class="comments-title">
-        <h2>Comments</h2>
+        <h2>Reviews</h2>
       </div>
 
       <div class="sidebar-comments">
