@@ -58,3 +58,90 @@ document.querySelector('.read-less').addEventListener('click', function () {
     readLessButton.style.display = 'none';
 });
 
+// Code to show/hide comments section based on radio button selection
+const commentsSection = document.getElementById('commentsSection');
+
+document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+    radio.addEventListener('change', () => {
+        // Show comments section if any radio button is selected
+        commentsSection.style.display = 'block';
+    });
+});
+
+// Function to handle canceling the rating
+function cancelRating() {
+    const commentsSection = document.getElementById('commentsSection');
+    const selectedRating = document.querySelector('input[name="rating"]:checked');
+    const commentsTextarea = document.getElementById('comments');
+
+    // Reset selected rating and comments
+    if (selectedRating) {
+        selectedRating.checked = false;
+    }
+    commentsTextarea.value = '';
+
+    // Hide the comments section
+    commentsSection.style.display = 'none';
+}
+
+// Function to get URL parameters
+function getURLParameter(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}
+
+// Function to handle rating submission
+function submitRating() {
+    const selectedRating = document.querySelector('input[name="rating"]:checked');
+    const comments = document.getElementById('comments').value;
+
+    if (!selectedRating) {
+        alert('Please select a rating before submitting.');
+        return;
+    }
+
+    // Get company_id from the URL parameter
+    const company_id = getURLParameter('company_id');
+
+    if (!company_id) {
+        console.error('Company ID not found in the URL.');
+        return;
+    }
+
+    // Get user_id from your authentication system (replace this with your logic)
+    // const user_id = /* your user_id retrieval logic */;
+
+    // if (!user_id) {
+    //     console.error('User ID not found. Make sure the user is logged in.');
+    //     return;
+    // }
+
+    const requestBody = {
+        liked: selectedRating.value,
+        comment: comments,
+        company_id: company_id,
+        // user_id: user_id
+    };
+
+    fetch('/save-rating', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(requestBody),
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Rating saved successfully:', data);
+            // You may want to provide user feedback here
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // You may want to handle errors and provide user feedback
+        });
+}
