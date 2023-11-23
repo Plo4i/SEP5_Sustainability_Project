@@ -96,7 +96,7 @@ input::placeholder{
     padding: 10px;
     border: none;
     color: var(--white-font-color);
-    border-bottom: var(--orange-button-color) 3px solid;
+    border-bottom: var(--white-font-color) 3px solid;
     background-color: transparent;
     outline: none;
     font-size: 23px;

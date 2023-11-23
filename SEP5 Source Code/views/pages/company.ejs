@@ -149,12 +149,12 @@
         </div>
 
         <div class="comments-section" id="commentsSection" style="display: none;">
-          <div>
-            <textarea id="comments" name="comments" rows="4" cols="50" placeholder="Write a comment (optional)"></textarea>
+          <div class="textarea-comment-container">
+            <textarea id="comments" name="comments" rows="7" cols="50" placeholder="Write a comment (optional)"></textarea>
           </div>
-          <div>
-            <button onclick="submitRating()">Submit Rating</button>
-            <button onclick="cancelRating()">Cancel Rating</button>
+          <div class="submit-rating-buttons">
+            <button id="submit-rating" class="submit-rating" onclick="submitRating()">Submit Rating</button>
+            <button id="cancel-rating" class="cancel-rating" onclick="cancelRating()">Cancel Rating</button>
           </div>
         </div>
 
