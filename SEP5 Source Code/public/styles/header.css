@@ -96,8 +96,7 @@ header {
 /* Styling for specific navigation links (1st, 2nd, and 4th) */
 .contents-wrap a:nth-child(1),
 .contents-wrap a:nth-child(2),
-.contents-wrap a:nth-child(3),
-.contents-wrap a:nth-child(4) {
+.contents-wrap a:nth-child(3) {
     padding: 10px 0;
     border-bottom: 3px solid transparent;
     transition: .5s ease-out;
@@ -120,18 +119,15 @@ header {
 }
 
 /* Styling for the 3rd navigation link */
-.contents-wrap a:nth-child(4) {
+#for-paid-customers-button {
     padding: 10px 20px;
     background-color: var(--dark-orange-color);
     color: var(--white-font-color);
     border-radius: 50px;
     transition: .5s ease-out;
-}
-
-/* Styling for the 4th navigation link */
-.contents-wrap a:nth-child(4) {
     font-size: 25px;
 }
+
 
 /* Hover effect for specific navigation links (1st, 2nd, and 4th) */
 .contents-wrap a:nth-child(1):hover,
@@ -141,7 +137,7 @@ header {
 }
 
 /* Hover effect for the 3rd navigation link */
-.contents-wrap a:nth-child(4):hover {
+#for-paid-customers-button:hover {
     background-color: var(--orange-color);
 }
 

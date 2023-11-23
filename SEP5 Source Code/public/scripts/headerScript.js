@@ -13,7 +13,7 @@ function set_header_links(user) {
         headerBar.innerHTML += 
         `<a href="/register" id="register-link">Sign Up</a> 
         <a href="/login" id="login-link">Log In</a>
-        <a href="#">For Paid Customers</a>
+        <a href="#" id='for-paid-customers-button'>For Paid Customers</a>
         <div class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></div>`;
     }
 };
