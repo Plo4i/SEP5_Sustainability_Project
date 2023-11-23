@@ -46,6 +46,7 @@
 }
 .subscription input:checked + label {
   background-color: #FC7300;
+  background-color: #FC7300;
   color: #FFF;
   box-shadow: 0 0 10px rgba(255, 154, 71, 0.5);
   border-color: #FC7300;

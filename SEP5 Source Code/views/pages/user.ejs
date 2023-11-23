@@ -1,18 +1,25 @@
-<%-include('../partials/head') -%>
+<%-include('../partials/headUp') -%>
+<link rel="stylesheet" href="/styles/user.css">
+<%-include('../partials/headDown') %>
 <%-include('../partials/header') -%>
 
-   <div  id="profile">
-      <!--User data loaded inside. Check js file fo modifying.-->
+   <div id='user-page'>
+      <div  id="profile">
+         <!--User data loaded inside. Check js file to modifying.-->
+      </div>
+
+      <form id="userForm" action="/default">
+         <button onclick="pageChange('logout')">Logout</button>
+         <button onclick="pageChange('home')">Home</button>
+         <button onclick="pageChange('insertCompany')">Insert Company</button>
+      </form>
+
+      <div id="companiesBox">
+         <!--Companies data loaded inside. Check js file to modifying.-->
+      </div>
    </div>
-
-<form id="userForm" action="/default">
-    <button onclick="pageChange('logout')">Logout</button>
-    <button onclick="pageChange('home')">Home</button>
-    <button onclick="pageChange('insertCompany')">Insert Company</button>
-</form>
-
-
-<%-include('../partials/footer') -%>
+      
+   <%-include('../partials/footer') -%>
 
 <script defer src="scripts/userScript.js"></script>
 </body>

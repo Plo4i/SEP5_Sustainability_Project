@@ -9,7 +9,7 @@
     height: 75px;
     border-radius: 10px;
     align-items: center;
-    background-color: var(--dark-green-color); /* Background color */
+    background-color: #1E6821; /* Background color */
     color: #ffffff; /* Text color */
     border: none;
     padding: 10px;
@@ -21,7 +21,7 @@
   }
   
   .company-button:hover {
-    background-color: var(--emerald-color); /* Slightly different color on hover */
+    background-color: #145015; /* Slightly different color on hover */
   }
   
   .logo-container {

@@ -21,7 +21,8 @@ CREATE TABLE Companies (
     website VARCHAR(100),
     email VARCHAR(100),
     image_url VARCHAR(100),
-    industry VARCHAR(100)
+    industry VARCHAR(100),
+    description VARCHAR(1000)
 );
 
 
@@ -53,3 +54,12 @@ CREATE VIEW Avg_ESG_Scores AS
 SELECT ESG_score.company_id, AVG(ESG_score.total_score) as avgScore
 FROM ESG_score
 GROUP BY ESG_score.company_id;
+
+DROP TABLE IF EXISTS company_creation CASCADE;
+
+CREATE TABLE company_creation (
+    id SERIAL PRIMARY KEY,
+    company_id INT REFERENCES Companies(cvr),
+    user_id SERIAL REFERENCES Users(id),
+    creationDate TIMESTAMP
+);
