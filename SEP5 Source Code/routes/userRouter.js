@@ -24,10 +24,10 @@ router.get('/logout', (req, res) => {
     });
   });
 
-  router.get('/data', (req, res) => {
-    const user = req.session.user;
-      res.status(200).send({user}); 
-  });
+router.get('/data', (req, res) => {
+  const user = req.session.user;
+  res.status(200).send({user}); 
+});
 
 router.get('/profile', (req, res) => {
   const user = req.session.user;

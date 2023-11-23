@@ -5,11 +5,13 @@ function set_profile(data) {
     const companiesBox = document.getElementById('companiesBox');
     const user = data.user;
 
-    profile_box.innerHTML += `<h1> Hello ${user.username}</h1>
+    // Profile section parse
+    profile_box.innerHTML += `<h1> Profile ${user.username}</h1>
         <img src="${user.image_url}" alt="User Photo" title="User Photo"/>`;
 
     const companies = data.companies;
 
+    // Company section parse
     companies.forEach(function(company) {
         companiesBox.innerHTML += 
         `<div class='company-card'>
@@ -32,6 +34,7 @@ function set_profile(data) {
     const editButtons = document.querySelectorAll('.edit-btn');
     const deleteButtons = document.querySelectorAll('.delete-btn');
 
+    // Edit button functionality
     editButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             const companyCVR = this.getAttribute('data-cvr');
@@ -61,6 +64,7 @@ function set_profile(data) {
         });
     });
 
+    // Delete button functionality
     deleteButtons.forEach(function(button) {
         button.addEventListener('click', function() {
             const confirmDelete = window.confirm(`Are you sure you want to delete company with cvr ${this.getAttribute('data-cvr')}?`);
@@ -98,6 +102,7 @@ function set_profile(data) {
     });
 };
 
+// Fetch for retrieving data for the profile page
 fetch('/user/profile')
     .then(response => {
         if (!response.ok) {
@@ -112,6 +117,7 @@ fetch('/user/profile')
         console.error('Error:', error);
     });
 
+// Probably this part will be moved to header. But options for now stay
 const form = document.getElementById('userForm');
 
 function pageChange(value) {
