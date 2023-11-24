@@ -22,6 +22,8 @@ router.post("/", async (req, res) => {
       res.cookie("isLoggedIn", "true", { httpOnly: false });
       //Setting current user cookie to username
       res.cookie("currentUser", username, { httpOnly: false });
+      //Setting current user_id cookie
+      res.cookie("currentUserId", result.rows[0].id, { httpOnly: false });
 
       res.status(200).redirect("/");
     } else {

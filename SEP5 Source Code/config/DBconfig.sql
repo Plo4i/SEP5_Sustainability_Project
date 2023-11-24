@@ -44,7 +44,7 @@ DROP TABLE IF EXISTS Rate CASCADE ;
 
 CREATE TABLE Rate (
     id SERIAL PRIMARY KEY,
-    liked VARCHAR(50),
+    liked INT,
     comment TEXT,
     company_id INT REFERENCES Companies(cvr),
     user_id SERIAL REFERENCES Users(id)

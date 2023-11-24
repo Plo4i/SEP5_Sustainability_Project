@@ -90,49 +90,49 @@ function getURLParameter(name) {
     return urlParams.get(name);
 }
 
-// Function to handle rating submission
-function submitRating() {
-    const selectedRating = document.querySelector('input[name="rating"]:checked');
-    const comments = document.getElementById('comments').value;
+// Function to get a cookie by name
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
 
-    if (!selectedRating) {
-        alert('Please select a rating before submitting.');
-        return;
-    }
+
+// Function to handle rating submission
+function submitRating(event) {
+    event.preventDefault(); // Prevent the default form submission
 
     // Get company_id from the URL parameter
-    const company_id = getURLParameter('company_id');
+    const company_id = getURLParameter('CVR');
 
     if (!company_id) {
-        console.error('Company ID not found in the URL.');
+        console.error('Company CVR not found in the URL.');
         return;
     }
 
-    // Get user_id from your authentication system (replace this with your logic)
-    // const user_id = /* your user_id retrieval logic */;
+    // Get user_id from wherever you're storing the logged-in user's information
+    const user_id = getCookie('currentUserId');
 
-    // if (!user_id) {
-    //     console.error('User ID not found. Make sure the user is logged in.');
-    //     return;
-    // }
+    // Get liked and comment from the form
+    const liked = document.querySelector('input[name="rating"]:checked').value;
+    const comment = document.getElementById('comments').value;
 
-    const requestBody = {
-        liked: selectedRating.value,
-        comment: comments,
-        company_id: company_id,
-        // user_id: user_id
-    };
+    const formData = new FormData(document.getElementById('ratingForm'));
+    formData.append('company_id', company_id);
+    formData.append('user_id', user_id);
+    formData.append('liked', liked);
+    formData.append('comment', comment);
 
-    fetch('/save-rating', {
+    fetch('/company/save-rating', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(requestBody),
+        body: JSON.stringify(Object.fromEntries(formData)),
     })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
             return response.json();
         })
@@ -141,7 +141,10 @@ function submitRating() {
             // You may want to provide user feedback here
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error('Fetch error:', error.message);
             // You may want to handle errors and provide user feedback
         });
 }
+
+
+

@@ -89,5 +89,33 @@ router.post('/edit', (req,res) => {
     });
 });
 
+// Route to handle rating submission
+router.post('/save-rating', async (req, res) => {
+    try {
+        const { liked, comment, company_id, user_id } = req.body;
+
+        const saveRatingQuery = `
+            INSERT INTO rate (liked, comment, company_id, user_id)
+            VALUES ($1, $2, $3, $4)
+            RETURNING *;`;
+
+        const saveRatingValues = [liked, comment, company_id, user_id];
+
+        const savedRating = await pool.query(saveRatingQuery, saveRatingValues);
+
+        // Check if the rating was successfully saved
+        if (savedRating.rows.length > 0) {
+            // Send the saved rating in the response
+            res.status(200).json(savedRating.rows[0]);
+        } else {
+            // Handle the case where the rating was not saved
+            res.status(500).json({ error: 'Failed to save rating' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 
 export default router;
