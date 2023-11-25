@@ -69,7 +69,9 @@ document.querySelectorAll('input[type="radio"]').forEach((radio) => {
 });
 
 // Function to handle canceling the rating
-function cancelRating() {
+function cancelRating(event) {
+    event.preventDefault(); // Prevent the default form submission
+
     const commentsSection = document.getElementById('commentsSection');
     const selectedRating = document.querySelector('input[name="rating"]:checked');
     const commentsTextarea = document.getElementById('comments');
