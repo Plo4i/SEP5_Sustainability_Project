@@ -117,7 +117,7 @@ function submitRating(event) {
     const liked = document.querySelector('input[name="rating"]:checked').value;
     const comment = document.getElementById('comments').value;
 
-    const formData = new FormData(document.getElementById('ratingForm'));
+    const formData = new FormData(document.getElementById('rating-form'));
     formData.append('company_id', company_id);
     formData.append('user_id', user_id);
     formData.append('liked', liked);
@@ -138,7 +138,12 @@ function submitRating(event) {
         })
         .then(data => {
             console.log('Rating saved successfully:', data);
-            // You may want to provide user feedback here
+
+            // Hide the rating form
+            document.getElementById('rating-form').style.display = 'none';
+
+            // Show the thank you message
+            document.querySelector('.thank-you-message').style.display = 'block';
         })
         .catch(error => {
             console.error('Fetch error:', error.message);
