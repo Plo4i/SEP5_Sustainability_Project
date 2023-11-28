@@ -112,7 +112,7 @@ function submitRating(event) {
         return;
     }
 
-    // Get user_id from wherever you're storing the logged-in user's information
+    // Get user_id from wherever you are storing the logged-in user's information
     const user_id = getCookie('currentUserId');
 
     // Get liked and comment from the form
@@ -149,9 +149,10 @@ function submitRating(event) {
         })
         .catch(error => {
             console.error('Fetch error:', error.message);
-            // You may want to handle errors and provide user feedback
         });
 }
+
+// This code fetches the number of ratings and avarage score of the particular company
 
 let companyId = getURLParameter('CVR');
 
@@ -161,6 +162,45 @@ fetch(`/company/rating?CVR=${companyId}`)
         let score = Number(data.score);
         let scoreText = Number.isInteger(score) ? parseInt(score) : score.toFixed(1);
         document.querySelector('.rating p').textContent = `Reviews: ${data.reviews} • Score: ${scoreText}/5`;
+
+        // Color the stars based on the avarage rating of the particular company
+        // Get the star elements
+        let stars = document.querySelectorAll('.rated1');
+
+        // Remove all color classes from the stars
+        stars.forEach(star => {
+            star.classList.remove('red', 'orange', 'yellow', 'green', 'dark-green');
+        });
+
+        // Add the appropriate color class to the stars based on the score
+        for (let i = 0; i < Math.floor(score); i++) {
+            if (score < 2) {
+                stars[i].classList.add('red');
+            } else if (score < 3) {
+                stars[i].classList.add('orange');
+            } else if (score < 4) {
+                stars[i].classList.add('yellow');
+            } else if (score < 5) {
+                stars[i].classList.add('green');
+            } else {
+                stars[i].classList.add('dark-green');
+            }
+        }
+
+        // If the score has a decimal part, add the appropriate color class to the next star
+        if (!Number.isInteger(score)) {
+            let nextStar = stars[Math.floor(score)];
+            if (score < 2) {
+                nextStar.classList.add('red-gradient');
+            } else if (score < 3) {
+                nextStar.classList.add('orange-gradient');
+            } else if (score < 4) {
+                nextStar.classList.add('yellow-gradient');
+            } else if (score < 5) {
+                nextStar.classList.add('green-gradient');
+            }
+        }
+
     })
     .catch(error => console.error('Error:', error));
 

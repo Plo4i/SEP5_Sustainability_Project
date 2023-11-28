@@ -1,5 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100;200;300;400;500;600;700;800;900&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
+/* Declare colors for the stars in the rating section in the heading */
+
+.rated1.red {
+  color: #FF5254;
+}
+
+.rated1.orange {
+  color: #FF6C35;
+}
+
+.rated1.yellow {
+  color: #FF9900;
+}
+
+.rated1.green {
+  color: #3F9E37;
+}
+
+.rated1.dark-green {
+  color: #14892c;
+}
+
+.star.red-gradient {
+  background: linear-gradient(to right, #FF5254, #FF6C35);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.star.orange-gradient {
+  background: linear-gradient(to right, #FF6C35, #FF9900);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.star.yellow-gradient {
+  background: linear-gradient(to right, #FF9900, #3F9E37);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.star.green-gradient {
+  background: linear-gradient(to right, #3F9E37, #14892c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Make an arrow for styling */
 
 .arrow {
@@ -390,10 +436,6 @@ div.vertical-line {
 
 .rating .iconify{
   font-size: 35px;
-}
-
-.rated1{
-  color: #3F9E37;
 }
 
 @media screen and (max-width: 1280px){
