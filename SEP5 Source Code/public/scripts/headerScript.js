@@ -5,9 +5,20 @@ function set_header_links(user) {
     headerBar.innerHTML = '<a href="#companies">Companies</a>';
 
     if(user != undefined) {
-        headerBar.innerHTML += `<a href="/user"> <div class='profile-button-container'> <div class='profile-button-image'> <img src="${user.image_url}"/> </div> ${user.username}</div> </a>
-        <div class="search-icon"><a href="/">
-        <i class="fa fa-search" aria-hidden="true"></i></a></div>`;
+        headerBar.innerHTML += `
+        <a href="/user"> 
+            <div class='profile-button-container'> 
+                <div class='profile-button-image'> 
+                    <img src="${user.image_url}"/> 
+                </div> 
+                    <p>${user.username}</p>
+            </div> 
+        </a>
+        <div class="search-icon">
+            <a href="/">
+                <i class="fa fa-search" aria-hidden="true"></i>
+            </a>
+        </div>`;
     }
     else {
         headerBar.innerHTML += 
