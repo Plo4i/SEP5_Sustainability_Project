@@ -153,5 +153,14 @@ function submitRating(event) {
         });
 }
 
+let companyId = getURLParameter('CVR');
 
+fetch(`/company/rating?CVR=${companyId}`)
+    .then(response => response.json())
+    .then(data => {
+        let score = Number(data.score);
+        let scoreText = Number.isInteger(score) ? parseInt(score) : score.toFixed(1);
+        document.querySelector('.rating p').textContent = `Reviews: ${data.reviews} • Score: ${scoreText}/5`;
+    })
+    .catch(error => console.error('Error:', error));
 

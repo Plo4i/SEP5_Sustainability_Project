@@ -117,5 +117,27 @@ router.post('/save-rating', async (req, res) => {
     }
 });
 
+router.get('/rating', async (req, res) => {
+    try {
+        const companyCVR = req.query.CVR;
+        const reviewsQuery = `
+            SELECT COUNT(*) as reviews, AVG(liked) as score 
+            FROM rate 
+            WHERE company_id = $1;
+        `;
+
+        const { rows } = await pool.query(reviewsQuery, [companyCVR]);
+
+        if (rows.length > 0) {
+            res.status(200).json(rows[0]);
+        } else {
+            res.status(404).json({ error: 'No reviews found for this company' });
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 
 export default router;
