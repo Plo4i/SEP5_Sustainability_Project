@@ -2,7 +2,7 @@
 function set_header_links(user) {
 
     const headerBar = document.getElementById('headerLinks');
-    headerBar.innerHTML = '<a href="#companies">Companies</a>';
+    headerBar.innerHTML = '<a href="/#companies">Companies</a>';
 
     if(user != undefined) {
         headerBar.innerHTML += `

@@ -436,21 +436,12 @@ div.vertical-line {
   justify-content: space-between;
 }
 
-
-
 /* Styling of the stars where the user will be able to give his/her rating */
 
 .star-rating{
   display: flex;
   justify-content: center;
   padding: 20px 0;
-}
-
-/* example rating stars - !!!to be deleted!!! */
-
-.star-rating .iconify{
-  font-size: 28px;
-  color: #4a4a4a;
 }
 
 .avg-rating .rated1{
