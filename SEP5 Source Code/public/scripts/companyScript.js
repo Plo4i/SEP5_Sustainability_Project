@@ -39,25 +39,6 @@ fetch('/company/data' + window.location.search)  // Using fetch with http reques
         console.error('Error:', error);
     });
 
-
-document.querySelector('.read-more').addEventListener('click', function () {
-    var longText = document.querySelector('.long-text');
-    var readMoreButton = document.querySelector('.read-more');
-    var readLessButton = document.querySelector('.read-less');
-    longText.style.display = 'inline';
-    readMoreButton.style.display = 'none';
-    readLessButton.style.display = 'inline';
-});
-
-document.querySelector('.read-less').addEventListener('click', function () {
-    var longText = document.querySelector('.long-text');
-    var readMoreButton = document.querySelector('.read-more');
-    var readLessButton = document.querySelector('.read-less');
-    longText.style.display = 'none';
-    readMoreButton.style.display = 'inline';
-    readLessButton.style.display = 'none';
-});
-
 // Code to show/hide comments section based on radio button selection
 const commentsSection = document.getElementById('commentsSection');
 
@@ -104,6 +85,16 @@ function getCookie(name) {
 function submitRating(event) {
     event.preventDefault(); // Prevent the default form submission
 
+    
+    const user_id = getCookie('currentUserId');
+
+    // Check if the user is logged in
+    if (!user_id) {
+        // If the user is not logged in, redirect them to the login page
+        window.location.href = '/login';
+        return;
+    }
+
     // Get company_id from the URL parameter
     const company_id = getURLParameter('CVR');
 
@@ -111,9 +102,6 @@ function submitRating(event) {
         console.error('Company CVR not found in the URL.');
         return;
     }
-
-    // Get user_id from wherever you are storing the logged-in user's information
-    const user_id = getCookie('currentUserId');
 
     // Get liked and comment from the form
     const liked = document.querySelector('input[name="rating"]:checked').value;
@@ -146,6 +134,15 @@ function submitRating(event) {
 
             // Show the thank you message
             document.querySelector('.thank-you-message').style.display = 'block';
+
+            const selectedRating = document.querySelector('input[name="rating"]:checked');
+            const commentsTextarea = document.getElementById('comments');
+
+            // Reset selected rating and comments
+            if (selectedRating) {
+                selectedRating.checked = false;
+            }
+            commentsTextarea.value = '';
         })
         .catch(error => {
             console.error('Fetch error:', error.message);
@@ -156,12 +153,13 @@ function submitRating(event) {
 
 let companyId = getURLParameter('CVR');
 
-fetch(`/company/rating?CVR=${companyId}`)
+fetch(`/company/avarage-rating?CVR=${companyId}`)
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         let score = Number(data.score);
         let scoreText = Number.isInteger(score) ? parseInt(score) : score.toFixed(1);
-        document.querySelector('.rating p').textContent = `Reviews: ${data.reviews} • Score: ${scoreText}/5`;
+        document.querySelector('.avg-rating p').textContent = `Reviews: ${data.reviews} • Score: ${scoreText}/5`;
 
         // Color the stars based on the avarage rating of the particular company
         // Get the star elements
@@ -204,3 +202,97 @@ fetch(`/company/rating?CVR=${companyId}`)
     })
     .catch(error => console.error('Error:', error));
 
+// Function to get the time when a review was written
+
+function timeAgo(date) {
+    const now = new Date();
+    const secondsAgo = Math.round((now - date) / 1000);
+    const minutesAgo = Math.round(secondsAgo / 60);
+    const hoursAgo = Math.round(minutesAgo / 60);
+    const daysAgo = Math.round(hoursAgo / 24);
+
+    if (secondsAgo < 60) {
+        return `${secondsAgo} seconds ago`;
+    } else if (minutesAgo < 60) {
+        return `${minutesAgo} minutes ago`;
+    } else if (hoursAgo < 24) {
+        return `${hoursAgo} hours ago`;
+    } else {
+        return `${daysAgo} days ago`;
+    }
+}
+
+// Function to fetch and display the 3 most recent reviews
+function fetchAndDisplayReviews(companyId) {
+    fetch(`/company/reviews-sidebar?CVR=${companyId}&limit=3`)
+        .then(response => response.json())
+        .then(reviews => {
+            const sidebarComments = document.querySelector('.sidebar-comments');
+            sidebarComments.innerHTML = ''; // Clear the existing comments
+
+            reviews.forEach(review => {
+                console.log(review);
+                console.log(review.image_url)
+                // Create the HTML for the review
+                const reviewHTML = `
+                    <div class="comment">
+                        <div class="user-information-wrap">
+                            <div class="user-image">
+                                <img src="${review.userimage}" alt=" ${review.userImage} user logo">
+                            </div>
+                            <div class="user-name">
+                                <a href="#"><h3>${review.username}</h3></a>
+                            </div>
+                        </div>
+                        <div class="comment-content-wrap">
+                            <div class="comment-rating-date-wrap">
+                                <div class="comment-rating">
+                                    ${'★'.repeat(review.liked)}
+                                    ${'☆'.repeat(5 - review.liked)}
+                                </div>
+                                <div class="date">
+                                    <p>${timeAgo(new Date(review.date_created))}</p>
+                                </div>
+                            </div>
+                            <div class="comment-heading">
+                                <h3>${review.comment.split(' ').slice(0, 10).join(' ')}...</h3>
+                            </div>
+                            <div class="comment-text">
+                                <p class="long-text">${review.comment}</p>
+                            </div>
+                        </div>
+                        <button class="read-more">Read More <i class="arrow down"></i></button>
+                        <button class="read-less" style="display: none;">Read Less <i class="arrow up"></i></button>
+                    </div>
+                `;
+
+                // Add the review to the sidebar comments
+                sidebarComments.innerHTML += reviewHTML;
+
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+}
+
+// Fetch and display the reviews when the page loads
+fetchAndDisplayReviews(companyId);
+
+document.querySelector('.read-more').addEventListener('click', function () {
+    var longText = document.querySelector('.long-text');
+    var readMoreButton = document.querySelector('.read-more');
+    var readLessButton = document.querySelector('.read-less');
+    longText.style.display = 'inline';
+    readMoreButton.style.display = 'none';
+    readLessButton.style.display = 'inline';
+});
+
+document.querySelector('.read-less').addEventListener('click', function () {
+    var longText = document.querySelector('.long-text');
+    var readMoreButton = document.querySelector('.read-more');
+    var readLessButton = document.querySelector('.read-less');
+    longText.style.display = 'none';
+    readMoreButton.style.display = 'inline';
+    readLessButton.style.display = 'none';
+});

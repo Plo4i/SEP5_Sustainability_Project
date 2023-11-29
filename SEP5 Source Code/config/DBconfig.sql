@@ -47,7 +47,8 @@ CREATE TABLE Rate (
     liked INT,
     comment TEXT,
     company_id INT REFERENCES Companies(cvr),
-    user_id SERIAL REFERENCES Users(id)
+    user_id SERIAL REFERENCES Users(id),
+    date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE VIEW Avg_ESG_Scores AS

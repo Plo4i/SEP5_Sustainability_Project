@@ -110,7 +110,7 @@
     font-size: 48px;
 }
 
-.logo-name-rating-container .name-rating-container .rating p{
+.logo-name-rating-container .name-rating-container .avg-rating p{
     font-size: 20px;
     color: #4a4a4a;
 }
@@ -298,6 +298,7 @@ div.vertical-line {
   background-color: var(--white-font-color);
   border-radius: 10px;
   border: 1px solid #a0a0a0;
+  margin: 15px 0;
   /* box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.5); */
 }
 
@@ -385,6 +386,8 @@ div.vertical-line {
 
 .sidebar-comments .user-information-wrap .user-image img{
   width: 100%;
+  border-radius: 100px;
+  height: 45px;
 }
 
 .sidebar-comments .user-information-wrap .user-image {
@@ -430,11 +433,11 @@ div.vertical-line {
   color: #4a4a4a;
 }
 
-.rated{
+.rated-comment{
   color: #FF6C35;
 }
 
-.rating .iconify{
+.avg-rating .rated1{
   font-size: 35px;
 }
 

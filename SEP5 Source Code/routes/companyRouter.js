@@ -98,7 +98,7 @@ router.post('/save-rating', async (req, res) => {
             INSERT INTO rate (liked, comment, company_id, user_id)
             VALUES ($1, $2, $3, $4)
             RETURNING *;`;
-
+        console.log({ liked, comment, company_id, user_id });
         const saveRatingValues = [liked, comment, company_id, user_id];
 
         const savedRating = await pool.query(saveRatingQuery, saveRatingValues);
@@ -117,7 +117,8 @@ router.post('/save-rating', async (req, res) => {
     }
 });
 
-router.get('/rating', async (req, res) => {
+// Router for the avarage rating in the heading of the company page
+router.get('/avarage-rating', async (req, res) => {
     try {
         const companyCVR = req.query.CVR;
         const reviewsQuery = `
@@ -139,5 +140,24 @@ router.get('/rating', async (req, res) => {
     }
 });
 
+// Router for the sidebar reviews to get the 3 most recnt reviews
+router.get('/reviews-sidebar', async (req, res) => {
+    try {
+        const { CVR, limit } = req.query;
+        const results = await pool.query(
+            `SELECT Rate.*, Users.username as userName, Users.image_url as userImage
+             FROM Rate 
+             INNER JOIN Users ON Rate.user_id = Users.id 
+             WHERE Rate.company_id = $1 
+             ORDER BY Rate.date_created DESC 
+             LIMIT $2`,
+            [CVR, limit]
+        );
+        res.status(200).json(results.rows);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 export default router;

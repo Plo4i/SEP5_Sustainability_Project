@@ -120,11 +120,18 @@ fetch('/user/profile')
 // Probably this part will be moved to header. But options for now stay
 const form = document.getElementById('userForm');
 
+function deleteCookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
+
 function pageChange(value) {
     if(value === 'home') {
         form.action = '/';
     }
     else if(value === 'logout') {
+        
+        deleteCookie('currentUserId');
+
         form.action = '/user/logout';
     }
     else if(value === 'insertCompany') {
