@@ -22,6 +22,26 @@
   color: #14892c;
 }
 
+.rated2.red {
+  color: #FF5254;
+}
+
+.rated2.orange {
+  color: #FF6C35;
+}
+
+.rated2.yellow {
+  color: #FF9900;
+}
+
+.rated2.green {
+  color: #3F9E37;
+}
+
+.rated2.dark-green {
+  color: #14892c;
+}
+
 .star.red-gradient {
   background: linear-gradient(to right, #FF5254, #FF6C35);
   -webkit-background-clip: text;
@@ -431,10 +451,6 @@ div.vertical-line {
 .star-rating .iconify{
   font-size: 28px;
   color: #4a4a4a;
-}
-
-.rated-comment{
-  color: #FF6C35;
 }
 
 .avg-rating .rated1{

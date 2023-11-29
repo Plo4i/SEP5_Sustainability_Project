@@ -247,8 +247,8 @@ function fetchAndDisplayReviews(companyId) {
                         <div class="comment-content-wrap">
                             <div class="comment-rating-date-wrap">
                                 <div class="comment-rating">
-                                    ${'★'.repeat(review.liked)}
-                                    ${'☆'.repeat(5 - review.liked)}
+                                     ${Array(review.liked).fill().map(() => `<span class="iconify rated2 user-rating-star" data-icon="material-symbols:star"></span>`).join('')}
+                                     ${Array(5 - review.liked).fill().map(() => `<span class="iconify rated2 user-rating-star" data-icon="material-symbols:star"></span>`).join('')}
                                 </div>
                                 <div class="date">
                                     <p>${timeAgo(new Date(review.date_created))}</p>
@@ -269,6 +269,29 @@ function fetchAndDisplayReviews(companyId) {
                 // Add the review to the sidebar comments
                 sidebarComments.innerHTML += reviewHTML;
 
+                // Get the last added review and its stars
+                const lastReview = sidebarComments.lastElementChild;
+                const stars = lastReview.querySelectorAll('.user-rating-star');
+
+                // Remove all color classes from the stars
+                stars.forEach(star => {
+                    star.classList.remove('red', 'orange', 'yellow', 'green', 'dark-green');
+                });
+
+                // Add the appropriate color class to the stars based on the user's rating
+                for (let i = 0; i < review.liked; i++) {
+                    if (review.liked < 2) {
+                        stars[i].classList.add('red');
+                    } else if (review.liked < 3) {
+                        stars[i].classList.add('orange');
+                    } else if (review.liked < 4) {
+                        stars[i].classList.add('yellow');
+                    } else if (review.liked < 5) {
+                        stars[i].classList.add('green');
+                    } else {
+                        stars[i].classList.add('dark-green');
+                    }
+                }
             });
         })
         .catch(error => {
@@ -279,20 +302,20 @@ function fetchAndDisplayReviews(companyId) {
 // Fetch and display the reviews when the page loads
 fetchAndDisplayReviews(companyId);
 
-document.querySelector('.read-more').addEventListener('click', function () {
-    var longText = document.querySelector('.long-text');
-    var readMoreButton = document.querySelector('.read-more');
-    var readLessButton = document.querySelector('.read-less');
-    longText.style.display = 'inline';
-    readMoreButton.style.display = 'none';
-    readLessButton.style.display = 'inline';
-});
-
-document.querySelector('.read-less').addEventListener('click', function () {
-    var longText = document.querySelector('.long-text');
-    var readMoreButton = document.querySelector('.read-more');
-    var readLessButton = document.querySelector('.read-less');
-    longText.style.display = 'none';
-    readMoreButton.style.display = 'inline';
-    readLessButton.style.display = 'none';
+document.querySelector('.sidebar-comments').addEventListener('click', function (event) {
+    if (event.target.matches('.read-more')) {
+        var longText = event.target.closest('.comment').querySelector('.long-text');
+        var readMoreButton = event.target;
+        var readLessButton = event.target.closest('.comment').querySelector('.read-less');
+        longText.style.display = 'inline';
+        readMoreButton.style.display = 'none';
+        readLessButton.style.display = 'inline';
+    } else if (event.target.matches('.read-less')) {
+        var longText = event.target.closest('.comment').querySelector('.long-text');
+        var readMoreButton = event.target.closest('.comment').querySelector('.read-more');
+        var readLessButton = event.target;
+        longText.style.display = 'none';
+        readMoreButton.style.display = 'inline';
+        readLessButton.style.display = 'none';
+    }
 });
