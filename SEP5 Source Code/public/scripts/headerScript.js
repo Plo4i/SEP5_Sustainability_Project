@@ -15,9 +15,7 @@ function set_header_links(user) {
             </div> 
         </a>
         <div class="search-icon">
-            <a href="/">
                 <i class="fa fa-search" aria-hidden="true"></i>
-            </a>
         </div>`;
     }
     else {
@@ -27,6 +25,15 @@ function set_header_links(user) {
         <a href="#" id='for-paid-customers-button'>For Paid Customers</a>
         <div class="search-icon"><i class="fa fa-search" aria-hidden="true"></i></div>`;
     }
+
+    // Serchbar functionality - event listener
+    // Open searchbar
+    document.querySelector(".fa-search").addEventListener("click", function () {
+        var navLinks = document.getElementById("nav-links");
+        navLinks.classList.remove("nav-links-searchbar-off");
+        navLinks.classList.add("nav-links-searchbar-on");
+        document.getElementById("search-bar").style.display = "block";
+    });
 };
 
 fetch('/user/data')  // Using fetch with http request to get session user
@@ -55,17 +62,37 @@ window.addEventListener("scroll", function () {
 });
 
 // Serchbar functionality - event listener
-// Open searchbar
-document.querySelector(".fa-search").addEventListener("click", function () {
-    var navLinks = document.getElementById("nav-links");
-    navLinks.classList.remove("nav-links-searchbar-off");
-    navLinks.classList.add("nav-links-searchbar-on");
-    document.getElementById("search-bar").style.display = "block";
-});
+// Close searchbar
 
 document.getElementById("close-btn").addEventListener("click", function () {
     var navLinks = document.getElementById("nav-links");
     navLinks.classList.remove("nav-links-searchbar-on");
     navLinks.classList.add("nav-links-searchbar-off");
     document.getElementById("search-bar").style.display = "none";
+});
+
+// Search bar functionality
+
+const searchInput = document.getElementById('search-input');
+const suggestionsBox = document.getElementById('suggestions-box');
+
+searchInput.addEventListener('input', async () => {
+    const query = searchInput.value;
+    const response = await fetch(`/header/search?q=${query}`);
+    const suggestions = await response.json();
+
+    suggestionsBox.innerHTML = '';
+    suggestions.forEach(suggestion => {
+        const item = document.createElement('div');
+        item.textContent = suggestion.name;
+        item.addEventListener('click', () => {
+            searchInput.value = suggestion.name;
+            suggestionsBox.innerHTML = '';
+            suggestionsBox.style.display = 'none'; // hide the suggestions box when a suggestion is clicked
+        });
+        suggestionsBox.appendChild(item);
+    });
+
+    // Show the suggestions box if there are suggestions, otherwise hide it
+    suggestionsBox.style.display = suggestions.length > 0 ? 'block' : 'none';
 });

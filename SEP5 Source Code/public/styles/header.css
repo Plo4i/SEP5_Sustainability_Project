@@ -212,7 +212,7 @@ header {
 }
 
 #search-input:focus{
-    border-bottom: var(--orange-button-color) 3px solid;
+    border-bottom: var(--dark-orange-color) 3px solid;
 }
 
 #search-btn {
@@ -220,7 +220,6 @@ header {
     border: none;
     background-color: transparent;
     color: white;
-    cursor: pointer;
     font-size: 25px;
     transition: .5s ease-out;
 }
@@ -231,7 +230,34 @@ header {
     transition: .5s ease;
 }
 
-#search-btn:hover,
 #close-btn:hover{
-    color: var(--orange-button-color);
+    color: var(--dark-orange-color);
+}
+
+#suggestions-box {
+    position: absolute;
+    top: 119px;
+    left: 338px;
+    width: 608px;
+    max-height: 200px;
+    overflow-y: auto;
+    background-color: var(--black-color);
+    border: 1px solid var(--dark-gray-color);
+    border-top: 1px solid transparent;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    display: none;
+}
+
+#suggestions-box div{
+    color: var(--white-font-color);
+    padding: 10px;
+    border-bottom: 1px solid var(--dark-gray-color);
+    transition: .5s ease;
+}
+
+#suggestions-box div:hover {
+    cursor: pointer;
+    color: var(--black-color);
+    background-color: var(--gray-color);
 }
