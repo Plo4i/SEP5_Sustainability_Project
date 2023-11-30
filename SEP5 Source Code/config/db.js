@@ -7,6 +7,7 @@ const pool = new pg.Pool({
     database: 'fgfvuocu',
     password: 'SctnoJglNVvNuF47Wngw2ms3vYFMVRVN',
     port: 5432,
+    max: 20,
   });
 
 // Connecting to the DB
@@ -37,6 +38,10 @@ process.on('SIGINT', () => {
       console.log('Pool has been closed');
       process.exit(0);
   });
+});
+
+process.on('exit', () => {
+  pool.end();
 });
 
 export default pool;
