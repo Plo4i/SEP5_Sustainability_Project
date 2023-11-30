@@ -249,14 +249,15 @@ header {
     display: none;
 }
 
-#suggestions-box div{
+#suggestions-box a{
     color: var(--white-font-color);
+    text-decoration: none;
     padding: 10px;
     border-bottom: 1px solid var(--dark-gray-color);
     transition: .5s ease;
 }
 
-#suggestions-box div:hover {
+#suggestions-box a:hover {
     cursor: pointer;
     color: var(--black-color);
     background-color: var(--gray-color);

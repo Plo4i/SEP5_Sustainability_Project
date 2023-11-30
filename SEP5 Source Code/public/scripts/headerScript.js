@@ -72,19 +72,25 @@ document.getElementById("close-btn").addEventListener("click", function () {
 });
 
 // Search bar functionality
-
 const searchInput = document.getElementById('search-input');
 const suggestionsBox = document.getElementById('suggestions-box');
 
 searchInput.addEventListener('input', async () => {
     const query = searchInput.value;
+
+    if (query === '') {
+        suggestionsBox.style.display = 'none';
+        return;
+    }
+
     const response = await fetch(`/header/search?q=${query}`);
     const suggestions = await response.json();
 
     suggestionsBox.innerHTML = '';
     suggestions.forEach(suggestion => {
-        const item = document.createElement('div');
+        const item = document.createElement('a');
         item.textContent = suggestion.name;
+        item.href = `/company?CVR=${suggestion.cvr}`;
         item.addEventListener('click', () => {
             searchInput.value = suggestion.name;
             suggestionsBox.innerHTML = '';
@@ -93,6 +99,11 @@ searchInput.addEventListener('input', async () => {
         suggestionsBox.appendChild(item);
     });
 
+    // Apply styles to the suggestions box
+    suggestionsBox.style.display = 'flex';
+    suggestionsBox.style.justifyContent = 'flex-start';
+    suggestionsBox.style.flexDirection = 'column';
+
     // Show the suggestions box if there are suggestions, otherwise hide it
-    suggestionsBox.style.display = suggestions.length > 0 ? 'block' : 'none';
+    suggestionsBox.style.display = suggestions.length > 0 ? 'flex' : 'none';
 });
