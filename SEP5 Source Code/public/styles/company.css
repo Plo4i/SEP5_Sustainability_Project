@@ -306,7 +306,20 @@ div.vertical-line {
 .company-information-content .sidebar-rating-comments .comments-title h2{
   font-size: 34px;
   font-weight: 800;
-  margin: 20px 0;
+  margin: 20px 0 5px ;
+}
+
+.company-information-content .sidebar-rating-comments p {
+  text-align: end;
+}
+
+.company-information-content .sidebar-rating-comments p a {
+  text-decoration: none;
+  color: #000;
+}
+
+.company-information-content .sidebar-rating-comments p a:hover {
+  text-decoration: underline;
 }
 
 .company-information-content .sidebar-rating-comments .sidebar-comments{
