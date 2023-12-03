@@ -4,31 +4,71 @@ body {
     flex-direction: column;
 }
 
-#user-page {
-    flex: 1;
-    width: 70%;
-    margin: 110px auto 20px auto;
-    padding: 20px;
-    background-color: #f2f2f2; /* Background color for the user page */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+#top-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#profile {
-    padding: 20px;
-    border-bottom: 1px solid #ccc; /* Separator line between profile and buttons */
-}
-
-#profile img {
-    margin-top: 10px;
+#profile-picture {
+    margin: 15px 0;
     width: 150px;
     border-radius: 90px;
+    position: relative;
+}
+
+#upload-icon {
+    position: absolute;
+    margin-top: 130px;
+    margin-left: -45px;
+    width: 35px;
+    border-radius: 90px;
+    cursor: pointer;
+}
+
+#picture {
+        display: none;
+}
+
+#user-page {
+    width: 40%;
+    margin: 110px auto 20px auto;
+    padding: 20px;
+    background-color: #f2f2f2; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    align-items: center;
+}
+
+#profile-details {
+    display:flex;
+    flex-direction: column;
+    padding: 15px 150px;
+}
+
+#profile-details label {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+    color: #525f7f;
+    font-size: 15px;
+}
+
+.text {
+    font-size: 20px;
+    margin-left: 10px;
+    margin: 5px 0;
+    padding: 5px;
+    border-radius: 5px;
+    border-color: #ccc;
+    width: 300px;
+    height: 25px;
 }
 
 #userForm {
-    margin-top: 20px;
-    padding-bottom: 20px;
+    padding: 20px 0px;
     border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
 }
 
 #userForm button {
@@ -45,6 +85,10 @@ body {
     background-color: #45a049;  /*#8eb3d1*/
 }
 
+h1 {
+    margin: 0 auto;
+}
+
 .company-card {
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -55,6 +99,7 @@ body {
     align-items: center;
     background-color: #f8f8f8;
 }
+
 
 .info {
     color: #333;
@@ -69,7 +114,7 @@ body {
     border-radius: 4px;
     cursor: pointer;
     margin-right: 8px;
-    transition: background-color 0.3s; /* Smooth transition on hover */
+    transition: background-color 0.3s; 
 }
 
 .delete-btn {
@@ -77,12 +122,12 @@ body {
 }
 
 .edit-btn:hover {
-    background-color: #D98E00; /* Lighter shade on hover */
+    background-color: #D98E00; 
     opacity: 0.9;
 }
 
 .delete-btn:hover {
-    background-color: #a8392d; /* Lighter shade on hover */
+    background-color: #a8392d; 
     opacity: 0.9;
 }
 

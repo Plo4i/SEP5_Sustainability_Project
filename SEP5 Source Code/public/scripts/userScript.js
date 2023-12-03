@@ -1,13 +1,21 @@
 document.title = 'Profile'
 
+document.addEventListener('DOMContentLoaded', function () {
+    var fileInput = document.getElementById('picture');
+
+    // Listen for the change event on the file input
+    fileInput.addEventListener('change', function () {
+        uploadFile();
+    });
+});
+
 function set_profile(data) {
-    const profile_box = document.getElementById('profile');
     const companiesBox = document.getElementById('companiesBox');
+    const profile_picture = document.getElementById('profile-picture')
     const user = data.user;
 
     // Profile section parse
-    profile_box.innerHTML += `<h1> Profile ${user.username}</h1>
-        <img src="${user.image_url}" alt="User Photo" title="User Photo"/>`;
+    profile_picture.src = user.image_url;
 
     const companies = data.companies;
 
@@ -140,4 +148,31 @@ function pageChange(value) {
     
     form.submit(); // You can submit the form immediately or trigger submission later
 }
+
+//Profile picture change
+function uploadFile() {
+    var fileInput = document.getElementById('picture');
+
+    if (fileInput.files.length > 0) {
+        var file = fileInput.files[0];
+
+        // Creating FormData and appending the file
+        var formData = new FormData();
+        formData.append('picture', file);
+
+        // Simulating of data sending
+        console.log('Uploading file:', file.name);
+        
+        fetch('/user/changePic', {
+            method: 'POST',
+            body: formData
+        }).then(response => response.json())
+          .then(data => console.log('Server response:', data))
+          .then(location.reload())
+          .catch(error => console.error('Error:', error));
+    } else {
+        alert('Please select a file before uploading.');
+    }
+}
+
 

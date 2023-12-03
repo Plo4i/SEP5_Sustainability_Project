@@ -10,14 +10,9 @@ router.get('/', (req,res) => {
 });
 
 
-router.post("/", upload.single('picture'), async (req, res) => {
-  const file = req.file;
-  if (!file) {
-    return res.status(400).send('No file uploaded.');
-  }
+router.post("/", (req, res) => {
 
-  const filePath = '/images/' + file.filename;
-
+  const filePath = '/images/unknownUser.jpg'
   // Storing user details send by POST in the body
   const { username, password, email, subscription } = req.body;
 
@@ -25,31 +20,32 @@ router.post("/", upload.single('picture'), async (req, res) => {
   const userInfo = [filePath, username, password, email, subscription, currentDate];
 
   // Setting queries
-  const checkUsernameQuery = "SELECT * FROM users WHERE username = $1";
-  const insertUserQuery =
-    "INSERT INTO users (image_url, username, password, email, subscription_status, registration_date) VALUES ($1,$2,$3,$4,$5,$6)";
+  const checkUsernameQuery = `
+    SELECT * 
+    FROM users 
+    WHERE username = $1;`;
 
-  console.log(
-    "U: " +
-      username +
-      ", P: " +
-      password +
-      ", E: " +
-      email +
-      ", S: " +
-      subscription +
-      ", R: " +
-      currentDate
-  );
+  const checkEmailQuery = `
+    SELECT * 
+    FROM users
+    WHERE email = $4`;
+  
+  const insertUserQuery =
+    `INSERT INTO users 
+    (image_url, username, password, email, subscription_status, registration_date) \
+    VALUES ($1,$2,$3,$4,$5,$6);`;
 
   pool.query(checkUsernameQuery, [username], (err, result) => {
     if (err) {
       console.error(err);
       return res.status(500).send("Server error");
-    } else if (result.rows.length > 0) {
+    } 
+    else if (result.rows.length > 0) {
       // If the user already exists, send a response to the frontend
-      return res.status(400).send("User already exists");
-    } else {
+      return res.status(400).send("Username already exists");
+    } 
+    else {
+      
       pool.query(insertUserQuery, userInfo, (err, result) => {
         if (err) {
           console.error(err);

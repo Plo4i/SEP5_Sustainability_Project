@@ -1,6 +1,7 @@
 // Function for setting header links
 function set_header_links(user) {
 
+    console.log(user);
     const headerBar = document.getElementById('headerLinks');
     headerBar.innerHTML = '<a href="/#companies">Companies</a>';
 

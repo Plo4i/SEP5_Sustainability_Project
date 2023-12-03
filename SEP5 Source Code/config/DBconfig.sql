@@ -4,9 +4,8 @@ SET search_path TO EcoEval;
 DROP TABLE IF EXISTS Users CASCADE ;
 
 CREATE TABLE Users (
-    id SERIAL PRIMARY KEY,
     image_url VARCHAR(100),
-    username VARCHAR(100),
+    username VARCHAR(100) PRIMARY KEY,
     password VARCHAR(100),
     email VARCHAR(100),
     subscription_status VARCHAR(100),
@@ -30,7 +29,7 @@ DROP TABLE IF EXISTS ESG_score CASCADE ;
 
 CREATE TABLE ESG_score (
     score_id SERIAL PRIMARY KEY,
-    user_id SERIAL REFERENCES Users(id),
+    user_id VARCHAR(100) REFERENCES Users(username),
     company_id INT REFERENCES Companies(cvr),
     environmental_s DOUBLE PRECISION,
     social_s DOUBLE PRECISION,
@@ -47,20 +46,20 @@ CREATE TABLE Rate (
     liked INT,
     comment TEXT,
     company_id INT REFERENCES Companies(cvr),
-    user_id SERIAL REFERENCES Users(id),
+    user_id VARCHAR(100) REFERENCES Users(username),
     date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
-CREATE VIEW Avg_ESG_Scores AS
-SELECT ESG_score.company_id, AVG(ESG_score.total_score) as avgScore
-FROM ESG_score
-GROUP BY ESG_score.company_id;
 
 DROP TABLE IF EXISTS company_creation CASCADE;
 
 CREATE TABLE company_creation (
     id SERIAL PRIMARY KEY,
     company_id INT REFERENCES Companies(cvr),
-    user_id SERIAL REFERENCES Users(id),
+    user_id VARCHAR(100) REFERENCES Users(username),
     creationDate TIMESTAMP
 );
+
+CREATE VIEW Avg_ESG_Scores AS
+SELECT ESG_score.company_id, AVG(ESG_score.total_score) as avgScore
+FROM ESG_score
+GROUP BY ESG_score.company_id;

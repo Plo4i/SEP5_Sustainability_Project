@@ -109,7 +109,6 @@ function submitRating(event) {
 
     const formData = new FormData(document.getElementById('rating-form'));
     formData.append('company_id', company_id);
-    formData.append('user_id', user_id);
     formData.append('liked', liked);
     formData.append('comment', comment);
 

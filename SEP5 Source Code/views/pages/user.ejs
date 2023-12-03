@@ -4,9 +4,42 @@
 <%-include('../partials/header') -%>
 
    <div id='user-page'>
-      <div  id="profile">
-         <!--User data loaded inside. Check js file to modifying.-->
+
+      <div id='top-text'> 
+         <h1>Profile</h1>
+         
+         <div>
+            <img id="profile-picture" src="#" alt="Profile image" title="Profile image"/>
+            <label for="picture">
+               <img id="upload-icon" src="/images/camera.png">
+            </label>
+            <input type="file" id="picture" name="picture" placeholder="Upload profile picture">
+         </div> 
+
       </div>
+
+      <form id="profile-details">
+
+         <label for="username">
+            <span >Username</span> 
+         <input class="text" type="text" id="username" name="username" placeholder="Enter username" required> 
+         </label>
+
+         <label for="email">
+            <span>Email</span> 
+         <input class="text" type="text" id="email" name="email" placeholder="Enter email" disabled> 
+         </label>
+
+         <label>
+            <span>Subscription plan</span>
+               <div>
+                  <input type="radio" id="paid" name="sPlan" value="Paid" checked> Paid
+                  <input type="radio" id="free" name="sPlan" value="Free" > Free
+               </div>
+         </label>
+
+         <input class="btn-submit" type="submit" value="Update">
+      </form>
 
       <form id="userForm" action="/default">
          <button onclick="pageChange('logout')">Logout</button>
@@ -15,6 +48,7 @@
       </form>
 
       <div id="companiesBox">
+         <h1>Companies</h1>
          <!--Companies data loaded inside. Check js file to modifying.-->
       </div>
    </div>

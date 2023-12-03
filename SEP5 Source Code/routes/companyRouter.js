@@ -34,14 +34,14 @@ router.get('/data', async (req,res) => {
 });
 
 router.post('/delete', (req,res) => {
-    const user = req.session.user.id;
+    const user = req.session.user.username;
     const company = req.body;
     
     const deleteQueryCompaniesCreation = `DELETE FROM company_creation
         USING companies, users
         WHERE companies.cvr = company_creation.company_id
-        AND users.id = company_creation.user_id
-        AND users.id = $1
+        AND users.username = company_creation.user_id
+        AND users.username = $1
         AND companies.cvr = $2;`
     const deleteQueryCompanies = `DELETE FROM companies WHERE cvr = $1;`
 
@@ -66,7 +66,7 @@ router.post('/delete', (req,res) => {
 });
 
 router.post('/edit', (req,res) => {
-    const user = req.session.user.id;
+    const user = req.session.user.username;
     const company = req.body;
 
     const companyQuery = `SELECT * FROM companies WHERE cvr = $1;`;
@@ -92,13 +92,14 @@ router.post('/edit', (req,res) => {
 // Route to handle rating submission
 router.post('/save-rating', async (req, res) => {
     try {
-        const { liked, comment, company_id, user_id } = req.body;
+        const user_id = req.session.username;
+        const { liked, comment, company_id} = req.body;
 
         const saveRatingQuery = `
             INSERT INTO rate (liked, comment, company_id, user_id)
             VALUES ($1, $2, $3, $4)
             RETURNING *;`;
-        console.log({ liked, comment, company_id, user_id });
+        
         const saveRatingValues = [liked, comment, company_id, user_id];
 
         const savedRating = await pool.query(saveRatingQuery, saveRatingValues);
@@ -147,7 +148,7 @@ router.get('/reviews-sidebar', async (req, res) => {
         const results = await pool.query(
             `SELECT Rate.*, Users.username as userName, Users.image_url as userImage
              FROM Rate 
-             INNER JOIN Users ON Rate.user_id = Users.id 
+             INNER JOIN Users ON Rate.user_id = Users.username 
              WHERE Rate.company_id = $1 
              ORDER BY Rate.date_created DESC 
              LIMIT $2`,
