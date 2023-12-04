@@ -1,7 +1,6 @@
 // Function for setting header links
 function set_header_links(user) {
 
-    console.log(user);
     const headerBar = document.getElementById('headerLinks');
     headerBar.innerHTML = '<a href="/#companies">Companies</a>';
 
@@ -10,7 +9,7 @@ function set_header_links(user) {
         <a href="/user"> 
             <div class='profile-button-container'> 
                 <div class='profile-button-image'> 
-                    <img src="${user.image_url}"/> 
+                    <img src="${user.image_url !== 'empty' ? user.image_url : '/images/unknownUser.jpg'}"/> 
                 </div> 
                     <p>${user.username}</p>
             </div> 

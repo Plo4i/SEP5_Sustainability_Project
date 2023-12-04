@@ -49,7 +49,7 @@ router.get('/profile', (req, res) => {
   });
 });
 
-router.post('/changePic', upload.single('picture'), (req, res) => {
+router.post('/changePic', upload.single('picture'), async (req, res) => {
   const user = req.session.user;
   const file = req.file;
 
@@ -59,19 +59,24 @@ router.post('/changePic', upload.single('picture'), (req, res) => {
 
     // Delete the existing profile picture file
     const pathToDelete = 'public' + user.image_url;
-    fs.unlinkSync(pathToDelete);
 
     // Update the user's profile picture URL in the database
     const queryImageUpdate = `
       UPDATE users 
       SET image_url = $2
       WHERE username = $1;`;
-    pool.query(queryImageUpdate, sendInfo);
 
-    req.session.user.image_url = sendInfo[1];
+    await pool.query(queryImageUpdate, sendInfo, (err) => {
+      if(err) {
+        console.log(err);
+      }
+      else {
+        fs.promises.unlink(pathToDelete);
+        req.session.user.image_url = sendInfo[1];
+        return res.status(200).json({ success: true });
+      }
+    });
 
-    // Send the success response
-    res.status(200).json({ success: true });
   } catch (error) {
     console.error('Error:', error);
     res.status(500).json({ error: 'Server error' });

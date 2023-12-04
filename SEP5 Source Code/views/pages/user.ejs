@@ -9,7 +9,7 @@
          <h1>Profile</h1>
          
          <div>
-            <img id="profile-picture" src="#" alt="Profile image" title="Profile image"/>
+            <img id="profile-picture" src="/images/unknownUser.jpg" alt="Profile image" title="Profile image"/>
             <label for="picture">
                <img id="upload-icon" src="/images/camera.png">
             </label>
@@ -32,9 +32,11 @@
 
          <label>
             <span>Subscription plan</span>
-               <div>
-                  <input type="radio" id="paid" name="sPlan" value="Paid" checked> Paid
-                  <input type="radio" id="free" name="sPlan" value="Free" > Free
+               <div id="radio-input">
+                  <input type="radio" id="paid" name="sPlan" value="Paid">
+                  <label for="paid"> Paid </label>
+                  <input type="radio" id="free" name="sPlan" value="Free" checked>
+                  <label for="free"> Free </label>
                </div>
          </label>
 

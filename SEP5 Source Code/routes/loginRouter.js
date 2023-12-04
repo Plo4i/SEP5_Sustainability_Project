@@ -23,11 +23,11 @@ router.post("/", async (req, res) => {
       //Setting current user cookie to username
       res.cookie("currentUser", username, { httpOnly: false });
       //Setting current user_id cookie
-      res.cookie("currentUserId", result.rows[0].id, { httpOnly: false });
+      res.cookie("currentUserId", result.rows[0].username, { httpOnly: false });
 
-      res.status(200).redirect("/");
+      res.status(200).json({'success' : true})
     } else {
-      return res.status(400).send("Wrong username or password");
+      return res.status(400).send("Couldn't find your EcoEval Account");
     }
   } catch (error) {
     console.error('Error querying database:', error);

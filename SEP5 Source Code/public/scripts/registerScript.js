@@ -1,5 +1,43 @@
 document.title = 'Register';
 
+document.getElementById('register-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const username = document.getElementById('username-input').value;
+    const password = document.getElementById('password-input').value;
+    const email = document.getElementById('email-input').value;
+    const subscription = document.querySelector('input[name="subscription"]:checked').value;
+
+    const formData = {"username":username, 'password': password, 'email': email, 'subscription': subscription}; 
+
+    fetch('/register', {
+        method: 'POST',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData), 
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.text().then(text => {
+                throw new Error(text);
+            });
+        }
+
+        return response.json();
+    })
+    .then(data => {
+        // Handle the data received from the server
+        window.location.href = '/';
+    })
+    .catch(error => {
+        // Handle errors
+        document.getElementById("error-message").innerHTML = error;
+        console.error('Fetch error:', error);
+    });
+});
+
+
 // Declare variables
 var passwordInput = document.getElementById('password-input');
 var passwordContainer = document.querySelector('.password-container');

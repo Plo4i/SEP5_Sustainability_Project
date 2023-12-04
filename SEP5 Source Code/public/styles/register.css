@@ -145,6 +145,11 @@ input::placeholder{
     text-decoration: none;
 }
 
+#error-message {
+    color: #b74a58;
+    font-size: 15px;
+}
+
 @media screen and (max-width: 1280px){
     .register-form-container {
         height: 155vh;
