@@ -120,9 +120,23 @@
     text-decoration: none;
 }
 
+/* styling the error messages */
 #error-message {
     color: #b74a58;
     font-size: 15px;
+}
+
+.error {
+    color: red;
+    margin: 5px 0;
+}
+
+input.error {
+    border-bottom: 3px solid red;
+}
+
+.password-container.error {
+    border: 3px solid red;
 }
 
 @media screen and (max-width: 1280px) {

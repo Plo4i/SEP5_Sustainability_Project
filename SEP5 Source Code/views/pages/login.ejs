@@ -11,15 +11,16 @@
         <form id="login-form" class="login-form" method="POST" action="/login">
           <!-- Login form fields -->
           <input type="text" name="username" placeholder="Username" id="username-input">
-          
+          <span id="username-error" class="error"></span>
+
           <!-- Password -->
           <div class="password-container">
-            <input type="password" name="password" placeholder="Password" id="password-input" required>
+            <input type="password" name="password" placeholder="Password" id="password-input">
             <button class="show-password-button" type="button" onclick="togglePasswordVisibility()">
               <span class="iconify" data-icon="mdi:eye" id="toggle-password"></span>
             </button>
           </div>
-          <p id="error-message">&zwnj;</p>
+          <span id="password-error" class="error"></span>
 
           <button type="submit" id="login-button">Log In</button>
         </form>

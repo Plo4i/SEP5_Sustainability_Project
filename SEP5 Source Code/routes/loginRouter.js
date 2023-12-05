@@ -8,26 +8,32 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const {username, password} = req.body;
+  const { username, password } = req.body;
 
-   try {
+  try {
     // Query the database for user credentials
-    const result = await pool.query('SELECT * FROM users WHERE username = $1 AND password = $2', [username, password]);
+    const result = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
 
     if (result.rows.length > 0) {
+      const user = result.rows[0];
+
+      // Check if the password matches the username
+      if (user.password !== password) {
+        return res.status(400).json({ error: 'Invalid password' });
+      }
 
       // Set user information in the session
-      req.session.user = result.rows[0];
+      req.session.user = user;
       //Setting logged in cookie and session to true
       res.cookie("isLoggedIn", "true", { httpOnly: false });
       //Setting current user cookie to username
       res.cookie("currentUser", username, { httpOnly: false });
       //Setting current user_id cookie
-      res.cookie("currentUserId", result.rows[0].username, { httpOnly: false });
+      res.cookie("currentUserId", user.username, { httpOnly: false });
 
-      res.status(200).json({'success' : true})
+      res.status(200).json({ 'success': true })
     } else {
-      return res.status(400).send("Couldn't find your EcoEval Account");
+      return res.status(400).json({ error: 'Invalid username' });
     }
   } catch (error) {
     console.error('Error querying database:', error);
