@@ -102,16 +102,6 @@ body {
     font-weight: 300;
 }
 
-/* Styling for the container of company cards */
-.companies-card-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 27px;
-    width: 100%;
-    /* 100% of the viewport height */
-    justify-items: center;
-}
-
 /* Styling for individual company cards */
 .companies-card {
     background-color: #1f1f1f;

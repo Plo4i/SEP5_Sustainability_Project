@@ -1,7 +1,9 @@
 #company-form {
     width: 100%;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(5, 15rem);
+    justify-content: center;
+    justify-items: center;
 }
 .company-button {
     display: flex;
