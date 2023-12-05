@@ -121,10 +121,6 @@
 }
 
 /* styling the error messages */
-#error-message {
-    color: #b74a58;
-    font-size: 15px;
-}
 
 .error {
     color: red;

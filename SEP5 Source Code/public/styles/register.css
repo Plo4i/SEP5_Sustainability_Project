@@ -16,7 +16,7 @@
     background-color: var(--black-color);
     color: var(--white-font-color);
     width: 425px;
-    height: 570px;
+    height: 575px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -118,6 +118,7 @@ input::placeholder{
     font-size: 23px;
     cursor: pointer;
     transition: .5s ease;
+    margin-top: 5px;
 }
 
 #register-button:hover {
@@ -145,9 +146,15 @@ input::placeholder{
     text-decoration: none;
 }
 
-#error-message {
-    color: #b74a58;
-    font-size: 15px;
+/* styling error messages */
+
+.error {
+    color: red;
+    margin: 5px 0;
+}
+
+input.error {
+    border-bottom: 3px solid red;
 }
 
 @media screen and (max-width: 1280px){

@@ -1,40 +1,69 @@
 document.title = 'Register';
 
-document.getElementById('register-form').addEventListener('submit', function(event) {
+document.getElementById('register-form').addEventListener('submit', function (event) {
     event.preventDefault();
-    
-    const username = document.getElementById('username-input').value;
-    const password = document.getElementById('password-input').value;
-    const email = document.getElementById('email-input').value;
+
+    var usernameInput = document.getElementById('username-input');
+    var passwordInput = document.getElementById('password-input');
+    var emailInput = document.getElementById('email-input');
+    var usernameError = document.getElementById('username-error');
+    var passwordError = document.getElementById('password-error');
+    var emailError = document.getElementById('email-error');
+
+    // Reset error messages and input borders
+    usernameError.textContent = '';
+    passwordError.textContent = '';
+    emailError.textContent = '';
+    usernameInput.style.border = '';
+    passwordInput.style.border = '';
+    emailInput.style.border = '';
+
+    // Check if username, password and email are filled out
+    if (!usernameInput.value.trim()) {
+        usernameError.textContent = 'Username is required.';
+        usernameInput.style.borderBottom = '3px solid red';
+    }
+    if (!passwordInput.value.trim()) {
+        passwordError.textContent = 'Password is required.';
+        passwordContainer.style.borderBottom = '3px solid red';
+    }
+    if (!emailInput.value.trim()) {
+        emailError.textContent = 'Email is required.';
+        emailInput.style.borderBottom = '3px solid red';
+    }
+
+    const username = usernameInput.value;
+    const password = passwordInput.value;
+    const email = emailInput.value;
     const subscription = document.querySelector('input[name="subscription"]:checked').value;
 
-    const formData = {"username":username, 'password': password, 'email': email, 'subscription': subscription}; 
+    const formData = { "username": username, 'password': password, 'email': email, 'subscription': subscription };
 
     fetch('/register', {
         method: 'POST',
-        headers:{
+        headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(formData), 
+        body: JSON.stringify(formData),
     })
-    .then(response => {
-        if (!response.ok) {
-            return response.text().then(text => {
-                throw new Error(text);
-            });
-        }
+        .then(response => {
+            if (!response.ok) {
+                return response.text().then(text => {
+                    throw new Error(text);
+                });
+            }
 
-        return response.json();
-    })
-    .then(data => {
-        // Handle the data received from the server
-        window.location.href = '/';
-    })
-    .catch(error => {
-        // Handle errors
-        document.getElementById("error-message").innerHTML = error;
-        console.error('Fetch error:', error);
-    });
+            return response.json();
+        })
+        .then(data => {
+            // Handle the data received from the server
+            window.location.href = '/';
+        })
+        .catch(error => {
+            // Handle errors
+            document.getElementById("error-message").innerHTML = error;
+            console.error('Fetch error:', error);
+        });
 });
 
 
@@ -54,7 +83,7 @@ passwordInput.addEventListener('blur', function () {
 });
 
 // This function toggles the visibility of the password in both the register and login form
-function togglePasswordVisibility() {   
+function togglePasswordVisibility() {
 
     if (passwordInput.type === 'password') {
         passwordInput.type = 'text';
