@@ -229,69 +229,86 @@ function fetchAndDisplayReviews(companyId) {
             const sidebarComments = document.querySelector('.sidebar-comments');
             sidebarComments.innerHTML = ''; // Clear the existing comments
 
-            reviews.forEach(review => {
-                console.log(review);
-                console.log(review.image_url)
-                // Create the HTML for the review
-                const reviewHTML = `
-                    <div class="comment">
-                        <div class="user-information-wrap">
-                            <div class="user-image">
-                                <img src="${review.userimage}" alt=" ${review.userImage} user logo">
-                            </div>
-                            <div class="user-name">
-                                <a href="#"><h3>${review.username}</h3></a>
-                            </div>
-                        </div>
-                        <div class="comment-content-wrap">
-                            <div class="comment-rating-date-wrap">
-                                <div class="comment-rating">
-                                     ${Array(review.liked).fill().map(() => `<span class="iconify rated2 user-rating-star" data-icon="material-symbols:star"></span>`).join('')}
-                                     ${Array(5 - review.liked).fill().map(() => `<span class="iconify rated2 user-rating-star" data-icon="material-symbols:star"></span>`).join('')}
+            if (reviews.length === 0) {
+                // If there are no reviews, display a message
+                sidebarComments.innerHTML = '<div class="no-reviews-yet"><p>No reviews yet, be the first to write one!</p></div>';
+            } else {
+                reviews.forEach(review => {
+                    // Skip if the comment is empty
+                    if (!review.comment.trim()) {
+                        return;
+                    }
+
+                    console.log(review);
+                    console.log(review.image_url)
+                    // Create the HTML for the review
+                    const reviewHTML = `
+                        <div class="comment">
+                            <div class="user-information-wrap">
+                                <div class="user-image">
+                                    <img src="${review.userimage}" alt=" ${review.userImage} user logo">
                                 </div>
-                                <div class="date">
-                                    <p>${timeAgo(new Date(review.date_created))}</p>
+                                <div class="user-name">
+                                    <a href="#"><h3>${review.username}</h3></a>
                                 </div>
                             </div>
-                            <div class="comment-heading">
-                                <h3>${review.comment.split(' ').slice(0, 10).join(' ')}...</h3>
+                            <div class="comment-content-wrap">
+                                <div class="comment-rating-date-wrap">
+                                    <div class="comment-rating">
+                                         ${Array(review.liked).fill().map(() => `<span class="iconify rated2 user-rating-star" data-icon="material-symbols:star"></span>`).join('')}
+                                         ${Array(5 - review.liked).fill().map(() => `<span class="iconify rated2 user-rating-star" data-icon="material-symbols:star"></span>`).join('')}
+                                    </div>
+                                    <div class="date">
+                                        <p>${timeAgo(new Date(review.date_created))}</p>
+                                    </div>
+                                </div>
+                                <div class="comment-heading">
+                                    <h3>${review.comment.split(' ').length > 10 ? review.comment.split(' ').slice(0, 10).join(' ') + '...' : review.comment}</h3>
+                                </div>
+                                <div class="comment-text">
+                                    <p class="long-text">${review.comment}</p>
+                                </div>
                             </div>
-                            <div class="comment-text">
-                                <p class="long-text">${review.comment}</p>
-                            </div>
+                            ${review.comment.split(' ').length > 10 ? '<button class="read-more">Read More <i class="arrow down"></i></button><button class="read-less" style="display: none;">Read Less <i class="arrow up"></i></button>' : ''}
                         </div>
-                        <button class="read-more">Read More <i class="arrow down"></i></button>
-                        <button class="read-less" style="display: none;">Read Less <i class="arrow up"></i></button>
-                    </div>
-                `;
+                    `;
 
-                // Add the review to the sidebar comments
-                sidebarComments.innerHTML += reviewHTML;
+                    // Add the review to the sidebar comments
+                    sidebarComments.innerHTML += reviewHTML;
 
-                // Get the last added review and its stars
-                const lastReview = sidebarComments.lastElementChild;
-                const stars = lastReview.querySelectorAll('.user-rating-star');
+                    // Get the last added review and its stars
+                    const lastReview = sidebarComments.lastElementChild;
+                    const stars = lastReview.querySelectorAll('.user-rating-star');
 
-                // Remove all color classes from the stars
-                stars.forEach(star => {
-                    star.classList.remove('red', 'orange', 'yellow', 'green', 'dark-green');
+                    // Remove all color classes from the stars
+                    stars.forEach(star => {
+                        star.classList.remove('red', 'orange', 'yellow', 'green', 'dark-green');
+                    });
+
+                    // Add the appropriate color class to the stars based on the user's rating
+                    for (let i = 0; i < review.liked; i++) {
+                        if (review.liked < 2) {
+                            stars[i].classList.add('red');
+                        } else if (review.liked < 3) {
+                            stars[i].classList.add('orange');
+                        } else if (review.liked < 4) {
+                            stars[i].classList.add('yellow');
+                        } else if (review.liked < 5) {
+                            stars[i].classList.add('green');
+                        } else {
+                            stars[i].classList.add('dark-green');
+                        }
+                    }
                 });
 
-                // Add the appropriate color class to the stars based on the user's rating
-                for (let i = 0; i < review.liked; i++) {
-                    if (review.liked < 2) {
-                        stars[i].classList.add('red');
-                    } else if (review.liked < 3) {
-                        stars[i].classList.add('orange');
-                    } else if (review.liked < 4) {
-                        stars[i].classList.add('yellow');
-                    } else if (review.liked < 5) {
-                        stars[i].classList.add('green');
-                    } else {
-                        stars[i].classList.add('dark-green');
-                    }
-                }
-            });
+                // Create the "read-more-reviews" element
+                const readMoreReviews = document.createElement('p');
+                readMoreReviews.className = 'read-more-reviews';
+                readMoreReviews.innerHTML = '(<a href="#">Read More Reviews Here</a>)';
+
+                // Add the "read-more-reviews" element after all reviews have been added
+                sidebarComments.appendChild(readMoreReviews);
+            }
         })
         .catch(error => {
             console.error('Error:', error);

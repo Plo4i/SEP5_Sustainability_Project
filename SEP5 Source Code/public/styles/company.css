@@ -309,11 +309,11 @@ div.vertical-line {
   margin: 20px 0 5px ;
 }
 
-.company-information-content .sidebar-rating-comments p {
+.company-information-content .sidebar-rating-comments .read-more-reviews {
   text-align: end;
 }
 
-.company-information-content .sidebar-rating-comments p a {
+.company-information-content .sidebar-rating-comments .read-more-reviews a {
   text-decoration: none;
   color: #000;
 }
@@ -324,6 +324,16 @@ div.vertical-line {
 
 .company-information-content .sidebar-rating-comments .sidebar-comments{
     width: 100%;
+}
+
+.company-information-content .sidebar-rating-comments .sidebar-comments .no-reviews-yet{
+  background-color: #ffeacb;
+  border: 1px solid var(--black-color);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 65px;
 }
 
 .company-information-content .sidebar-rating-comments .sidebar-comments .comment {
