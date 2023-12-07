@@ -12,24 +12,6 @@ document.title = 'Login';
 document.getElementById('login-form').addEventListener('submit', function (event) {
     event.preventDefault(); // Prevent the form from being submitted
 
-    // Reset error messages and input borders
-    usernameError.textContent = '';
-    passwordError.textContent = '';
-    usernameInput.style.border = '';
-    passwordInput.style.border = '';
-
-    // Check if username and password are filled out
-    if (!usernameInput.value.trim()) {
-        usernameError.textContent = 'Username is required.';
-        usernameInput.style.borderBottom = '3px solid red';
-        return; // Stop the execution of the function
-    }
-    if (!passwordInput.value.trim()) {
-        passwordError.textContent = 'Password is required.';
-        passwordContainer.style.borderBottom = '3px solid red';
-        return; // Stop the execution of the function
-    }
-
     const username = usernameInput.value;
     const password = passwordInput.value;
 
@@ -59,10 +41,10 @@ document.getElementById('login-form').addEventListener('submit', function (event
             // Handle errors
             if (error.message === 'Invalid username') {
                 usernameInput.style.borderBottom = '3px solid red';
-                usernameError.textContent = error.message;
+                document.getElementById('error-message').textContent = error.message;
             } else if (error.message === 'Invalid password') {
                 passwordContainer.style.borderBottom = '3px solid red';
-                passwordError.textContent = error.message;
+                document.getElementById('error-message').textContent = error.message;
             }
             console.error('Fetch error:', error);
         });

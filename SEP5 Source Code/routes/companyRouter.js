@@ -37,24 +37,35 @@ router.post('/delete', (req,res) => {
     const user = req.session.user.username;
     const company = req.body;
     
-    const deleteQueryCompaniesCreation = `DELETE FROM company_creation
+    const deleteQueryCompaniesCreation = `
+        DELETE FROM company_creation
         USING companies, users
         WHERE companies.cvr = company_creation.company_id
         AND users.username = company_creation.user_id
         AND users.username = $1
-        AND companies.cvr = $2;`
+        AND companies.cvr = $2;`;
+
+    const deleteQueryESGScore = `DELETE FROM esg_score
+        USING companies, users
+        WHERE companies.cvr = esg_score.company_id
+        AND users.username = esg_score.user_id
+        AND users.username = $1
+        AND companies.cvr = $2;`;
+
     const deleteQueryCompanies = `DELETE FROM companies WHERE cvr = $1;`
 
     // Deletion from the company_creation table
-    pool.query(deleteQueryCompaniesCreation, [user, company.companyCVR], (err, results) => {
+    pool.query(deleteQueryCompaniesCreation, [user, company.companyCVR], (err) => {
         if(err){
             console.log(err);
           }
-          else {
+        else {
+            pool.query(deleteQueryESGScore, [user, company.companyCVR]);
+
             // Deletion from the companies table
-            pool.query(deleteQueryCompanies, [company.companyCVR], (errDelete, resultsDelete) => {
-                if(errDelete){
-                    console.log(errDelete);
+            pool.query(deleteQueryCompanies, [company.companyCVR], (err) => {
+                if(err){
+                    console.log(err);
                 }
                 else {
                     console.log("Deleted");

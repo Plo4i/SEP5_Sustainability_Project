@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('name').value = processedData.name;
         document.getElementById('cvr').value = processedData.cvr;
         document.getElementById('email').value = processedData.email;
+        document.getElementById('ESG').value = processedData.esg_score;
         document.getElementById('website').value = processedData.website;
         document.getElementById('industry').value = processedData.industry;
         document.getElementById('description').value = processedData.description;

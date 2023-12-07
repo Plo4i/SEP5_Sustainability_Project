@@ -6,31 +6,11 @@ document.getElementById('register-form').addEventListener('submit', function (ev
     var usernameInput = document.getElementById('username-input');
     var passwordInput = document.getElementById('password-input');
     var emailInput = document.getElementById('email-input');
-    var usernameError = document.getElementById('username-error');
-    var passwordError = document.getElementById('password-error');
-    var emailError = document.getElementById('email-error');
 
     // Reset error messages and input borders
-    usernameError.textContent = '';
-    passwordError.textContent = '';
-    emailError.textContent = '';
     usernameInput.style.border = '';
     passwordInput.style.border = '';
     emailInput.style.border = '';
-
-    // Check if username, password and email are filled out
-    if (!usernameInput.value.trim()) {
-        usernameError.textContent = 'Username is required.';
-        usernameInput.style.borderBottom = '3px solid red';
-    }
-    if (!passwordInput.value.trim()) {
-        passwordError.textContent = 'Password is required.';
-        passwordContainer.style.borderBottom = '3px solid red';
-    }
-    if (!emailInput.value.trim()) {
-        emailError.textContent = 'Email is required.';
-        emailInput.style.borderBottom = '3px solid red';
-    }
 
     const username = usernameInput.value;
     const password = passwordInput.value;

@@ -21,7 +21,7 @@ router.post('/', upload.single('logo'), (req, res) => {
 
         // Getting the data
         const file = req.file;
-        const { name, cvr, email, website, industry, description } = req.body;
+        const { name, cvr, email, ESG, website, industry, description } = req.body;
 
         const userCompanyInfo = [cvr, req.session.user.username, formatedDate];
         
@@ -30,20 +30,20 @@ router.post('/', upload.single('logo'), (req, res) => {
         
         const companyUpdateQuery = 
         `UPDATE companies 
-        SET name = $1, email = $3, website = $4, industry = $5, description = $6, image_url = $7
+        SET name = $1, email = $3, website = $4, industry = $5, description = $6, image_url = $7, esg_score = $8
         WHERE cvr = $2;`
 
         const companyUpdateImageQuery = 
         `UPDATE companies 
-        SET name = $1, email = $3, website = $4, industry = $5, description = $6, image_url = $7
+        SET name = $1, email = $3, website = $4, industry = $5, description = $6, image_url = $7, esg_score = $8
         WHERE cvr = $2;`
 
         const checkCVRQuery = "SELECT * FROM companies WHERE cvr = $1";
 
         const insertCompanyQuery = 
         `INSERT INTO companies 
-        (name, image_url, cvr, email, website, industry, description) 
-        VALUES ($1, $7, $2, $3, $4, $5, $6)`;
+        (name, image_url, cvr, email, website, industry, description, esg_score) 
+        VALUES ($1, $7, $2, $3, $4, $5, $6, $7)`;
 
         const attachUserToCompany = 
         `INSERT INTO company_creation 
@@ -54,7 +54,7 @@ router.post('/', upload.single('logo'), (req, res) => {
         // Check if image is uploaded. Maybe the user want to update company.
         if (!file) {
             const defaultPic = '/images/question.png'
-            const companyInfoUpdate= [name, cvr, email, website, industry, description, defaultPic];
+            const companyInfoUpdate= [name, cvr, email, website, industry, description, defaultPic, ESG];
 
             // Check if the company exists
             pool.query(companyExistsQuery, [cvr], (err, result) => { 
@@ -70,7 +70,7 @@ router.post('/', upload.single('logo'), (req, res) => {
                             return res.status(500).json({ error: 'Server error' });
                         } 
                         else {
-                            res.status(200).json({success: true})
+                            res.status(200).json({success: true});
                         }
                     });
                 }
@@ -87,7 +87,7 @@ router.post('/', upload.single('logo'), (req, res) => {
                                     return res.status(500).json({ error: 'Server error' });
                                 }
                                 else {
-                                    res.status(200).json({success: true})
+                                    res.status(200).json({success: true});
                                 }
                             });
                         }
@@ -98,7 +98,7 @@ router.post('/', upload.single('logo'), (req, res) => {
         // We have a file so we have to see if user wants a new company
         else {
             const filePath = '/images/' + file.filename;
-            const companyInfoInsert = [name, cvr, email, website, industry, description, filePath];
+            const companyInfoInsert = [name, cvr, email, website, industry, description, filePath, ESG];
 
             pool.query(checkCVRQuery, [cvr], (err, result) => { //Checking if there is already one
                 if (err) {
@@ -112,7 +112,7 @@ router.post('/', upload.single('logo'), (req, res) => {
                     const pathToDelete = 'public' + result.rows[0].image_url;
                     fs.unlinkSync(pathToDelete);
 
-                    res.status(200).json({success: true})
+                    res.status(200).json({success: true});
                 } 
 
     
@@ -132,7 +132,7 @@ router.post('/', upload.single('logo'), (req, res) => {
                                     return res.status(500).json({ error: 'Server error' });
                                 }
                                 else {
-                                    res.status(200).json({success: true})
+                                    res.status(200).json({success: true});
                                 }
                             });
                         };
