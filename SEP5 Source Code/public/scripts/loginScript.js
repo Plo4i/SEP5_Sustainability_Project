@@ -34,18 +34,18 @@ document.getElementById('login-form').addEventListener('submit', function (event
             return response.json();
         })
         .then(data => {
-            // Handle the data received from the server
+          
             window.location.href = '/';
         })
         .catch(error => {
-            // Handle errors
+
             if (error.message === 'Invalid username') {
                 usernameInput.style.borderBottom = '3px solid red';
-                document.getElementById('error-message').textContent = error.message;
-            } else if (error.message === 'Invalid password') {
+            } 
+            else if (error.message === 'Invalid password') {
                 passwordContainer.style.borderBottom = '3px solid red';
-                document.getElementById('error-message').textContent = error.message;
             }
+            document.getElementById('error-message').textContent = error.message;
             console.error('Fetch error:', error);
         });
 });

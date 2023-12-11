@@ -54,6 +54,23 @@ body {
     font-size: 15px;
 }
 
+#error {
+    font-size: 14px;
+    color: red;
+    margin: 5px 0;
+}
+
+#profile-details #modify {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    padding: 0 5px;
+}
+
+#modify button {
+    width: 150px !important;
+}
+
 .text {
     font-size: 20px;
     margin-left: 10px;

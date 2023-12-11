@@ -23,7 +23,7 @@ router.post('/', upload.single('logo'), (req, res) => {
         const file = req.file;
         const { name, cvr, email, ESG, website, industry, description } = req.body;
 
-        const userCompanyInfo = [cvr, req.session.user.username, formatedDate];
+        const userCompanyInfo = [cvr, req.session.user.email, formatedDate];
         
         // Scripts for SQL Queries
         const companyExistsQuery = `SELECT * FROM companies WHERE cvr = $1;`;
@@ -47,7 +47,7 @@ router.post('/', upload.single('logo'), (req, res) => {
 
         const attachUserToCompany = 
         `INSERT INTO company_creation 
-        (company_id, user_id, creationdate) 
+        (company_id, user_email, creationdate) 
         VALUES ($1, $2, $3);`;
   
         

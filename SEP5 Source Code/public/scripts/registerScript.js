@@ -41,7 +41,7 @@ document.getElementById('register-form').addEventListener('submit', function (ev
         })
         .catch(error => {
             // Handle errors
-            document.getElementById("error-message").innerHTML = error;
+            document.getElementById("error-message").innerHTML = error.message;
             console.error('Fetch error:', error);
         });
 });

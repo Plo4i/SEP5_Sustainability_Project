@@ -39,15 +39,15 @@ function set_profile(data) {
                 <span class='info'>${company.name}</span>
             </div>
             <div>
-                <button class='edit-btn' data-cvr='${company.cvr}'>Edit</button>
-                <button class='delete-btn' data-cvr='${company.cvr}'>Delete</button>
+                <button class='btnEdit edit-btn' data-cvr='${company.cvr}'>Edit</button>
+                <button class='btnDelete delete-btn' data-cvr='${company.cvr}'>Delete</button>
             </div>
         </div>`;
     });
 
     // Add event listeners for edit and delete buttons
-    const editButtons = document.querySelectorAll('.edit-btn');
-    const deleteButtons = document.querySelectorAll('.delete-btn');
+    const editButtons = document.querySelectorAll('.btnEdit');
+    const deleteButtons = document.querySelectorAll('.btnDelete');
 
     // Edit button functionality
 editButtons.forEach(function(button) {
@@ -132,14 +132,63 @@ fetch('/user/profile')
         console.error('Error:', error);
     });
 
-// Probably this part will be moved to header. But options for now stay
-const form = document.getElementById('userForm');
+// Function for deletion and update
+const profileForm = document.getElementById('profile-details');
 
+profileForm.addEventListener( 'submit', function(e) {    
+    e.preventDefault();
+
+    const profileObject = {
+        username: profileForm.querySelector('[name="username"]').value,
+        sPlan: profileForm.querySelector('[name="sPlan"]:checked').value,
+        email: profileForm.querySelector('[name="email"]').value,
+    };
+
+    const button = e.submitter.value;
+
+    if(button === 'update') {
+        fetch('/user/edit', {
+            method: 'POST',
+            headers: {
+               'Content-Type': 'application/json',
+            },
+        body: JSON.stringify(profileObject),
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(data.error);
+                });
+            }
+
+            return response.json();
+        })
+        .then(data => {
+            // Handle the data received from the server
+            alert('User data updated!')
+        })
+        .catch(error => {
+            document.getElementById('error-message').textContent = error.message;
+        })
+    }
+    else if(button === 'delete') {
+        fetch('/user/delete', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+             },
+         body: JSON.stringify(profileObject),
+        })
+    };
+});
+
+// Probably this part will be moved to header. But options for now stay
 function deleteCookie(name) {
     document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 
 function pageChange(value) {
+    var form = document.getElementById('userForm');
     if(value === 'home') {
         form.action = '/';
     }
@@ -153,7 +202,7 @@ function pageChange(value) {
         form.action = '/insertCompany';
     }
     
-    form.submit(); // You can submit the form immediately or trigger submission later
+    form.submit();
 }
 
 //Profile picture change

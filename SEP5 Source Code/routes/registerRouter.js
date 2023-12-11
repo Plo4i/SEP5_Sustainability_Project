@@ -29,14 +29,14 @@ router.post("/", (req, res) => {
   const checkUsernameQuery = `
     SELECT * 
     FROM users
-    WHERE username = $1`;
+    WHERE email = $1`;
   
   const insertUserQuery =
     `INSERT INTO users 
     (image_url, username, password, email, subscription_status, registration_date)
     VALUES ($1,$2,$3,$4,$5,$6);`;
 
-  pool.query(checkUsernameQuery, [username], (err, result) => {
+  pool.query(checkUsernameQuery, [email], (err, result) => {
     if (err) {
       console.error(err);
       return res.status(500).send("Server error");
@@ -62,8 +62,8 @@ router.post("/", (req, res) => {
             else {
               // Setting logged in cookie and session to true
               res.cookie("isLoggedIn", "true", { httpOnly: false });
-              // Setting current user cookie to username
-              res.cookie("currentUser", username, { httpOnly: false });
+              // Setting current user cookie to email
+              res.cookie("currentUser", email, { httpOnly: false });
               res.status(200).json({'success':'User successfully registered!'});
             }
           });

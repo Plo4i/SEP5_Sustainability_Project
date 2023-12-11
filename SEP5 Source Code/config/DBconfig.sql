@@ -4,10 +4,10 @@ SET search_path TO EcoEval;
 DROP TABLE IF EXISTS Users CASCADE ;
 
 CREATE TABLE Users (
-    image_url VARCHAR(100),
-    username VARCHAR(100) PRIMARY KEY,
+    email VARCHAR(100) PRIMARY KEY,
+    username VARCHAR(100),
     password VARCHAR(100),
-    email VARCHAR(100),
+    image_url VARCHAR(100),
     subscription_status VARCHAR(100),
     registration_date TIMESTAMP
 );

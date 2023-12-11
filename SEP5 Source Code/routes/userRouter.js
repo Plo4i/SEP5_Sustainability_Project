@@ -36,10 +36,10 @@ router.get('/profile', (req, res) => {
 
   const retriveUserCompanies = `SELECT cvr, name FROM companies 
     JOIN company_creation ON companies.cvr = company_creation.company_id
-    JOIN users ON company_creation.user_id = users.username
-    WHERE users.username = $1;`; 
+    JOIN users ON company_creation.user_email = users.email
+    WHERE users.email = $1;`; 
 
-  pool.query(retriveUserCompanies, [user.username], (err,results) => {
+  pool.query(retriveUserCompanies, [user.email], (err,results) => {
       if(err){
         console.log(err);
       }
@@ -55,7 +55,7 @@ router.post('/changePic', upload.single('picture'), async (req, res) => {
 
   try {
     const filePath = '/images/' + file.filename;
-    const sendInfo = [user.username, filePath];
+    const sendInfo = [user.email, filePath];
 
     // Delete the existing profile picture file
     const pathToDelete = 'public' + user.image_url;
@@ -64,7 +64,7 @@ router.post('/changePic', upload.single('picture'), async (req, res) => {
     const queryImageUpdate = `
       UPDATE users 
       SET image_url = $2
-      WHERE username = $1;`;
+      WHERE email = $1;`;
 
     await pool.query(queryImageUpdate, sendInfo, (err) => {
       if(err) {
@@ -81,6 +81,45 @@ router.post('/changePic', upload.single('picture'), async (req, res) => {
     console.error('Error:', error);
     res.status(500).json({ error: 'Server error' });
   }
+});
+
+router.post('/edit', (req,res) => {
+  const {username, sPlan, email} = req.body;
+  
+  const userExistQuery = `SELECT FROM users WHERE email = $1;`;
+
+  const updateUserQuery = `
+    UPDATE users 
+    SET username = $3, subscription_status = $2
+    WHERE email = $1;`;
+
+  pool.query(userExistQuery, [email], (err, result) => {
+    if(err)
+    {
+      return res.status(400).json({ error: 'Server error' });
+    }
+    else if(result.rows.length > 1)
+    {
+      return res.status(400).json({ error: 'Username already taken' });
+    }
+    else {
+      pool.query(updateUserQuery, [email, sPlan, username], (err) => {
+        if(err)
+        {
+          return res.status(400).json({ error: 'Server error' });
+        }
+        else
+        {
+          res.status(200).json({'success' : true})
+        }
+      });
+      
+    };
+  });
+});
+
+router.post('/delete', (req,res) => {
+
 });
 
 

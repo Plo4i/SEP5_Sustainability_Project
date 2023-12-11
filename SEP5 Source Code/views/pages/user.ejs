@@ -18,7 +18,7 @@
 
       </div>
 
-      <form id="profile-details">
+      <form id="profile-details" action="/default" method="POST">
 
          <label for="username">
             <span >Username</span> 
@@ -39,8 +39,11 @@
                   <label for="free"> Free </label>
                </div>
          </label>
-
-         <input class="btn-submit" type="submit" value="Update">
+         <p id="error-message">&zwnj;</p>
+         <div id="modify">
+            <button class="edit-btn" value="update">Update</button>
+            <button class="delete-btn" value="delete">Delete</button>
+         </div>
       </form>
 
       <form id="userForm" action="/default">

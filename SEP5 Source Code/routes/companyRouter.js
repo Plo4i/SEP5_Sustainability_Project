@@ -34,22 +34,15 @@ router.get('/data', async (req,res) => {
 });
 
 router.post('/delete', (req,res) => {
-    const user = req.session.user.username;
+    const user = req.session.user.email;
     const company = req.body;
     
     const deleteQueryCompaniesCreation = `
         DELETE FROM company_creation
         USING companies, users
         WHERE companies.cvr = company_creation.company_id
-        AND users.username = company_creation.user_id
-        AND users.username = $1
-        AND companies.cvr = $2;`;
-
-    const deleteQueryESGScore = `DELETE FROM esg_score
-        USING companies, users
-        WHERE companies.cvr = esg_score.company_id
-        AND users.username = esg_score.user_id
-        AND users.username = $1
+        AND users.email = company_creation.user_email
+        AND users.email = $1
         AND companies.cvr = $2;`;
 
     const deleteQueryCompanies = `DELETE FROM companies WHERE cvr = $1;`
@@ -60,8 +53,6 @@ router.post('/delete', (req,res) => {
             console.log(err);
           }
         else {
-            pool.query(deleteQueryESGScore, [user, company.companyCVR]);
-
             // Deletion from the companies table
             pool.query(deleteQueryCompanies, [company.companyCVR], (err) => {
                 if(err){
@@ -77,7 +68,7 @@ router.post('/delete', (req,res) => {
 });
 
 router.post('/edit', (req,res) => {
-    const user = req.session.user.username;
+    const user = req.session.user.email;
     const company = req.body;
 
     const companyQuery = `SELECT * FROM companies WHERE cvr = $1;`;
@@ -103,15 +94,15 @@ router.post('/edit', (req,res) => {
 // Route to handle rating submission
 router.post('/save-rating', async (req, res) => {
     try {
-        const user_id = req.session.username;
+        const user_email = req.session.email;
         const { liked, comment, company_id} = req.body;
 
         const saveRatingQuery = `
-            INSERT INTO rate (liked, comment, company_id, user_id)
+            INSERT INTO rate (liked, comment, company_id, user_email)
             VALUES ($1, $2, $3, $4)
             RETURNING *;`;
         
-        const saveRatingValues = [liked, comment, company_id, user_id];
+        const saveRatingValues = [liked, comment, company_id, user_email];
 
         const savedRating = await pool.query(saveRatingQuery, saveRatingValues);
 
@@ -157,9 +148,9 @@ router.get('/reviews-sidebar', async (req, res) => {
     try {
         const { CVR, limit } = req.query;
         const results = await pool.query(
-            `SELECT Rate.*, Users.username as userName, Users.image_url as userImage
+            `SELECT Rate.*, Users.email as userName, Users.image_url as userImage
              FROM Rate 
-             INNER JOIN Users ON Rate.user_id = Users.username 
+             INNER JOIN Users ON Rate.user_email = Users.email 
              WHERE Rate.company_id = $1 
              ORDER BY Rate.date_created DESC 
              LIMIT $2`,

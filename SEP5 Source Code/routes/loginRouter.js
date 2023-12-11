@@ -8,16 +8,16 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { username, password } = req.body;
+  const { email, password } = req.body;
 
   try {
     // Query the database for user credentials
-    const result = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
+    const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
 
     if (result.rows.length > 0) {
       const user = result.rows[0];
 
-      // Check if the password matches the username
+      // Check if the password matches the email
       if (user.password !== password) {
         return res.status(400).json({ error: 'Invalid password' });
       }
@@ -26,10 +26,10 @@ router.post("/", async (req, res) => {
       req.session.user = user;
       //Setting logged in cookie and session to true
       res.cookie("isLoggedIn", "true", { httpOnly: false });
-      //Setting current user cookie to username
-      res.cookie("currentUser", username, { httpOnly: false });
+      //Setting current user cookie to email
+      res.cookie("currentUser", email, { httpOnly: false });
       //Setting current user_id cookie
-      res.cookie("currentUserId", user.username, { httpOnly: false });
+      res.cookie("currentUserId", user.email, { httpOnly: false });
 
       res.status(200).json({ 'success': true })
     } else {
