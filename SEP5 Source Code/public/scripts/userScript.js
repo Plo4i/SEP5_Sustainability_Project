@@ -3,6 +3,15 @@ document.title = 'Profile'
 document.addEventListener('DOMContentLoaded', function () {
     var fileInput = document.getElementById('picture');
 
+    const oldPasswordInput = document.getElementById('oldPassword');
+    const newPasswordInput = document.getElementById('newPassword');
+
+    // Adding input event listener to old password input
+    oldPasswordInput.addEventListener('input', function () {
+        // Enabling new password input if old password is not empty
+        newPasswordInput.disabled = !oldPasswordInput.value.trim();
+    });
+
     // Listen for the change event on the file input
     fileInput.addEventListener('change', function () {
         uploadFile();
@@ -142,6 +151,8 @@ profileForm.addEventListener( 'submit', function(e) {
         username: profileForm.querySelector('[name="username"]').value,
         sPlan: profileForm.querySelector('[name="sPlan"]:checked').value,
         email: profileForm.querySelector('[name="email"]').value,
+        oldPassword: profileForm.querySelector('[name="oldPassword"]').value,
+        newPassword: profileForm.querySelector('[name="newPassword"]').value
     };
 
     const button = e.submitter.value;
@@ -165,7 +176,8 @@ profileForm.addEventListener( 'submit', function(e) {
         })
         .then(data => {
             // Handle the data received from the server
-            alert('User data updated!')
+            alert('User data updated!');
+            window.location.href = '/user';
         })
         .catch(error => {
             document.getElementById('error-message').textContent = error.message;
@@ -178,6 +190,23 @@ profileForm.addEventListener( 'submit', function(e) {
                 'Content-Type': 'application/json',
              },
          body: JSON.stringify(profileObject),
+        })
+        .then(response => {
+            if (!response.ok) {
+                return response.json().then(data => {
+                    throw new Error(data.error);
+                });
+            }
+
+            return response.json();
+        })
+        .then(data => {
+            // Handle the data received from the server
+            alert('User Deleted!');
+            window.location.href = '/';
+        })
+        .catch(error => {
+            document.getElementById('error-message').textContent = error.message;
         })
     };
 });

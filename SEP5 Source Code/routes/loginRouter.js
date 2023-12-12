@@ -8,11 +8,11 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", async (req, res) => {
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
   try {
     // Query the database for user credentials
-    const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+    const result = await pool.query('SELECT * FROM users WHERE username = $1', [username]);
 
     if (result.rows.length > 0) {
       const user = result.rows[0];
@@ -27,9 +27,9 @@ router.post("/", async (req, res) => {
       //Setting logged in cookie and session to true
       res.cookie("isLoggedIn", "true", { httpOnly: false });
       //Setting current user cookie to email
-      res.cookie("currentUser", email, { httpOnly: false });
+      res.cookie("currentUser", username, { httpOnly: false });
       //Setting current user_id cookie
-      res.cookie("currentUserId", user.email, { httpOnly: false });
+      res.cookie("currentUserId", user.username, { httpOnly: false });
 
       res.status(200).json({ 'success': true })
     } else {

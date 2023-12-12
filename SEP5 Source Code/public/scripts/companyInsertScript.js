@@ -28,9 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         fetch('/insertCompany', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'multipart/form-data',
-             },
             body: formData,
         })
         .then(response => response.json())  // Assuming the server sends a JSON response

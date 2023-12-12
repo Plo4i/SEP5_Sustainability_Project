@@ -21,6 +21,7 @@ router.post('/', upload.single('logo'), (req, res) => {
 
         // Getting the data
         const file = req.file;
+
         const { name, cvr, email, ESG, website, industry, description } = req.body;
 
         const userCompanyInfo = [cvr, req.session.user.email, formatedDate];
@@ -43,13 +44,14 @@ router.post('/', upload.single('logo'), (req, res) => {
         const insertCompanyQuery = 
         `INSERT INTO companies 
         (name, image_url, cvr, email, website, industry, description, esg_score) 
-        VALUES ($1, $7, $2, $3, $4, $5, $6, $7)`;
+        VALUES ($1, $7, $2, $3, $4, $5, $6, $8)`;
 
         const attachUserToCompany = 
         `INSERT INTO company_creation 
         (company_id, user_email, creationdate) 
         VALUES ($1, $2, $3);`;
-  
+        
+        
         
         // Check if image is uploaded. Maybe the user want to update company.
         if (!file) {
@@ -142,7 +144,7 @@ router.post('/', upload.single('logo'), (req, res) => {
         }
     }
     else{
-        res.status(401).json({ error: 'User not logged in!' });
+        res.redirect('/');
     }
 });
 

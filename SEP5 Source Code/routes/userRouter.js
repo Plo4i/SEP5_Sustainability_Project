@@ -85,13 +85,27 @@ router.post('/changePic', upload.single('picture'), async (req, res) => {
 
 router.post('/edit', (req,res) => {
   const {username, sPlan, email} = req.body;
+  var newPassword = req.session.user.password;
+
+  console.log(req.body)
+
+  if (req.session.user.password === req.body.oldPassword) {
+    newPassword = req.body.newPassword;
+  }
+  else {
+    if(req.body.oldPassword !== '') {
+      return res.status(400).json({'error': 'Wrong old password!'})
+    };
+  };
+
+  const userInfo = [username, email, sPlan, newPassword];
   
   const userExistQuery = `SELECT FROM users WHERE email = $1;`;
 
   const updateUserQuery = `
     UPDATE users 
-    SET username = $3, subscription_status = $2
-    WHERE email = $1;`;
+    SET username = $1, subscription_status = $3, password = $4
+    WHERE email = $2;`;
 
   pool.query(userExistQuery, [email], (err, result) => {
     if(err)
@@ -103,13 +117,16 @@ router.post('/edit', (req,res) => {
       return res.status(400).json({ error: 'Username already taken' });
     }
     else {
-      pool.query(updateUserQuery, [email, sPlan, username], (err) => {
+      pool.query(updateUserQuery, userInfo, (err) => {
         if(err)
         {
           return res.status(400).json({ error: 'Server error' });
         }
         else
         {
+          req.session.user.username = username;
+          req.session.user.subscription_status = sPlan;
+          req.session.user.password = newPassword;
           res.status(200).json({'success' : true})
         }
       });
@@ -118,9 +135,56 @@ router.post('/edit', (req,res) => {
   });
 });
 
-router.post('/delete', (req,res) => {
+router.post('/delete', async (req, res) => {
+  const email = req.body.email;
 
+  const companyFindQuery = `
+    SELECT company_id 
+    FROM company_creation 
+    WHERE user_email = $1;`;
+
+  const companyCreationDeleteQuery = `
+    DELETE FROM company_creation 
+    WHERE user_email = $1;`;
+
+  const companyDeleteQuery = `
+    DELETE FROM companies
+    WHERE cvr = $1`;
+
+  const userDeleteQuery = `
+    DELETE FROM users 
+    WHERE email = $1;`;
+
+  try {
+    const result = await pool.query(companyFindQuery, [email]);
+    const companies = result.rows;
+
+    await pool.query(companyCreationDeleteQuery, [email]);
+
+    if(companies != 0) {
+      for (const company of companies) {
+        const companyCVR = company.company_id;
+        console.log(`${companyDeleteQuery} ${companyCVR}`);
+
+        await pool.query(companyDeleteQuery, [companyCVR]);
+      };
+    };
+
+    await pool.query(userDeleteQuery, [email]);
+    req.session.destroy((err) => {
+      if (err) {
+        console.error('Error destroying session:', err);
+      }
+    });
+
+    res.status(200).json({ success: true });
+  } 
+  catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Server error' });
+  }
 });
+
 
 
 export default router;
